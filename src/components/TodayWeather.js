@@ -1,8 +1,9 @@
+import Clock from "./Clock";
+
 export default function TodayWeather() {
     return (
         <div>
-            <p>Tuesday, July 14, 2020</p>
-            <p>11:55 AM</p>
+            <Clock />
             <p>90&deg;</p>
             <p>109&deg;&uarr; 83&deg;&darr;</p>
             <p>Cloudy</p>
