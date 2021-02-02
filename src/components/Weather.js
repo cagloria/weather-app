@@ -15,7 +15,7 @@ export default function TodayWeather({ location }) {
     const [weatherData, setWeather] = useState(undefined);
     const [message, setMessage] = useState("Getting today's weather...");
 
-    // TODO: Update component when city changes
+    // TODO: Update component when city changes to either valid or invalid
     useEffect(() => {
         async function getWeather() {
             try {
@@ -29,6 +29,7 @@ export default function TodayWeather({ location }) {
                 setWeather(data);
             } catch (error) {
                 setMessage(`We couldn't get today's weather. ${error}`);
+                setWeather(undefined);
             }
         }
 
