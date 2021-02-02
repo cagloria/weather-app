@@ -15,7 +15,6 @@ export default function TodayWeather({ location }) {
     const [weatherData, setWeather] = useState(undefined);
     const [message, setMessage] = useState("Getting today's weather...");
 
-    // TODO: Update component when city changes to either valid or invalid
     useEffect(() => {
         async function getWeather() {
             try {
@@ -48,7 +47,9 @@ export default function TodayWeather({ location }) {
                 <p>{message}</p>
             ) : (
                 <>
-                    <p>{weatherData.name}</p>
+                    <p>
+                        {weatherData.name}, {weatherData.sys.country}
+                    </p>
                     <p>{weatherData.main.temp}&deg;</p>
                     <p>
                         {weatherData.main.temp_max}&deg;&uarr;{" "}
