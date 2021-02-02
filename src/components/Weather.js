@@ -2,22 +2,24 @@ import React, { useState, useEffect } from "react";
 import Clock from "./Clock";
 
 const API = (() => {
-    const _key = process.env.REACT_APP_WEATHER_API_KEY;
-    const url =
-        "http://api.openweathermap.org/data/2.5/weather?q=Phoenix&units=imperial&appid=" +
-        _key;
+    const key = process.env.REACT_APP_WEATHER_API_KEY;
 
-    return { url };
+    function getUrl(location) {
+        return `http://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${key}`;
+    }
+
+    return { getUrl };
 })();
 
-export default function TodayWeather() {
+export default function TodayWeather({ location }) {
     const [weatherData, setWeather] = useState(undefined);
     const [message, setMessage] = useState("Getting today's weather...");
 
+    // TODO: Update component when city changes
     useEffect(() => {
         async function getWeather() {
             try {
-                const response = await fetch(API.url);
+                const response = await fetch(API.getUrl(location));
                 const data = await response.json();
                 console.log(data);
                 if (data.cod !== 200) {
@@ -31,7 +33,7 @@ export default function TodayWeather() {
         }
 
         getWeather();
-    }, []);
+    }, [location]);
 
     function convertTimeFromUnix(time) {
         const newTime = new Date(time * 1000);
