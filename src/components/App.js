@@ -16,18 +16,15 @@ export default function App() {
             <Clock />
             <CityInput onCitySubmit={handleCityChange} />
 
-            {city.length === 0 ? (
-                <p>Enter a city to see the weather.</p>
-            ) : (
+            {city.length === 0 ? null : (
                 <>
                     <TodayWeather location={city} />
                     <Forecast location={city} />
+                    <div>
+                        <p>Data provided by OpenWeather.</p>
+                    </div>
                 </>
             )}
-
-            <div>
-                <p>Data provided by OpenWeather.</p>
-            </div>
         </div>
     );
 }
