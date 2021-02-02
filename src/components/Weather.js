@@ -12,6 +12,7 @@ const API = (() => {
 
 export default function TodayWeather() {
     const [weatherData, setWeather] = useState(undefined);
+    const [message, setMessage] = useState("Getting today's weather...");
 
     useEffect(() => {
         async function getWeather() {
@@ -19,9 +20,13 @@ export default function TodayWeather() {
                 const response = await fetch(API.url);
                 const data = await response.json();
                 console.log(data);
+                if (data.cod !== 200) {
+                    throw new Error(`${data.cod}: ${data.message}`);
+                }
+                setMessage("");
                 setWeather(data);
             } catch (error) {
-                console.log(error);
+                setMessage(`We couldn't get today's weather. ${error}`);
             }
         }
 
@@ -37,7 +42,7 @@ export default function TodayWeather() {
         <>
             <Clock />
             {weatherData === undefined ? (
-                <p>Getting weather...</p>
+                <p>{message}</p>
             ) : (
                 <>
                     <p>{weatherData.name}</p>
