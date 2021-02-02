@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Clock from "./Clock";
 
-const API = (() => {
-    const key = process.env.REACT_APP_WEATHER_API_KEY;
+const WEATHER_API = (() => {
+    const _key = process.env.REACT_APP_WEATHER_API_KEY;
 
     function getUrl(location) {
-        return `http://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${key}`;
+        return `http://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${_key}`;
     }
 
     return { getUrl };
@@ -18,7 +17,7 @@ export default function TodayWeather({ location }) {
     useEffect(() => {
         async function getWeather() {
             try {
-                const response = await fetch(API.getUrl(location));
+                const response = await fetch(WEATHER_API.getUrl(location));
                 const data = await response.json();
                 console.log(data);
                 if (data.cod !== 200) {
@@ -42,7 +41,6 @@ export default function TodayWeather({ location }) {
 
     return (
         <>
-            <Clock />
             {weatherData === undefined ? (
                 <p>{message}</p>
             ) : (

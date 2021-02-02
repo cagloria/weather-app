@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Clock from "./Clock";
 import TodayWeather from "./Weather";
 import CityInput from "./CityInput";
 import Forecast from "./Forecast";
@@ -12,6 +13,7 @@ export default function App() {
 
     return (
         <div className="App">
+            <Clock />
             <CityInput onCitySubmit={handleCityChange} />
 
             {city.length === 0 ? (
@@ -19,7 +21,7 @@ export default function App() {
             ) : (
                 <>
                     <TodayWeather location={city} />
-                    <Forecast />
+                    <Forecast location={city} />
                 </>
             )}
 

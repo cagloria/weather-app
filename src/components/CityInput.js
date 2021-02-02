@@ -9,7 +9,6 @@ export default function CityInput({ onCitySubmit }) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        console.log(city);
         onCitySubmit(city);
     }
 
