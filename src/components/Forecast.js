@@ -10,9 +10,17 @@ const FORECAST_API = (() => {
     return { getUrl };
 })();
 
+function datesMatch(day1, day2) {
+    return (
+        day1.getFullYear() === day2.getFullYear() &&
+        day1.getMonth() === day2.getMonth() &&
+        day1.getDate() === day2.getDate()
+    );
+}
+
 export default function Forecast({ location }) {
     const [forecastData, setForecast] = useState(undefined);
-    const [minMax, setMinMax] = useState(undefined);
+    const [forecastMinMax, setForecastMinMax] = useState(undefined);
     const [message, setMessage] = useState("Getting the forecast...");
     const dayOptions = { weekday: "long" };
 
@@ -49,6 +57,8 @@ export default function Forecast({ location }) {
             ),
             minArr: [],
             maxArr: [],
+            min: undefined,
+            max: undefined,
         };
         let day2 = {
             date: new Date(
@@ -58,6 +68,8 @@ export default function Forecast({ location }) {
             ),
             minArr: [],
             maxArr: [],
+            min: undefined,
+            max: undefined,
         };
         let day3 = {
             date: new Date(
@@ -67,94 +79,82 @@ export default function Forecast({ location }) {
             ),
             minArr: [],
             maxArr: [],
+            min: undefined,
+            max: undefined,
         };
 
         list.forEach((timestamp) => {
-            const date = new Date(timestamp.dt_txt);
+            const timestampDate = new Date(timestamp.dt_txt);
 
-            if (
-                date.getFullYear() === day1.date.getFullYear() &&
-                date.getMonth() === day1.date.getMonth() &&
-                date.getDate() === day1.date.getDate()
-            ) {
+            if (datesMatch(timestampDate, day1.date)) {
                 day1.minArr.push(timestamp.main.temp_min);
                 day1.maxArr.push(timestamp.main.temp_max);
             }
 
-            if (
-                date.getFullYear() === day2.date.getFullYear() &&
-                date.getMonth() === day2.date.getMonth() &&
-                date.getDate() === day2.date.getDate()
-            ) {
+            if (datesMatch(timestampDate, day2.date)) {
                 day2.minArr.push(timestamp.main.temp_min);
                 day2.maxArr.push(timestamp.main.temp_max);
             }
 
-            if (
-                date.getFullYear() === day3.date.getFullYear() &&
-                date.getMonth() === day3.date.getMonth() &&
-                date.getDate() === day3.date.getDate()
-            ) {
+            if (datesMatch(timestampDate, day3.date)) {
                 day3.minArr.push(timestamp.main.temp_min);
                 day3.maxArr.push(timestamp.main.temp_max);
             }
         });
 
-        setMinMax({
-            day1: {
-                date: day1.date,
-                min: Math.min(...day1.minArr),
-                max: Math.max(...day1.maxArr),
-            },
-            day2: {
-                date: day2.date,
-                min: Math.min(...day2.minArr),
-                max: Math.max(...day2.maxArr),
-            },
-            day3: {
-                date: day3.date,
-                min: Math.min(...day3.minArr),
-                max: Math.max(...day3.maxArr),
-            },
+        day1.min = Math.min(...day1.minArr);
+        day1.max = Math.max(...day1.maxArr);
+        day2.min = Math.min(...day2.minArr);
+        day2.max = Math.max(...day2.maxArr);
+        day3.min = Math.min(...day3.minArr);
+        day3.max = Math.max(...day3.maxArr);
+
+        setForecastMinMax({
+            day1,
+            day2,
+            day3,
         });
     }
 
     return (
         <div>
-            {forecastData === undefined || minMax === undefined ? (
+            {forecastData === undefined || forecastMinMax === undefined ? (
                 <p>{message}</p>
             ) : (
                 <>
                     <div>
                         <p>Tomorrow</p>
                         <p>
-                            {minMax.day1.max}&deg;&uarr; {minMax.day1.min}
+                            {forecastMinMax.day1.max}&deg;&uarr;{" "}
+                            {forecastMinMax.day1.min}
                             &deg;&darr;
                         </p>
                     </div>
 
                     <div>
                         <p>
-                            {minMax.day2.date.toLocaleDateString(
+                            {forecastMinMax.day2.date.toLocaleDateString(
                                 undefined,
                                 dayOptions
                             )}
                         </p>
                         <p>
-                            {minMax.day2.max}&deg;&uarr; {minMax.day2.min}
+                            {forecastMinMax.day2.max}&deg;&uarr;{" "}
+                            {forecastMinMax.day2.min}
                             &deg;&darr;
                         </p>
                     </div>
 
                     <div>
                         <p>
-                            {minMax.day3.date.toLocaleDateString(
+                            {forecastMinMax.day3.date.toLocaleDateString(
                                 undefined,
                                 dayOptions
                             )}
                         </p>
                         <p>
-                            {minMax.day3.max}&deg;&uarr; {minMax.day3.min}
+                            {forecastMinMax.day3.max}&deg;&uarr;{" "}
+                            {forecastMinMax.day3.min}
                             &deg;&darr;
                         </p>
                     </div>
