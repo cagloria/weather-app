@@ -4,7 +4,10 @@ const FORECAST_API = (() => {
     const _key = process.env.REACT_APP_WEATHER_API_KEY;
 
     function getUrl(location) {
-        return `http://api.openweathermap.org/data/2.5/forecast?q=${location}&units=imperial&appid=${_key}`;
+        return (
+            `http://api.openweathermap.org/data/2.5/forecast?q=${location}` +
+            `&units=imperial&appid=${_key}`
+        );
     }
 
     return { getUrl };
@@ -105,7 +108,8 @@ export default function Forecast({ location }) {
             } catch (error) {
                 console.log(error);
                 setMessage(
-                    `There was a problem in the app. Contact the developer if it continues.`
+                    `There was a problem in the app. Contact the developer ` +
+                        `if it continues.`
                 );
                 setForecastObj(undefined);
             }

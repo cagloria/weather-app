@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Clock from "./Clock";
-import TodayWeather from "./Weather";
+import Weather from "./Weather";
 import CityInput from "./CityInput";
 import Forecast from "./Forecast";
 
@@ -18,7 +18,7 @@ export default function App() {
 
             {city.length === 0 ? null : (
                 <>
-                    <TodayWeather location={city} />
+                    <Weather location={city} />
                     <Forecast location={city} />
                     <div>
                         <p>Data provided by OpenWeather.</p>

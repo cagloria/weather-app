@@ -4,33 +4,52 @@ const WEATHER_API = (() => {
     const _key = process.env.REACT_APP_WEATHER_API_KEY;
 
     function getUrl(location) {
-        return `http://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${_key}`;
+        return (
+            `http://api.openweathermap.org/data/2.5/weather?q=${location}` +
+            `&units=imperial&appid=${_key}`
+        );
     }
 
     return { getUrl };
 })();
 
-export default function TodayWeather({ location }) {
-    const [weatherData, setWeather] = useState(undefined);
+export default function Weather({ location }) {
+    const [APIData, setAPIData] = useState(undefined);
     const [message, setMessage] = useState("Getting today's weather...");
 
     useEffect(() => {
-        async function getWeather() {
+        async function getWeatherAPI() {
             try {
                 const response = await fetch(WEATHER_API.getUrl(location));
                 const data = await response.json();
                 if (data.cod !== 200) {
-                    throw new Error(`${data.cod}: ${data.message}`);
+                    throw new Error(
+                        `We couldn't get today's weather from OpenWeather. ` +
+                            `Status ${data.cod}: ${data.message}`
+                    );
+                } else {
+                    processData(data);
                 }
-                setMessage("");
-                setWeather(data);
             } catch (error) {
-                setMessage(`We couldn't get today's weather. ${error}`);
-                setWeather(undefined);
+                setMessage(`${error}`);
+                setAPIData(undefined);
             }
         }
 
-        getWeather();
+        function processData(data) {
+            try {
+                setMessage("");
+                setAPIData(data);
+            } catch (error) {
+                console.log(error);
+                setMessage(
+                    `There was a problem in the app. Contact the developer ` +
+                        `if it continues.`
+                );
+            }
+        }
+
+        getWeatherAPI();
     }, [location]);
 
     function convertTimeFromUnix(time) {
@@ -40,41 +59,41 @@ export default function TodayWeather({ location }) {
 
     return (
         <>
-            {weatherData === undefined ? (
+            {APIData === undefined ? (
                 <p>{message}</p>
             ) : (
                 <>
                     <p>
-                        {weatherData.name}, {weatherData.sys.country}
+                        {APIData.name}, {APIData.sys.country}
                     </p>
-                    <p>{weatherData.main.temp}&deg;</p>
+                    <p>{APIData.main.temp}&deg;</p>
                     <p>
-                        {weatherData.main.temp_max}&deg;&uarr;{" "}
-                        {weatherData.main.temp_min}
+                        {APIData.main.temp_max}&deg;&uarr;{" "}
+                        {APIData.main.temp_min}
                         &deg;&darr;
                     </p>
-                    <p>{weatherData.weather[0].main}</p>
+                    <p>{APIData.weather[0].main}</p>
 
                     <div>
                         <p>Sunrise</p>
-                        <p>{convertTimeFromUnix(weatherData.sys.sunrise)}</p>
+                        <p>{convertTimeFromUnix(APIData.sys.sunrise)}</p>
                         <p>Sunset</p>
-                        <p>{convertTimeFromUnix(weatherData.sys.sunset)}</p>
+                        <p>{convertTimeFromUnix(APIData.sys.sunset)}</p>
                     </div>
 
                     <table>
                         <tbody>
                             <tr>
                                 <td>Wind</td>
-                                <td>{weatherData.wind.speed} mph</td>
+                                <td>{APIData.wind.speed} mph</td>
                             </tr>
                             <tr>
                                 <td>Humidity</td>
-                                <td>{weatherData.main.humidity}%</td>
+                                <td>{APIData.main.humidity}%</td>
                             </tr>
                             <tr>
                                 <td>Pressure</td>
-                                <td>{weatherData.main.pressure}hPa</td>
+                                <td>{APIData.main.pressure}hPa</td>
                             </tr>
                         </tbody>
                     </table>
