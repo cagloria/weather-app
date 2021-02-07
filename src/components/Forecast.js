@@ -78,25 +78,40 @@ export default function Forecast({ location }) {
     const dayOptions = { weekday: "long" };
 
     useEffect(() => {
-        async function getForecast() {
+        async function getForecastAPI() {
             try {
                 const response = await fetch(FORECAST_API.getUrl(location));
                 const data = await response.json();
-                console.log(data);
                 if (data.cod !== "200") {
-                    throw new Error(`${data.cod}: ${data.message}`);
+                    throw new Error(
+                        `We couldn't get the forecast from OpenWeather. ` +
+                            `Status ${data.cod}: ${data.message}`
+                    );
+                } else {
+                    processData(data);
                 }
+            } catch (error) {
+                console.log(error);
+                setMessage(`${error}`);
+                setAPIData(undefined);
+            }
+        }
+
+        function processData(data) {
+            try {
                 setMessage("");
                 setAPIData(data);
                 formatData(data);
             } catch (error) {
                 console.log(error);
-                setMessage(`We couldn't get the forecast. ${error}`);
-                setAPIData(undefined);
+                setMessage(
+                    `There was a problem in the app. Contact the developer if it continues.`
+                );
+                setForecastObj(undefined);
             }
         }
 
-        getForecast();
+        getForecastAPI();
     }, [location]);
 
     function formatData(data) {

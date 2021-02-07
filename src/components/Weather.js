@@ -19,7 +19,6 @@ export default function TodayWeather({ location }) {
             try {
                 const response = await fetch(WEATHER_API.getUrl(location));
                 const data = await response.json();
-                console.log(data);
                 if (data.cod !== 200) {
                     throw new Error(`${data.cod}: ${data.message}`);
                 }
