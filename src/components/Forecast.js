@@ -18,6 +18,35 @@ function datesMatch(day1, day2) {
     );
 }
 
+const dateFactory = (date) => {
+    let minArr = [];
+    let maxArr = [];
+    let min = 0;
+    let max = 0;
+
+    function addToMinArr(temp) {
+        minArr.push(temp);
+    }
+
+    function addToMaxArr(temp) {
+        maxArr.push(temp);
+    }
+
+    function findMinAndMax() {
+        this.min = Math.min(...minArr);
+        this.max = Math.max(...maxArr);
+    }
+
+    return {
+        date,
+        min,
+        max,
+        addToMinArr,
+        addToMaxArr,
+        findMinAndMax,
+    };
+};
+
 export default function Forecast({ location }) {
     const [forecastData, setForecast] = useState(undefined);
     const [forecastMinMax, setForecastMinMax] = useState(undefined);
@@ -49,65 +78,38 @@ export default function Forecast({ location }) {
     function findMinMaxTemp(data) {
         const { list } = data;
         const today = new Date();
-        let day1 = {
-            date: new Date(
-                today.getFullYear(),
-                today.getMonth(),
-                today.getDate() + 1
-            ),
-            minArr: [],
-            maxArr: [],
-            min: undefined,
-            max: undefined,
-        };
-        let day2 = {
-            date: new Date(
-                today.getFullYear(),
-                today.getMonth(),
-                today.getDate() + 2
-            ),
-            minArr: [],
-            maxArr: [],
-            min: undefined,
-            max: undefined,
-        };
-        let day3 = {
-            date: new Date(
-                today.getFullYear(),
-                today.getMonth(),
-                today.getDate() + 3
-            ),
-            minArr: [],
-            maxArr: [],
-            min: undefined,
-            max: undefined,
-        };
+        let day1 = dateFactory(
+            new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1)
+        );
+        let day2 = dateFactory(
+            new Date(today.getFullYear(), today.getMonth(), today.getDate() + 2)
+        );
+        let day3 = dateFactory(
+            new Date(today.getFullYear(), today.getMonth(), today.getDate() + 3)
+        );
 
         list.forEach((timestamp) => {
             const timestampDate = new Date(timestamp.dt_txt);
 
             if (datesMatch(timestampDate, day1.date)) {
-                day1.minArr.push(timestamp.main.temp_min);
-                day1.maxArr.push(timestamp.main.temp_max);
+                day1.addToMinArr(timestamp.main.temp_min);
+                day1.addToMaxArr(timestamp.main.temp_max);
             }
 
             if (datesMatch(timestampDate, day2.date)) {
-                day2.minArr.push(timestamp.main.temp_min);
-                day2.maxArr.push(timestamp.main.temp_max);
+                day2.addToMinArr(timestamp.main.temp_min);
+                day2.addToMaxArr(timestamp.main.temp_max);
             }
 
             if (datesMatch(timestampDate, day3.date)) {
-                day3.minArr.push(timestamp.main.temp_min);
-                day3.maxArr.push(timestamp.main.temp_max);
+                day3.addToMinArr(timestamp.main.temp_min);
+                day3.addToMaxArr(timestamp.main.temp_max);
             }
         });
 
-        day1.min = Math.min(...day1.minArr);
-        day1.max = Math.max(...day1.maxArr);
-        day2.min = Math.min(...day2.minArr);
-        day2.max = Math.max(...day2.maxArr);
-        day3.min = Math.min(...day3.minArr);
-        day3.max = Math.max(...day3.maxArr);
+        day1.findMinAndMax();
+        day2.findMinAndMax();
+        day3.findMinAndMax();
 
         setForecastMinMax({
             day1,
