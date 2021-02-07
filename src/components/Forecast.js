@@ -21,8 +21,10 @@ function datesMatch(day1, day2) {
 const dateFactory = (date) => {
     let minArr = [];
     let maxArr = [];
+    let weatherArr = [];
     let min = 0;
     let max = 0;
+    let weather = { name: "", count: 0 };
 
     function addToMinArr(temp) {
         minArr.push(temp);
@@ -30,6 +32,25 @@ const dateFactory = (date) => {
 
     function addToMaxArr(temp) {
         maxArr.push(temp);
+    }
+
+    function addToWeather(weather) {
+        weatherArr.push(weather);
+    }
+
+    function determineMainWeather() {
+        for (let i = 0; i < weatherArr.length; i++) {
+            let count = 0;
+            weatherArr.forEach((weather) => {
+                if (weatherArr[i] === weather) {
+                    count++;
+                }
+            });
+            if (this.weather.count < count) {
+                this.weather.name = weatherArr[i];
+                this.weather.count = count;
+            }
+        }
     }
 
     function findMinAndMax() {
@@ -41,15 +62,18 @@ const dateFactory = (date) => {
         date,
         min,
         max,
+        weather,
         addToMinArr,
         addToMaxArr,
+        addToWeather,
+        determineMainWeather,
         findMinAndMax,
     };
 };
 
 export default function Forecast({ location }) {
-    const [forecastData, setForecast] = useState(undefined);
-    const [forecastMinMax, setForecastMinMax] = useState(undefined);
+    const [APIData, setAPIData] = useState(undefined);
+    const [forecastObj, setForecastObj] = useState(undefined);
     const [message, setMessage] = useState("Getting the forecast...");
     const dayOptions = { weekday: "long" };
 
@@ -63,19 +87,19 @@ export default function Forecast({ location }) {
                     throw new Error(`${data.cod}: ${data.message}`);
                 }
                 setMessage("");
-                setForecast(data);
-                findMinMaxTemp(data);
+                setAPIData(data);
+                formatData(data);
             } catch (error) {
                 console.log(error);
                 setMessage(`We couldn't get the forecast. ${error}`);
-                setForecast(undefined);
+                setAPIData(undefined);
             }
         }
 
         getForecast();
     }, [location]);
 
-    function findMinMaxTemp(data) {
+    function formatData(data) {
         const { list } = data;
         const today = new Date();
         let day1 = dateFactory(
@@ -94,24 +118,30 @@ export default function Forecast({ location }) {
             if (datesMatch(timestampDate, day1.date)) {
                 day1.addToMinArr(timestamp.main.temp_min);
                 day1.addToMaxArr(timestamp.main.temp_max);
+                day1.addToWeather(timestamp.weather[0].main);
             }
 
             if (datesMatch(timestampDate, day2.date)) {
                 day2.addToMinArr(timestamp.main.temp_min);
                 day2.addToMaxArr(timestamp.main.temp_max);
+                day2.addToWeather(timestamp.weather[0].main);
             }
 
             if (datesMatch(timestampDate, day3.date)) {
                 day3.addToMinArr(timestamp.main.temp_min);
                 day3.addToMaxArr(timestamp.main.temp_max);
+                day3.addToWeather(timestamp.weather[0].main);
             }
         });
 
         day1.findMinAndMax();
         day2.findMinAndMax();
         day3.findMinAndMax();
+        day1.determineMainWeather();
+        day2.determineMainWeather();
+        day3.determineMainWeather();
 
-        setForecastMinMax({
+        setForecastObj({
             day1,
             day2,
             day3,
@@ -120,43 +150,46 @@ export default function Forecast({ location }) {
 
     return (
         <div>
-            {forecastData === undefined || forecastMinMax === undefined ? (
+            {APIData === undefined || forecastObj === undefined ? (
                 <p>{message}</p>
             ) : (
                 <>
                     <div>
-                        <p>Tomorrow</p>
+                        <h3>Tomorrow</h3>
+                        <p>{forecastObj.day1.weather.name}</p>
                         <p>
-                            {forecastMinMax.day1.max}&deg;&uarr;{" "}
-                            {forecastMinMax.day1.min}
+                            {forecastObj.day1.max}&deg;&uarr;{" "}
+                            {forecastObj.day1.min}
                             &deg;&darr;
                         </p>
                     </div>
 
                     <div>
-                        <p>
-                            {forecastMinMax.day2.date.toLocaleDateString(
+                        <h3>
+                            {forecastObj.day2.date.toLocaleDateString(
                                 undefined,
                                 dayOptions
                             )}
-                        </p>
+                        </h3>
+                        <p>{forecastObj.day2.weather.name}</p>
                         <p>
-                            {forecastMinMax.day2.max}&deg;&uarr;{" "}
-                            {forecastMinMax.day2.min}
+                            {forecastObj.day2.max}&deg;&uarr;{" "}
+                            {forecastObj.day2.min}
                             &deg;&darr;
                         </p>
                     </div>
 
                     <div>
-                        <p>
-                            {forecastMinMax.day3.date.toLocaleDateString(
+                        <h3>
+                            {forecastObj.day3.date.toLocaleDateString(
                                 undefined,
                                 dayOptions
                             )}
-                        </p>
+                        </h3>
+                        <p>{forecastObj.day3.weather.name}</p>
                         <p>
-                            {forecastMinMax.day3.max}&deg;&uarr;{" "}
-                            {forecastMinMax.day3.min}
+                            {forecastObj.day3.max}&deg;&uarr;{" "}
+                            {forecastObj.day3.min}
                             &deg;&darr;
                         </p>
                     </div>
