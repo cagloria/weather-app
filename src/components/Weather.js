@@ -15,6 +15,7 @@ const WEATHER_API = (() => {
 
 export default function Weather({ location }) {
     const [APIData, setAPIData] = useState(undefined);
+    const [weatherObj, setWeatherObj] = useState(undefined);
     const [message, setMessage] = useState("Getting today's weather...");
 
     useEffect(() => {
@@ -40,12 +41,26 @@ export default function Weather({ location }) {
             try {
                 setMessage("");
                 setAPIData(data);
+                setWeatherObj({
+                    city: data.name,
+                    country: data.sys.country,
+                    temperature: data.main.temp,
+                    tempMax: data.main.temp_max,
+                    tempMin: data.main.temp_min,
+                    weather: data.weather[0].main,
+                    sunrise: convertTimeFromUnix(data.sys.sunrise),
+                    sunset: convertTimeFromUnix(data.sys.sunset),
+                    wind: data.wind.speed,
+                    humidity: data.main.humidity,
+                    pressure: data.main.pressure,
+                });
             } catch (error) {
                 console.log(error);
                 setMessage(
                     `There was a problem in the app. Contact the developer ` +
                         `if it continues.`
                 );
+                setWeatherObj(undefined);
             }
         }
 
@@ -59,41 +74,40 @@ export default function Weather({ location }) {
 
     return (
         <>
-            {APIData === undefined ? (
+            {APIData === undefined || weatherObj === undefined ? (
                 <p>{message}</p>
             ) : (
                 <>
                     <p>
-                        {APIData.name}, {APIData.sys.country}
+                        {weatherObj.city}, {weatherObj.country}
                     </p>
-                    <p>{APIData.main.temp}&deg;</p>
+                    <p>{weatherObj.temperature}&deg;</p>
                     <p>
-                        {APIData.main.temp_max}&deg;&uarr;{" "}
-                        {APIData.main.temp_min}
+                        {weatherObj.tempMax}&deg;&uarr; {weatherObj.tempMin}
                         &deg;&darr;
                     </p>
-                    <p>{APIData.weather[0].main}</p>
+                    <p>{weatherObj.weather}</p>
 
                     <div>
                         <p>Sunrise</p>
-                        <p>{convertTimeFromUnix(APIData.sys.sunrise)}</p>
+                        <p>{weatherObj.sunrise}</p>
                         <p>Sunset</p>
-                        <p>{convertTimeFromUnix(APIData.sys.sunset)}</p>
+                        <p>{weatherObj.sunset}</p>
                     </div>
 
                     <table>
                         <tbody>
                             <tr>
                                 <td>Wind</td>
-                                <td>{APIData.wind.speed} mph</td>
+                                <td>{weatherObj.wind} mph</td>
                             </tr>
                             <tr>
                                 <td>Humidity</td>
-                                <td>{APIData.main.humidity}%</td>
+                                <td>{weatherObj.humidity}%</td>
                             </tr>
                             <tr>
                                 <td>Pressure</td>
-                                <td>{APIData.main.pressure}hPa</td>
+                                <td>{weatherObj.pressure}hPa</td>
                             </tr>
                         </tbody>
                     </table>
