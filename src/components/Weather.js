@@ -13,6 +13,11 @@ const WEATHER_API = (() => {
     return { getUrl };
 })();
 
+export function convertTimeFromUnix(unixTimestamp) {
+    const convertedDate = new Date(unixTimestamp * 1000);
+    return convertedDate;
+}
+
 export default function Weather({ location }) {
     const [APIData, setAPIData] = useState(undefined);
     const [weatherObj, setWeatherObj] = useState(undefined);
@@ -48,8 +53,12 @@ export default function Weather({ location }) {
                     tempMax: data.main.temp_max,
                     tempMin: data.main.temp_min,
                     weather: data.weather[0].main,
-                    sunrise: convertTimeFromUnix(data.sys.sunrise),
-                    sunset: convertTimeFromUnix(data.sys.sunset),
+                    sunrise: convertTimeFromUnix(
+                        data.sys.sunrise
+                    ).toLocaleTimeString(),
+                    sunset: convertTimeFromUnix(
+                        data.sys.sunset
+                    ).toLocaleTimeString(),
                     wind: data.wind.speed,
                     humidity: data.main.humidity,
                     pressure: data.main.pressure,
@@ -66,11 +75,6 @@ export default function Weather({ location }) {
 
         getWeatherAPI();
     }, [location]);
-
-    function convertTimeFromUnix(time) {
-        const newTime = new Date(time * 1000);
-        return newTime.toLocaleTimeString();
-    }
 
     return (
         <>
