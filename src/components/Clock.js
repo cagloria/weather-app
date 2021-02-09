@@ -1,4 +1,19 @@
 import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+
+const Section = styled.section`
+    text-align: center;
+`;
+
+const Day = styled.h1`
+    margin-top: 0;
+    margin-bottom: 12px;
+`;
+
+const Time = styled.p`
+    font-size: 1.5em;
+    margin: 0;
+`;
 
 export default function Clock() {
     const [date, setDate] = useState(new Date());
@@ -9,7 +24,7 @@ export default function Clock() {
         day: "numeric",
     };
     const timeOptions = {
-        hour: "2-digit",
+        hour: "numeric",
         minute: "2-digit",
     };
 
@@ -21,9 +36,9 @@ export default function Clock() {
     }, [date]);
 
     return (
-        <div>
-            <p>{date.toLocaleDateString(undefined, dateOptions)}</p>
-            <p>{date.toLocaleTimeString([], timeOptions)}</p>
-        </div>
+        <Section>
+            <Day>{date.toLocaleDateString(undefined, dateOptions)}</Day>
+            <Time>{date.toLocaleTimeString([], timeOptions)}</Time>
+        </Section>
     );
 }
