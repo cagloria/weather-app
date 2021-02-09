@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { ThemeProvider } from "styled-components";
+import { GlobalStyles, lightTheme } from "./Themes";
 import Clock from "./Clock";
 import Weather from "./Weather";
 import CityInput from "./CityInput";
@@ -12,7 +14,8 @@ export default function App() {
     }
 
     return (
-        <div className="App">
+        <ThemeProvider theme={lightTheme}>
+            <GlobalStyles />
             <Clock />
             <CityInput onCitySubmit={handleCityChange} />
 
@@ -25,6 +28,6 @@ export default function App() {
                     </div>
                 </>
             )}
-        </div>
+        </ThemeProvider>
     );
 }
