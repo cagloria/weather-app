@@ -22,19 +22,14 @@ export function datesMatch(day1, day2) {
 }
 
 export const dateFactory = (date) => {
-    let minArr = [];
-    let maxArr = [];
+    let tempsArr = [];
     let weatherArr = [];
     let min = 0;
     let max = 0;
     let weather = { name: "", count: 0 };
 
-    function addToMinArr(temp) {
-        minArr.push(temp);
-    }
-
-    function addToMaxArr(temp) {
-        maxArr.push(temp);
+    function addTemp(temp) {
+        tempsArr.push(temp);
     }
 
     function addToWeatherArr(weather) {
@@ -57,8 +52,8 @@ export const dateFactory = (date) => {
     }
 
     function findMinAndMax() {
-        this.min = Math.min(...minArr);
-        this.max = Math.max(...maxArr);
+        this.min = Math.min(...tempsArr);
+        this.max = Math.max(...tempsArr);
     }
 
     return {
@@ -66,8 +61,7 @@ export const dateFactory = (date) => {
         min,
         max,
         weather,
-        addToMinArr,
-        addToMaxArr,
+        addTemp,
         addToWeatherArr,
         determineMainWeather,
         findMinAndMax,
@@ -135,20 +129,17 @@ export default function Forecast({ location }) {
             const timestampDate = new Date(timestamp.dt_txt);
 
             if (datesMatch(timestampDate, day1.date)) {
-                day1.addToMinArr(timestamp.main.temp_min);
-                day1.addToMaxArr(timestamp.main.temp_max);
+                day1.addTemp(timestamp.main.temp);
                 day1.addToWeatherArr(timestamp.weather[0].main);
             }
 
             if (datesMatch(timestampDate, day2.date)) {
-                day2.addToMinArr(timestamp.main.temp_min);
-                day2.addToMaxArr(timestamp.main.temp_max);
+                day2.addTemp(timestamp.main.temp);
                 day2.addToWeatherArr(timestamp.weather[0].main);
             }
 
             if (datesMatch(timestampDate, day3.date)) {
-                day3.addToMinArr(timestamp.main.temp_min);
-                day3.addToMaxArr(timestamp.main.temp_max);
+                day3.addTemp(timestamp.main.temp);
                 day3.addToWeatherArr(timestamp.weather[0].main);
             }
         });

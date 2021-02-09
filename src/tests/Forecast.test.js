@@ -48,17 +48,16 @@ describe("dateFactory.determineMainWeather", () => {
 
 describe("dateFactory.findMinAndMax", () => {
     let day = dateFactory(new Date());
-    const arr = [3, 5, 44, 22, 19];
-    arr.forEach((number) => {
-        day.addToMinArr(number);
-        day.addToMaxArr(number);
+    const tempArr = [3, 5, 44, 22, 19];
+    tempArr.forEach((number) => {
+        day.addTemp(number);
     });
     day.findMinAndMax();
 
-    test("finds the smallest number in the min array", () => {
+    test("finds the lowest temperature in the array", () => {
         expect(day.min).toEqual(3);
     });
-    test("finds the largest number in the max array", () => {
+    test("finds the highest temperature in the array", () => {
         expect(day.max).toEqual(44);
     });
 });
