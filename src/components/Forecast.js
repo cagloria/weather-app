@@ -13,7 +13,7 @@ const FORECAST_API = (() => {
     return { getUrl };
 })();
 
-function datesMatch(day1, day2) {
+export function datesMatch(day1, day2) {
     return (
         day1.getFullYear() === day2.getFullYear() &&
         day1.getMonth() === day2.getMonth() &&
@@ -21,7 +21,7 @@ function datesMatch(day1, day2) {
     );
 }
 
-const dateFactory = (date) => {
+export const dateFactory = (date) => {
     let minArr = [];
     let maxArr = [];
     let weatherArr = [];
@@ -37,7 +37,7 @@ const dateFactory = (date) => {
         maxArr.push(temp);
     }
 
-    function addToWeather(weather) {
+    function addToWeatherArr(weather) {
         weatherArr.push(weather);
     }
 
@@ -68,7 +68,7 @@ const dateFactory = (date) => {
         weather,
         addToMinArr,
         addToMaxArr,
-        addToWeather,
+        addToWeatherArr,
         determineMainWeather,
         findMinAndMax,
     };
@@ -137,19 +137,19 @@ export default function Forecast({ location }) {
             if (datesMatch(timestampDate, day1.date)) {
                 day1.addToMinArr(timestamp.main.temp_min);
                 day1.addToMaxArr(timestamp.main.temp_max);
-                day1.addToWeather(timestamp.weather[0].main);
+                day1.addToWeatherArr(timestamp.weather[0].main);
             }
 
             if (datesMatch(timestampDate, day2.date)) {
                 day2.addToMinArr(timestamp.main.temp_min);
                 day2.addToMaxArr(timestamp.main.temp_max);
-                day2.addToWeather(timestamp.weather[0].main);
+                day2.addToWeatherArr(timestamp.weather[0].main);
             }
 
             if (datesMatch(timestampDate, day3.date)) {
                 day3.addToMinArr(timestamp.main.temp_min);
                 day3.addToMaxArr(timestamp.main.temp_max);
-                day3.addToWeather(timestamp.weather[0].main);
+                day3.addToWeatherArr(timestamp.weather[0].main);
             }
         });
 
