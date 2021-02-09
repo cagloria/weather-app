@@ -6,6 +6,7 @@ export const lightTheme = {
 };
 
 const textColor = "#f4f4f4";
+// const infoBG = "#02031c";
 
 export const GlobalStyles = createGlobalStyle`
     html {
@@ -13,6 +14,7 @@ export const GlobalStyles = createGlobalStyle`
     }
     
     body {
+        font-family: "Roboto", sans-serif;
         color: ${textColor};
         background-color: ${({ theme }) => theme.topGradient};
         background-image: linear-gradient(180deg, ${({ theme }) =>
@@ -21,5 +23,6 @@ export const GlobalStyles = createGlobalStyle`
         background-position: center;
         background-attachment: fixed;
         margin: 0;
+        padding: 25px 32px;
     }
 `;
