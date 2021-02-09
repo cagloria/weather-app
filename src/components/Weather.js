@@ -50,8 +50,6 @@ export default function Weather({ location }) {
                     city: data.name,
                     country: data.sys.country,
                     temperature: data.main.temp,
-                    tempMax: data.main.temp_max,
-                    tempMin: data.main.temp_min,
                     weather: data.weather[0].main,
                     sunrise: convertTimeFromUnix(
                         data.sys.sunrise
@@ -86,10 +84,6 @@ export default function Weather({ location }) {
                         {weatherObj.city}, {weatherObj.country}
                     </p>
                     <p>{weatherObj.temperature}&deg;</p>
-                    <p>
-                        {weatherObj.tempMax}&deg;&uarr; {weatherObj.tempMin}
-                        &deg;&darr;
-                    </p>
                     <p>{weatherObj.weather}</p>
 
                     <div>
