@@ -9,6 +9,7 @@ const Section = styled.section`
 const Day = styled.h1`
     margin-top: 0;
     margin-bottom: 12px;
+    line-height: 150%;
 `;
 
 const Time = styled.p`

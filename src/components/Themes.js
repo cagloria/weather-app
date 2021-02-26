@@ -32,16 +32,20 @@ export const GlobalStyles = createGlobalStyle`
         background-position: center;
         background-attachment: fixed;
         margin: 0;
-        padding: 25px 32px;
+        padding: 25px;
     }
 
     h1 {
-        font-size: 1.5em;
-        font-weight: 400;
+        font-size: 2em;
+        font-weight: 300;
     }
 
     label {
         font-size: 0.9em;
+    }
+
+    p {
+        font-weight: 300;
     }
 
     input[type="text"] {

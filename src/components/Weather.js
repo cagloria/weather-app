@@ -1,4 +1,33 @@
 import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+
+const Section = styled.section`
+    margin-bottom: 32px;
+`;
+
+const City = styled.p`
+    font-size: 1.5em;
+    text-align: center;
+    margin: 0;
+`;
+
+const Temperature = styled.p`
+    font-size: 8em;
+    font-weight: 400;
+    text-align: center;
+    margin: 6px 0;
+`;
+
+const WeatherDisplay = styled.p`
+    font-size: 2em;
+    text-align: center;
+`;
+
+const SunContainer = styled.div``;
+
+const SunTime = styled.div``;
+
+const DetailsTable = styled.table``;
 
 const WEATHER_API = (() => {
     const _key = process.env.REACT_APP_WEATHER_API_KEY;
@@ -75,25 +104,29 @@ export default function Weather({ location }) {
     }, [location]);
 
     return (
-        <>
+        <Section>
             {APIData === undefined || weatherObj === undefined ? (
                 <p>{message}</p>
             ) : (
                 <>
-                    <p>
+                    <City>
                         {weatherObj.city}, {weatherObj.country}
-                    </p>
-                    <p>{weatherObj.temperature}&deg;</p>
-                    <p>{weatherObj.weather}</p>
+                    </City>
+                    <Temperature>{weatherObj.temperature}&deg;</Temperature>
+                    <WeatherDisplay>{weatherObj.weather}</WeatherDisplay>
 
-                    <div>
-                        <p>Sunrise</p>
-                        <p>{weatherObj.sunrise}</p>
-                        <p>Sunset</p>
-                        <p>{weatherObj.sunset}</p>
-                    </div>
+                    <SunContainer>
+                        <SunTime>
+                            <p>Sunrise</p>
+                            <p>{weatherObj.sunrise}</p>
+                        </SunTime>
+                        <SunTime>
+                            <p>Sunset</p>
+                            <p>{weatherObj.sunset}</p>
+                        </SunTime>
+                    </SunContainer>
 
-                    <table>
+                    <DetailsTable>
                         <tbody>
                             <tr>
                                 <td>Wind</td>
@@ -108,9 +141,9 @@ export default function Weather({ location }) {
                                 <td>{weatherObj.pressure}hPa</td>
                             </tr>
                         </tbody>
-                    </table>
+                    </DetailsTable>
                 </>
             )}
-        </>
+        </Section>
     );
 }
