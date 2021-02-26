@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { roundNumber, convertTimeFromUnix } from "../functions";
 
 const Section = styled.section`
     margin-bottom: 32px;
@@ -42,11 +43,6 @@ const WEATHER_API = (() => {
     return { getUrl };
 })();
 
-export function convertTimeFromUnix(unixTimestamp) {
-    const convertedDate = new Date(unixTimestamp * 1000);
-    return convertedDate;
-}
-
 export default function Weather({ location }) {
     const [APIData, setAPIData] = useState(undefined);
     const [weatherObj, setWeatherObj] = useState(undefined);
@@ -78,7 +74,7 @@ export default function Weather({ location }) {
                 setWeatherObj({
                     city: data.name,
                     country: data.sys.country,
-                    temperature: data.main.temp,
+                    temperature: roundNumber(data.main.temp, 0),
                     weather: data.weather[0].main,
                     sunrise: convertTimeFromUnix(
                         data.sys.sunrise
