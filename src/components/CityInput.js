@@ -1,4 +1,22 @@
 import React, { useState } from "react";
+import styled from "styled-components";
+
+const Section = styled.section``;
+
+const Form = styled.form`
+    display: flex;
+    flex-direction: column;
+`;
+
+const Label = styled.label`
+    margin-bottom: 8px;
+`;
+
+const Textfield = styled.input`
+    margin-bottom: 8px;
+`;
+
+const SubmitButton = styled.button``;
 
 export default function CityInput({ onCitySubmit }) {
     const [city, setCity] = useState("");
@@ -13,15 +31,17 @@ export default function CityInput({ onCitySubmit }) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="city-input">Enter a city</label>
-            <input
-                type="text"
-                id="city-input"
-                value={city}
-                onChange={handleChange}
-            />
-            <button type="submit">Submit</button>
-        </form>
+        <Section>
+            <Form onSubmit={handleSubmit}>
+                <Label htmlFor="city-input">Enter a city</Label>
+                <Textfield
+                    type="text"
+                    id="city-input"
+                    value={city}
+                    onChange={handleChange}
+                />
+                <SubmitButton type="submit">Submit</SubmitButton>
+            </Form>
+        </Section>
     );
 }

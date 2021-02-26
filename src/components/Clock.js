@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const Section = styled.section`
     text-align: center;
+    margin-bottom: 26px;
 `;
 
 const Day = styled.h1`
