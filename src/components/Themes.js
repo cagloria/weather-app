@@ -1,16 +1,20 @@
 import { createGlobalStyle } from "styled-components";
 
-export const primary_100 = "#070A43";
-export const primary_200 = "#151A7F";
-const primary_300 = "#454BC6";
-const primary_400 = "#8B90E2";
-// const primary_500 = "#C5C7E9";
-const neutral_100 = "#0C0C0C";
-// const neutral_200 = "#464646";
-// const neutral_300 = "#808080";
-// const neutral_400 = "#BABABA";
-export const neutral_500 = "#F4F4F4";
-// const infoBG = "#02031c";
+export const primary = {
+    100: "#070A43",
+    200: "#151A7F",
+    300: "#454BC6",
+    400: "#8B90E2",
+    500: "#C5C7E9",
+};
+
+export const neutral = {
+    100: "#0C0C0C",
+    200: "#464646",
+    300: "#808080",
+    400: "#BABABA",
+    500: "#F4F4F4",
+};
 
 export const lightTheme = {
     topGradient: "#2A30AB",
@@ -24,7 +28,7 @@ export const GlobalStyles = createGlobalStyle`
     
     body {
         font-family: "Roboto", sans-serif;
-        color: ${neutral_500};
+        color: ${neutral[500]};
         background-color: ${({ theme }) => theme.topGradient};
         background-image: linear-gradient(180deg, ${({ theme }) =>
             theme.topGradient} 0%, ${({ theme }) => theme.bottomGradient} 100%);
@@ -53,20 +57,20 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     input[type="text"] {
-        background-color: ${primary_100};
-        color: ${neutral_500};
+        background-color: ${primary[100]};
+        color: ${neutral[500]};
         border: 0;
         border-radius: 8px;
         height: 32px;
         padding: 0 10px;
         &:focus {
-            outline: ${primary_400} solid 3px;
+            outline: ${primary[400]} solid 3px;
         }
     }
 
     button {
         cursor: pointer;
-        color: ${neutral_500};
+        color: ${neutral[500]};
         border: 0;
         border-radius: 8px;
         height: 32px;
@@ -74,19 +78,19 @@ export const GlobalStyles = createGlobalStyle`
         transition: box-shadow 0.3s ease-out, 
             background-color 0.3s ease-out, 
             color 0.3s ease-out;
-        background-color: ${primary_300};
+        background-color: ${primary[300]};
         &:hover {
-            box-shadow: 0px 2px 6px 0px ${primary_100};
-            background-color: ${primary_400};
-            color: ${neutral_100};
+            box-shadow: 0px 2px 6px 0px ${primary[100]};
+            background-color: ${primary[400]};
+            color: ${neutral[100]};
         }
         &:active {
-            box-shadow: inset 0px 2px 4px 0px ${primary_100};
-            background-color: ${primary_200};
-            color: ${neutral_500}
+            box-shadow: inset 0px 2px 4px 0px ${primary[100]};
+            background-color: ${primary[200]};
+            color: ${neutral[500]}
         }
         &:focus {
-            outline: ${primary_400} solid 3px;
+            outline: ${primary[400]} solid 3px;
         }
     }
 `;

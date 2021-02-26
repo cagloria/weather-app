@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Forecast from "./Forecast";
 import styled from "styled-components";
 import { roundNumber, formatTime } from "../functions";
-import { primary_100, primary_200, neutral_500 } from "./Themes";
+import { primary, neutral } from "./Themes";
 
 const WeatherSection = styled.section`
     margin-bottom: 32px;
@@ -44,12 +44,7 @@ const SunTime = styled.div`
 `;
 
 const InfoContainer = styled.div`
-    background-color: ${primary_100};
-    background-image: linear-gradient(
-        180deg,
-        ${primary_100} 0%,
-        ${primary_200} 100%
-    );
+    background-color: ${primary[100]};
     padding: 40px 0 25px;
 `;
 
@@ -57,7 +52,7 @@ const DetailsSection = styled.section``;
 
 const DetailsTable = styled.table`
     padding: 15px 20px;
-    border: 2px solid ${neutral_500};
+    border: 2px solid ${neutral[500]};
     border-radius: 6px;
     width: 100%;
     font-size: 0.9em;
