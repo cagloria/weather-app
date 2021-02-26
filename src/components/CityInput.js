@@ -11,7 +11,7 @@ const Form = styled.form`
 `;
 
 const Label = styled.label`
-    margin-bottom: 8px;
+    margin: 0 0 8px 10px;
 `;
 
 const Textfield = styled.input`

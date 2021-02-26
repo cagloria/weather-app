@@ -8,3 +8,11 @@ export function convertTimeFromUnix(unixTimestamp) {
     const convertedDate = new Date(unixTimestamp * 1000);
     return convertedDate;
 }
+
+export function formatTime(time) {
+    return convertTimeFromUnix(time).toLocaleTimeString([], {
+        hour: "numeric",
+        minute: "2-digit",
+        timeZoneName: "short",
+    });
+}

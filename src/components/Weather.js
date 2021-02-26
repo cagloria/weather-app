@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { roundNumber, convertTimeFromUnix } from "../functions";
+import { roundNumber, formatTime } from "../functions";
 
-const Section = styled.section`
+const WeatherSection = styled.div`
     margin-bottom: 32px;
 `;
 
@@ -22,11 +22,26 @@ const Temperature = styled.p`
 const WeatherDisplay = styled.p`
     font-size: 2em;
     text-align: center;
+    margin: 10px 0 40px;
 `;
 
-const SunContainer = styled.div``;
+const SunContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
 
-const SunTime = styled.div``;
+const SunTime = styled.div`
+    text-align: center;
+    p {
+        margin: 0;
+
+        &:first-child {
+            margin-bottom: 2px;
+        }
+    }
+`;
+
+const DetailsSection = styled.div``;
 
 const DetailsTable = styled.table``;
 
@@ -76,12 +91,8 @@ export default function Weather({ location }) {
                     country: data.sys.country,
                     temperature: roundNumber(data.main.temp, 0),
                     weather: data.weather[0].main,
-                    sunrise: convertTimeFromUnix(
-                        data.sys.sunrise
-                    ).toLocaleTimeString(),
-                    sunset: convertTimeFromUnix(
-                        data.sys.sunset
-                    ).toLocaleTimeString(),
+                    sunrise: formatTime(data.sys.sunrise),
+                    sunset: formatTime(data.sys.sunset),
                     wind: data.wind.speed,
                     humidity: data.main.humidity,
                     pressure: data.main.pressure,
@@ -89,8 +100,8 @@ export default function Weather({ location }) {
             } catch (error) {
                 console.log(error);
                 setMessage(
-                    `There was a problem in the app. Contact the developer ` +
-                        `if it continues.`
+                    `There was a problem with displaying the weather. ` +
+                        `Contact the developer if it continues.`
                 );
                 setWeatherObj(undefined);
             }
@@ -100,46 +111,50 @@ export default function Weather({ location }) {
     }, [location]);
 
     return (
-        <Section>
+        <section>
             {APIData === undefined || weatherObj === undefined ? (
                 <p>{message}</p>
             ) : (
                 <>
-                    <City>
-                        {weatherObj.city}, {weatherObj.country}
-                    </City>
-                    <Temperature>{weatherObj.temperature}&deg;</Temperature>
-                    <WeatherDisplay>{weatherObj.weather}</WeatherDisplay>
+                    <WeatherSection>
+                        <City>
+                            {weatherObj.city}, {weatherObj.country}
+                        </City>
+                        <Temperature>{weatherObj.temperature}&deg;</Temperature>
+                        <WeatherDisplay>{weatherObj.weather}</WeatherDisplay>
 
-                    <SunContainer>
-                        <SunTime>
-                            <p>Sunrise</p>
-                            <p>{weatherObj.sunrise}</p>
-                        </SunTime>
-                        <SunTime>
-                            <p>Sunset</p>
-                            <p>{weatherObj.sunset}</p>
-                        </SunTime>
-                    </SunContainer>
+                        <SunContainer>
+                            <SunTime>
+                                <p>Sunrise</p>
+                                <p>{weatherObj.sunrise}</p>
+                            </SunTime>
+                            <SunTime>
+                                <p>Sunset</p>
+                                <p>{weatherObj.sunset}</p>
+                            </SunTime>
+                        </SunContainer>
+                    </WeatherSection>
 
-                    <DetailsTable>
-                        <tbody>
-                            <tr>
-                                <td>Wind</td>
-                                <td>{weatherObj.wind} mph</td>
-                            </tr>
-                            <tr>
-                                <td>Humidity</td>
-                                <td>{weatherObj.humidity}%</td>
-                            </tr>
-                            <tr>
-                                <td>Pressure</td>
-                                <td>{weatherObj.pressure}hPa</td>
-                            </tr>
-                        </tbody>
-                    </DetailsTable>
+                    <DetailsSection>
+                        <DetailsTable>
+                            <tbody>
+                                <tr>
+                                    <td>Wind</td>
+                                    <td>{weatherObj.wind} mph</td>
+                                </tr>
+                                <tr>
+                                    <td>Humidity</td>
+                                    <td>{weatherObj.humidity}%</td>
+                                </tr>
+                                <tr>
+                                    <td>Pressure</td>
+                                    <td>{weatherObj.pressure}hPa</td>
+                                </tr>
+                            </tbody>
+                        </DetailsTable>
+                    </DetailsSection>
                 </>
             )}
-        </Section>
+        </section>
     );
 }
