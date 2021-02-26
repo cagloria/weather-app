@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
-const primary_100 = "#070A43";
-const primary_200 = "#151A7F";
+export const primary_100 = "#070A43";
+export const primary_200 = "#151A7F";
 const primary_300 = "#454BC6";
 const primary_400 = "#8B90E2";
 // const primary_500 = "#C5C7E9";
@@ -9,7 +9,7 @@ const neutral_100 = "#0C0C0C";
 // const neutral_200 = "#464646";
 // const neutral_300 = "#808080";
 // const neutral_400 = "#BABABA";
-const neutral_500 = "#F4F4F4";
+export const neutral_500 = "#F4F4F4";
 // const infoBG = "#02031c";
 
 export const lightTheme = {
@@ -32,7 +32,11 @@ export const GlobalStyles = createGlobalStyle`
         background-position: center;
         background-attachment: fixed;
         margin: 0;
-        padding: 25px;
+        padding-top: 40px;
+    }
+
+    section {
+        padding: 0 25px;
     }
 
     h1 {

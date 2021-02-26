@@ -159,7 +159,7 @@ export default function Forecast({ location }) {
     }
 
     return (
-        <div>
+        <section>
             {APIData === undefined || forecastObj === undefined ? (
                 <p>{message}</p>
             ) : (
@@ -203,8 +203,10 @@ export default function Forecast({ location }) {
                             &deg;&darr;
                         </p>
                     </div>
+
+                    <p>Data provided by OpenWeather.</p>
                 </>
             )}
-        </div>
+        </section>
     );
 }

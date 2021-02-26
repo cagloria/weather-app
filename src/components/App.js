@@ -4,7 +4,6 @@ import { GlobalStyles, lightTheme } from "./Themes";
 import Clock from "./Clock";
 import Weather from "./Weather";
 import CityInput from "./CityInput";
-import Forecast from "./Forecast";
 
 export default function App() {
     const [city, setCity] = useState("");
@@ -19,15 +18,7 @@ export default function App() {
             <Clock />
             <CityInput onCitySubmit={handleCityChange} />
 
-            {city.length === 0 ? null : (
-                <>
-                    <Weather location={city} />
-                    <Forecast location={city} />
-                    <div>
-                        <p>Data provided by OpenWeather.</p>
-                    </div>
-                </>
-            )}
+            {city.length === 0 ? null : <Weather location={city} />}
         </ThemeProvider>
     );
 }

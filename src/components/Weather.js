@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import Forecast from "./Forecast";
 import styled from "styled-components";
 import { roundNumber, formatTime } from "../functions";
+import { primary_100, primary_200, neutral_500 } from "./Themes";
 
-const WeatherSection = styled.div`
+const WeatherSection = styled.section`
     margin-bottom: 32px;
 `;
 
@@ -41,9 +43,30 @@ const SunTime = styled.div`
     }
 `;
 
-const DetailsSection = styled.div``;
+const InfoContainer = styled.div`
+    background-color: ${primary_100};
+    background-image: linear-gradient(
+        180deg,
+        ${primary_100} 0%,
+        ${primary_200} 100%
+    );
+    padding: 40px 0 25px;
+`;
 
-const DetailsTable = styled.table``;
+const DetailsSection = styled.section``;
+
+const DetailsTable = styled.table`
+    padding: 15px 20px;
+    border: 2px solid ${neutral_500};
+    border-radius: 6px;
+    width: 100%;
+    font-size: 0.9em;
+
+    th {
+        font-weight: 400;
+        text-align: left;
+    }
+`;
 
 const WEATHER_API = (() => {
     const _key = process.env.REACT_APP_WEATHER_API_KEY;
@@ -111,7 +134,7 @@ export default function Weather({ location }) {
     }, [location]);
 
     return (
-        <section>
+        <>
             {APIData === undefined || weatherObj === undefined ? (
                 <p>{message}</p>
             ) : (
@@ -135,26 +158,30 @@ export default function Weather({ location }) {
                         </SunContainer>
                     </WeatherSection>
 
-                    <DetailsSection>
-                        <DetailsTable>
-                            <tbody>
-                                <tr>
-                                    <td>Wind</td>
-                                    <td>{weatherObj.wind} mph</td>
-                                </tr>
-                                <tr>
-                                    <td>Humidity</td>
-                                    <td>{weatherObj.humidity}%</td>
-                                </tr>
-                                <tr>
-                                    <td>Pressure</td>
-                                    <td>{weatherObj.pressure}hPa</td>
-                                </tr>
-                            </tbody>
-                        </DetailsTable>
-                    </DetailsSection>
+                    <InfoContainer>
+                        <DetailsSection>
+                            <DetailsTable>
+                                <tbody>
+                                    <tr>
+                                        <th>Wind</th>
+                                        <td>{weatherObj.wind} mph</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Humidity</th>
+                                        <td>{weatherObj.humidity}%</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Pressure</th>
+                                        <td>{weatherObj.pressure} hPa</td>
+                                    </tr>
+                                </tbody>
+                            </DetailsTable>
+                        </DetailsSection>
+
+                        <Forecast location={location} />
+                    </InfoContainer>
                 </>
             )}
-        </section>
+        </>
     );
 }
