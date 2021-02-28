@@ -15,10 +15,12 @@ export default function App() {
     return (
         <ThemeProvider theme={lightTheme}>
             <GlobalStyles />
-            <Clock />
-            <CityInput onCitySubmit={handleCityChange} />
-
-            {city.length === 0 ? null : <Weather location={city} />}
+            <main>
+                <h1 className="hidden">Weather App</h1>
+                <Clock />
+                <CityInput onCitySubmit={handleCityChange} />
+                {city.length === 0 ? null : <Weather location={city} />}
+            </main>
         </ThemeProvider>
     );
 }

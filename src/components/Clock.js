@@ -6,10 +6,11 @@ const Section = styled.section`
     margin-bottom: 26px;
 `;
 
-const Day = styled.h1`
-    margin-top: 0;
-    margin-bottom: 12px;
+const Day = styled.p`
+    margin: 0 0 12px;
     line-height: 150%;
+    font-size: 2em;
+    font-weight: 300;
 `;
 
 const Time = styled.p`
@@ -39,6 +40,7 @@ export default function Clock() {
 
     return (
         <Section>
+            <h2 className="hidden">Today</h2>
             <Day>{date.toLocaleDateString(undefined, dateOptions)}</Day>
             <Time>{date.toLocaleTimeString([], timeOptions)}</Time>
         </Section>

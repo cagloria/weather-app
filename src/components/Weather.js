@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { roundNumber, formatTime } from "../functions";
 import { primary, neutral } from "./Themes";
 
-const WeatherSection = styled.section`
+const Section = styled.section`
     margin-bottom: 32px;
 `;
 
@@ -48,8 +48,6 @@ const InfoContainer = styled.div`
     padding: 40px 0 25px;
 `;
 
-const DetailsSection = styled.section``;
-
 const DetailsTable = styled.table`
     padding: 15px 20px;
     border: 2px solid ${neutral[500]};
@@ -61,6 +59,12 @@ const DetailsTable = styled.table`
         font-weight: 400;
         text-align: left;
     }
+`;
+
+const Credit = styled.p`
+    margin-top: 20px;
+    font-size: 0.85em;
+    text-align: center;
 `;
 
 const WEATHER_API = (() => {
@@ -131,10 +135,13 @@ export default function Weather({ location }) {
     return (
         <>
             {APIData === undefined || weatherObj === undefined ? (
-                <p>{message}</p>
+                <Section>
+                    <p>{message}</p>
+                </Section>
             ) : (
                 <>
-                    <WeatherSection>
+                    <Section>
+                        <h2 className="hidden">Weather</h2>
                         <City>
                             {weatherObj.city}, {weatherObj.country}
                         </City>
@@ -151,10 +158,11 @@ export default function Weather({ location }) {
                                 <p>{weatherObj.sunset}</p>
                             </SunTime>
                         </SunContainer>
-                    </WeatherSection>
+                    </Section>
 
                     <InfoContainer>
-                        <DetailsSection>
+                        <Section>
+                            <h2 className="hidden">Details</h2>
                             <DetailsTable>
                                 <tbody>
                                     <tr>
@@ -171,9 +179,13 @@ export default function Weather({ location }) {
                                     </tr>
                                 </tbody>
                             </DetailsTable>
-                        </DetailsSection>
+                        </Section>
 
                         <Forecast location={location} />
+
+                        <Section>
+                            <Credit>Data provided by OpenWeather.</Credit>
+                        </Section>
                     </InfoContainer>
                 </>
             )}

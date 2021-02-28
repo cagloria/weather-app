@@ -34,6 +34,7 @@ export default function CityInput({ onCitySubmit }) {
 
     return (
         <Section>
+            <h2 className="hidden">City Input</h2>
             <Form onSubmit={handleSubmit}>
                 <Label htmlFor="city-input">Enter a city</Label>
                 <Textfield

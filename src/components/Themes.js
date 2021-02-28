@@ -25,7 +25,7 @@ export const GlobalStyles = createGlobalStyle`
     html {
         height: 100%;
     }
-    
+
     body {
         font-family: "Roboto", sans-serif;
         color: ${neutral[500]};
@@ -41,11 +41,6 @@ export const GlobalStyles = createGlobalStyle`
 
     section {
         padding: 0 25px;
-    }
-
-    h1 {
-        font-size: 2em;
-        font-weight: 300;
     }
 
     label {
@@ -92,5 +87,10 @@ export const GlobalStyles = createGlobalStyle`
         &:focus {
             outline: ${primary[400]} solid 3px;
         }
+    }
+
+    .hidden {
+        position: absolute;
+        top: -100%;
     }
 `;
