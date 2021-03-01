@@ -3,6 +3,7 @@ import Forecast from "./Forecast";
 import styled from "styled-components";
 import { roundNumber, formatTime } from "../functions";
 import { primary, neutral } from "./Themes";
+import { icons } from "../icons";
 
 const Section = styled.section`
     margin-bottom: 32px;
@@ -40,6 +41,10 @@ const SunTime = styled.div`
         &:first-child {
             margin-bottom: 2px;
         }
+    }
+
+    img {
+        margin-top: 8px;
     }
 `;
 
@@ -152,10 +157,20 @@ export default function Weather({ location }) {
                             <SunTime>
                                 <p>Sunrise</p>
                                 <p>{weatherObj.sunrise}</p>
+                                <img
+                                    src={icons.sunrise}
+                                    alt="Sunrise icon"
+                                    className="size-24"
+                                />
                             </SunTime>
                             <SunTime>
                                 <p>Sunset</p>
                                 <p>{weatherObj.sunset}</p>
+                                <img
+                                    src={icons.sunset}
+                                    alt="Sunset icon"
+                                    className="size-24"
+                                />
                             </SunTime>
                         </SunContainer>
                     </Section>

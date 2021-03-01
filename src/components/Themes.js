@@ -93,4 +93,9 @@ export const GlobalStyles = createGlobalStyle`
         position: absolute;
         top: -100%;
     }
+
+    .size-24 {
+        width: 24px;
+        height: 24px;
+    }
 `;

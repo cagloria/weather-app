@@ -228,7 +228,6 @@ export default function Forecast({ location }) {
                     </ForecastContainer>
                 </>
             )}
-            
         </section>
     );
 }
