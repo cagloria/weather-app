@@ -1,4 +1,4 @@
-import { roundNumber, convertTimeFromUnix } from "../functions";
+import { roundNumber, convertTimeFromUnix, capitalize } from "../functions";
 
 describe("roundNumber", () => {
     test("rounds down with digits after the decimal point", () => {
@@ -25,5 +25,16 @@ describe("convertTimeFromUnix", () => {
         expect(result).toEqual(
             new Date("Friday, January 1, 2021 12:00:00 AM GMT")
         );
+    });
+});
+
+describe("capitalize", () => {
+    test("capitalizes the first letter of a string", () => {
+        let result = capitalize("example");
+        expect(result).toEqual("Example");
+    });
+    test("does not modify a string if it is already capitzlied", () => {
+        let result = capitalize("Example");
+        expect(result).toEqual("Example");
     });
 });

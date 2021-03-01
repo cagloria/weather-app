@@ -16,3 +16,9 @@ export function formatTime(time) {
         timeZoneName: "short",
     });
 }
+
+export function capitalize(str) {
+    let first = str.slice(0, 1).toUpperCase();
+    const remaining = str.slice(1);
+    return first + remaining;
+}

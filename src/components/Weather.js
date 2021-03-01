@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Forecast from "./Forecast";
 import styled from "styled-components";
-import { roundNumber, formatTime } from "../functions";
+import { roundNumber, formatTime, capitalize } from "../functions";
 import { primary, neutral } from "./Themes";
 import { icons } from "../icons";
 
@@ -117,7 +117,7 @@ export default function Weather({ location }) {
                     city: data.name,
                     country: data.sys.country,
                     temperature: roundNumber(data.main.temp, 0),
-                    weather: data.weather[0].main,
+                    weather: capitalize(data.weather[0].description),
                     sunrise: formatTime(data.sys.sunrise),
                     sunset: formatTime(data.sys.sunset),
                     wind: data.wind.speed,
@@ -159,8 +159,9 @@ export default function Weather({ location }) {
                                 <p>{weatherObj.sunrise}</p>
                                 <img
                                     src={icons.sunrise}
-                                    alt="Sunrise icon"
+                                    alt=""
                                     className="size-24"
+                                    aria-hidden="true"
                                 />
                             </SunTime>
                             <SunTime>
@@ -168,8 +169,9 @@ export default function Weather({ location }) {
                                 <p>{weatherObj.sunset}</p>
                                 <img
                                     src={icons.sunset}
-                                    alt="Sunset icon"
+                                    alt=""
                                     className="size-24"
+                                    aria-hidden="true"
                                 />
                             </SunTime>
                         </SunContainer>
@@ -177,7 +179,7 @@ export default function Weather({ location }) {
 
                     <InfoContainer>
                         <Section>
-                            <h2 className="hidden">Details</h2>
+                            <h2 className="hidden">Weather Details</h2>
                             <DetailsTable>
                                 <tbody>
                                     <tr>
