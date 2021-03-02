@@ -21,27 +21,27 @@ describe("datesMatch", () => {
     });
 });
 
-describe("dateFactory.determineMainWeather", () => {
+describe("dateFactory.determinePrimaryWeather", () => {
     test("returns the most common occurence of weather", () => {
         let day1 = dateFactory(new Date());
         const weatherArr1 = ["Clouds", "Clouds", "Clouds", "Rain"];
         weatherArr1.forEach((weather) => {
             day1.addToWeatherArr(weather);
         });
-        day1.determineMainWeather();
+        day1.determinePrimaryWeather();
         expect(day1.weather.name).toEqual("Clouds");
     });
     test("returns if there is only one weather", () => {
         let day2 = dateFactory(new Date());
         day2.addToWeatherArr("Rain");
-        day2.determineMainWeather();
+        day2.determinePrimaryWeather();
         expect(day2.weather.name).toEqual("Rain");
     });
     test("returns the first weather to reach the highest occurence if two or more weathers occurr the same number of times", () => {
         let day3 = dateFactory(new Date());
         day3.addToWeatherArr("Rain");
         day3.addToWeatherArr("Sun");
-        day3.determineMainWeather();
+        day3.determinePrimaryWeather();
         expect(day3.weather.name).toEqual("Rain");
     });
 });

@@ -1,5 +1,4 @@
-import { findWeatherIcon } from "../components/Weather";
-import { icons } from "../icons";
+import { icons, findWeatherIcon } from "../icons";
 
 describe("findWeatherIcon", () => {
     test("returns thunderstorm", () => {

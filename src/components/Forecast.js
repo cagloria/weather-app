@@ -58,7 +58,7 @@ export const dateFactory = (date) => {
         weatherArr.push(weather);
     }
 
-    function determineMainWeather() {
+    function determinePrimaryWeather() {
         for (let i = 0; i < weatherArr.length; i++) {
             let count = 0;
             weatherArr.forEach((weather) => {
@@ -85,7 +85,7 @@ export const dateFactory = (date) => {
         weather,
         addTemp,
         addToWeatherArr,
-        determineMainWeather,
+        determinePrimaryWeather,
         findMinAndMax,
     };
 };
@@ -169,9 +169,9 @@ export default function Forecast({ location }) {
         day1.findMinAndMax();
         day2.findMinAndMax();
         day3.findMinAndMax();
-        day1.determineMainWeather();
-        day2.determineMainWeather();
-        day3.determineMainWeather();
+        day1.determinePrimaryWeather();
+        day2.determinePrimaryWeather();
+        day3.determinePrimaryWeather();
 
         setForecastObj({
             day1,
