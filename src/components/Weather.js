@@ -28,6 +28,13 @@ const WeatherDisplay = styled.p`
     margin: 10px 0 40px;
 `;
 
+const WeatherIcon = styled.img`
+    width: 128px;
+    height: 128px;
+    margin: 0 auto;
+    display: flex;
+`;
+
 const SunContainer = styled.div`
     display: flex;
     justify-content: space-between;
@@ -85,6 +92,41 @@ const WEATHER_API = (() => {
     return { getUrl };
 })();
 
+export function findWeatherIcon(code) {
+    try {
+        if (code >= 200 && code <= 299) {
+            return icons.thunderstorm;
+        } else if (code <= 399) {
+            return icons.drizzle;
+        } else if (code <= 599) {
+            if (code === 500 || code === 501) {
+                return icons.rainLight;
+            }
+            return icons.rainHeavy;
+        } else if (code <= 699) {
+            if (code >= 611 && code <= 613) {
+                return icons.sleet;
+            }
+            return icons.snow;
+        } else if (code <= 799) {
+            // Atmosphere
+        } else if (code === 800) {
+            return icons.clear;
+        } else if (code === 801) {
+            return icons.cloudsLight;
+        } else if (code <= 899) {
+            return icons.cloudsHeavy;
+        } else {
+            throw Error(
+                `Icon is missing for code ${code} or this is not a valid ` +
+                    `weather code.`
+            );
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export default function Weather({ location }) {
     const [APIData, setAPIData] = useState(undefined);
     const [weatherObj, setWeatherObj] = useState(undefined);
@@ -118,6 +160,7 @@ export default function Weather({ location }) {
                     country: data.sys.country,
                     temperature: roundNumber(data.main.temp, 0),
                     weather: capitalize(data.weather[0].description),
+                    weatherIcon: findWeatherIcon(data.weather[0].id),
                     sunrise: formatTime(data.sys.sunrise),
                     sunset: formatTime(data.sys.sunset),
                     wind: data.wind.speed,
@@ -151,6 +194,7 @@ export default function Weather({ location }) {
                             {weatherObj.city}, {weatherObj.country}
                         </City>
                         <Temperature>{weatherObj.temperature}&deg;</Temperature>
+                        <WeatherIcon alt="" src={weatherObj.weatherIcon} />
                         <WeatherDisplay>{weatherObj.weather}</WeatherDisplay>
 
                         <SunContainer>
@@ -161,7 +205,6 @@ export default function Weather({ location }) {
                                     src={icons.sunrise}
                                     alt=""
                                     className="size-24"
-                                    aria-hidden="true"
                                 />
                             </SunTime>
                             <SunTime>
@@ -171,7 +214,6 @@ export default function Weather({ location }) {
                                     src={icons.sunset}
                                     alt=""
                                     className="size-24"
-                                    aria-hidden="true"
                                 />
                             </SunTime>
                         </SunContainer>
