@@ -110,7 +110,7 @@ export default function Forecast({ location }) {
                     processData(data);
                 }
             } catch (error) {
-                console.log(error);
+                console.error(error);
                 setMessage(`${error}`);
                 setAPIData(undefined);
             }
@@ -122,7 +122,7 @@ export default function Forecast({ location }) {
                 setAPIData(data);
                 formatData(data);
             } catch (error) {
-                console.log(error);
+                console.error(error);
                 setMessage(
                     `There was a problem in the app. Contact the developer ` +
                         `if it continues.`

@@ -50,7 +50,7 @@ export function findWeatherIcon(code) {
             return icons.cloudsHeavy;
         } else {
             throw Error(
-                `Icon is missing for code ${code} or this is not a valid ` +
+                `Icon is missing for Code ${code} or this is not a valid ` +
                     `weather code.`
             );
         }
