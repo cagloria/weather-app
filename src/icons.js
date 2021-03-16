@@ -36,6 +36,37 @@ export const icons = {
     sunset: iconSunset,
 };
 
+const rainGroup = {
+    500: icons.rainLight,
+    501: icons.rainLight,
+};
+
+const snowGroup = {
+    611: icons.sleet,
+    612: icons.sleet,
+    613: icons.sleet,
+};
+
+const atmosphereGroup = {
+    701: icons.mist,
+    721: icons.mist,
+    741: icons.mist,
+    711: icons.smoke,
+    731: icons.dust,
+    751: icons.dust,
+    761: icons.dust,
+    762: icons.ash,
+    771: icons.wind,
+    781: icons.tornado,
+};
+
+function findIcon(group, code, defaultIcon) {
+    if (group.hasOwnProperty(code)) {
+        return group[code];
+    }
+    return defaultIcon;
+}
+
 export function findWeatherIcon(code) {
     try {
         if (code >= 200 && code <= 299) {
@@ -43,30 +74,11 @@ export function findWeatherIcon(code) {
         } else if (code <= 399) {
             return icons.drizzle;
         } else if (code <= 599) {
-            if (code === 500 || code === 501) {
-                return icons.rainLight;
-            }
-            return icons.rainHeavy;
+            return findIcon(rainGroup, code, icons.rainHeavy);
         } else if (code <= 699) {
-            if (code >= 611 && code <= 613) {
-                return icons.sleet;
-            }
-            return icons.snow;
+            return findIcon(snowGroup, code, icons.snow);
         } else if (code <= 799) {
-            // Atmosphere
-            if (code === 701 || code === 721 || code === 741) {
-                return icons.mist;
-            } else if (code === 711) {
-                return icons.smoke;
-            } else if (code === 731 || code === 751 || code === 761) {
-                return icons.dust;
-            } else if (code === 762) {
-                return icons.ash;
-            } else if (code === 771) {
-                return icons.wind;
-            } else if (code === 781) {
-                return icons.tornado;
-            }
+            return findIcon(atmosphereGroup, code, icons.mist);
         } else if (code === 800) {
             return icons.clear;
         } else if (code === 801) {
