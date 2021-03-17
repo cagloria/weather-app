@@ -60,7 +60,7 @@ const atmosphereGroup = {
     781: icons.tornado,
 };
 
-function findIcon(group, code, defaultIcon) {
+function findIconInGroup(group, code, defaultIcon) {
     if (group.hasOwnProperty(code)) {
         return group[code];
     }
@@ -74,11 +74,11 @@ export function findWeatherIcon(code) {
         } else if (code <= 399) {
             return icons.drizzle;
         } else if (code <= 599) {
-            return findIcon(rainGroup, code, icons.rainHeavy);
+            return findIconInGroup(rainGroup, code, icons.rainHeavy);
         } else if (code <= 699) {
-            return findIcon(snowGroup, code, icons.snow);
+            return findIconInGroup(snowGroup, code, icons.snow);
         } else if (code <= 799) {
-            return findIcon(atmosphereGroup, code, icons.mist);
+            return findIconInGroup(atmosphereGroup, code, icons.mist);
         } else if (code === 800) {
             return icons.clear;
         } else if (code === 801) {

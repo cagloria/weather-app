@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ForecastDay from "./ForecastDay";
 import { roundNumber } from "../functions";
 import styled from "styled-components";
 
@@ -6,20 +7,6 @@ const ForecastContainer = styled.div`
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-`;
-
-const ForecastDay = styled.div`
-    font-size: 0.9em;
-    text-align: center;
-    margin: 8px;
-
-    > * {
-        margin: 8px 0;
-    }
-
-    h3 {
-        font-weight: 300;
-    }
 `;
 
 const FORECAST_API = (() => {
@@ -94,7 +81,6 @@ export default function Forecast({ location }) {
     const [APIData, setAPIData] = useState(undefined);
     const [forecastObj, setForecastObj] = useState(undefined);
     const [message, setMessage] = useState("Getting the forecast...");
-    const dayOptions = { weekday: "long" };
 
     useEffect(() => {
         async function getForecastAPI() {
@@ -188,43 +174,12 @@ export default function Forecast({ location }) {
                 <>
                     <h2 className="hidden">Forecast</h2>
                     <ForecastContainer>
-                        <ForecastDay>
-                            <h3>Tomorrow</h3>
-                            <p>{forecastObj.day1.weather.name}</p>
-                            <p>
-                                {forecastObj.day1.max}&deg;&uarr;{" "}
-                                {forecastObj.day1.min}
-                                &deg;&darr;
-                            </p>
-                        </ForecastDay>
-                        <ForecastDay>
-                            <h3>
-                                {forecastObj.day2.date.toLocaleDateString(
-                                    undefined,
-                                    dayOptions
-                                )}
-                            </h3>
-                            <p>{forecastObj.day2.weather.name}</p>
-                            <p>
-                                {forecastObj.day2.max}&deg;&uarr;{" "}
-                                {forecastObj.day2.min}
-                                &deg;&darr;
-                            </p>
-                        </ForecastDay>
-                        <ForecastDay>
-                            <h3>
-                                {forecastObj.day3.date.toLocaleDateString(
-                                    undefined,
-                                    dayOptions
-                                )}
-                            </h3>
-                            <p>{forecastObj.day3.weather.name}</p>
-                            <p>
-                                {forecastObj.day3.max}&deg;&uarr;{" "}
-                                {forecastObj.day3.min}
-                                &deg;&darr;
-                            </p>
-                        </ForecastDay>
+                        <ForecastDay
+                            date="Tomorrow"
+                            dayObj={forecastObj.day1}
+                        />
+                        <ForecastDay dayObj={forecastObj.day2} />
+                        <ForecastDay dayObj={forecastObj.day3} />
                     </ForecastContainer>
                 </>
             )}
