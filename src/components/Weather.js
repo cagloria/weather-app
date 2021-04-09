@@ -55,9 +55,18 @@ const SunTime = styled.div`
     }
 `;
 
+const BGImage = styled.div`
+    background-color: ${primary[100]};
+    height: 50px;
+    width: 100%;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-top: 4px solid ${neutral[500]};
+`;
+
 const InfoContainer = styled.div`
     background-color: ${primary[100]};
-    padding: 40px 0 25px;
+    padding: 0 0 25px;
 `;
 
 const DetailsTable = styled.table`
@@ -183,6 +192,8 @@ export default function Weather({ location }) {
                             </SunTime>
                         </SunContainer>
                     </Section>
+
+                    <BGImage />
 
                     <InfoContainer>
                         <Section>
