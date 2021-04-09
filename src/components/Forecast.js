@@ -35,7 +35,7 @@ export const dateFactory = (date) => {
     let weatherArr = [];
     let min = 0;
     let max = 0;
-    let weather = { name: "", count: 0 };
+    let weather = { name: "", count: 0, id: 0 };
 
     function addTemp(temp) {
         tempsArr.push(temp);
@@ -48,13 +48,14 @@ export const dateFactory = (date) => {
     function determinePrimaryWeather() {
         for (let i = 0; i < weatherArr.length; i++) {
             let count = 0;
-            weatherArr.forEach((weather) => {
-                if (weatherArr[i] === weather) {
+            weatherArr.forEach((weatherObj) => {
+                if (weatherArr[i].id === weatherObj.id) {
                     count++;
                 }
             });
             if (this.weather.count < count) {
-                this.weather.name = weatherArr[i];
+                this.weather.name = weatherArr[i].main;
+                this.weather.id = weatherArr[i].id;
                 this.weather.count = count;
             }
         }
@@ -138,17 +139,17 @@ export default function Forecast({ location }) {
 
             if (datesMatch(timestampDate, day1.date)) {
                 day1.addTemp(timestamp.main.temp);
-                day1.addToWeatherArr(timestamp.weather[0].main);
+                day1.addToWeatherArr(timestamp.weather[0]);
             }
 
             if (datesMatch(timestampDate, day2.date)) {
                 day2.addTemp(timestamp.main.temp);
-                day2.addToWeatherArr(timestamp.weather[0].main);
+                day2.addToWeatherArr(timestamp.weather[0]);
             }
 
             if (datesMatch(timestampDate, day3.date)) {
                 day3.addTemp(timestamp.main.temp);
-                day3.addToWeatherArr(timestamp.weather[0].main);
+                day3.addToWeatherArr(timestamp.weather[0]);
             }
         });
 
@@ -175,7 +176,7 @@ export default function Forecast({ location }) {
                     <h2 className="hidden">Forecast</h2>
                     <ForecastContainer>
                         <ForecastDay
-                            date="Tomorrow"
+                            name="Tomorrow"
                             dayObj={forecastObj.day1}
                         />
                         <ForecastDay dayObj={forecastObj.day2} />
