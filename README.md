@@ -1,4 +1,10 @@
-# Getting Started with Create React App
+# Weather React App
+
+Displays the current weather and 3-day forecast of any city entered. Fetches data from the OpenWeather API.
+
+Currently in development.
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
