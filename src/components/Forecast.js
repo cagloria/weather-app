@@ -41,20 +41,20 @@ export const dateFactory = (date) => {
         tempsArr.push(temp);
     }
 
-    function addToWeatherArr(weather) {
-        weatherArr.push(weather);
+    function addToWeatherArr(name, id) {
+        weatherArr.push({ name, id });
     }
 
     function determinePrimaryWeather() {
         for (let i = 0; i < weatherArr.length; i++) {
             let count = 0;
-            weatherArr.forEach((weatherObj) => {
-                if (weatherArr[i].id === weatherObj.id) {
+            weatherArr.forEach((matchObj) => {
+                if (weatherArr[i].id === matchObj.id) {
                     count++;
                 }
             });
             if (this.weather.count < count) {
-                this.weather.name = weatherArr[i].main;
+                this.weather.name = weatherArr[i].name;
                 this.weather.id = weatherArr[i].id;
                 this.weather.count = count;
             }
@@ -139,17 +139,26 @@ export default function Forecast({ location }) {
 
             if (datesMatch(timestampDate, day1.date)) {
                 day1.addTemp(timestamp.main.temp);
-                day1.addToWeatherArr(timestamp.weather[0]);
+                day1.addToWeatherArr(
+                    timestamp.weather[0].main,
+                    timestamp.weather[0].id
+                );
             }
 
             if (datesMatch(timestampDate, day2.date)) {
                 day2.addTemp(timestamp.main.temp);
-                day2.addToWeatherArr(timestamp.weather[0]);
+                day2.addToWeatherArr(
+                    timestamp.weather[0].main,
+                    timestamp.weather[0].id
+                );
             }
 
             if (datesMatch(timestampDate, day3.date)) {
                 day3.addTemp(timestamp.main.temp);
-                day3.addToWeatherArr(timestamp.weather[0]);
+                day3.addToWeatherArr(
+                    timestamp.weather[0].main,
+                    timestamp.weather[0].id
+                );
             }
         });
 

@@ -28,26 +28,35 @@ describe("datesMatch", () => {
 describe("dateFactory.determinePrimaryWeather", () => {
     test("returns the most common occurence of weather", () => {
         let day1 = dateFactory(new Date());
-        const weatherArr1 = ["Clouds", "Clouds", "Clouds", "Rain"];
+        const weatherArr1 = [
+            { name: "Clouds", id: 0 },
+            { name: "Clouds", id: 0 },
+            { name: "Clouds", id: 0 },
+            { name: "Rain", id: 1 },
+        ];
+
         weatherArr1.forEach((weather) => {
-            day1.addToWeatherArr(weather);
+            day1.addToWeatherArr(weather.name, weather.id);
         });
         day1.determinePrimaryWeather();
+
         expect(day1.weather.name).toEqual("Clouds");
     });
+
     test("returns if there is only one weather", () => {
         let day2 = dateFactory(new Date());
-        day2.addToWeatherArr("Rain");
+        day2.addToWeatherArr("Rain", 0);
         day2.determinePrimaryWeather();
         expect(day2.weather.name).toEqual("Rain");
     });
+
     test(
         "returns the first weather to reach the highest occurence if two or " +
             " more weathers occurr the same number of times",
         () => {
             let day3 = dateFactory(new Date());
-            day3.addToWeatherArr("Rain");
-            day3.addToWeatherArr("Sun");
+            day3.addToWeatherArr("Rain", 0);
+            day3.addToWeatherArr("Sun", 1);
             day3.determinePrimaryWeather();
             expect(day3.weather.name).toEqual("Rain");
         }

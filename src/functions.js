@@ -22,3 +22,9 @@ export function capitalize(str) {
     const remaining = str.slice(1);
     return first + remaining;
 }
+
+export function convertToCelsius(fahrenheight) {
+    // (32°F − 32) × 5/9
+    const celsius = ((fahrenheight - 32) * 5.0) / 9.0;
+    return celsius;
+}
