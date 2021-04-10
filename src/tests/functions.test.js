@@ -1,4 +1,10 @@
-import { roundNumber, convertTimeFromUnix, capitalize } from "../functions";
+import {
+    roundNumber,
+    convertTimeFromUnix,
+    capitalize,
+    convertToCelsius,
+    convertToFahrenheit,
+} from "../functions";
 
 describe("roundNumber", () => {
     test("rounds down with digits after the decimal point", () => {
@@ -36,5 +42,27 @@ describe("capitalize", () => {
     test("does not modify a string if it is already capitzlied", () => {
         let result = capitalize("Example");
         expect(result).toEqual("Example");
+    });
+});
+
+describe("convertToCelsius", () => {
+    test("converts fahrenheit to celsius", () => {
+        const result = convertToCelsius(32);
+        expect(result).toEqual(0);
+    });
+    test("converts fahrenheit to celsius and rounds to a whole number", () => {
+        const result = convertToCelsius(53);
+        expect(result).toEqual(12);
+    });
+});
+
+describe("convertToFahrenheit", () => {
+    test("converts celsius to fahrenheit", () => {
+        const result = convertToFahrenheit(0);
+        expect(result).toEqual(32);
+    });
+    test("converts celsius to fahrenheit and rounds to a whole number", () => {
+        const result = convertToFahrenheit(32);
+        expect(result).toEqual(90);
     });
 });

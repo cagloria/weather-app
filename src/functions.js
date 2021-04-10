@@ -23,8 +23,14 @@ export function capitalize(str) {
     return first + remaining;
 }
 
-export function convertToCelsius(fahrenheight) {
-    // (32°F − 32) × 5/9
-    const celsius = ((fahrenheight - 32) * 5.0) / 9.0;
+export function convertToCelsius(fahrenheit) {
+    let celsius = ((fahrenheit - 32) * 5.0) / 9.0;
+    celsius = roundNumber(celsius, 0);
     return celsius;
+}
+
+export function convertToFahrenheit(celsius) {
+    let fahrenheit = (celsius * 9.0) / 5.0 + 32;
+    fahrenheit = roundNumber(fahrenheit, 0);
+    return fahrenheit;
 }
