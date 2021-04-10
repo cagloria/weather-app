@@ -74,6 +74,7 @@ export const GlobalStyles = createGlobalStyle`
             background-color 0.3s ease-out, 
             color 0.3s ease-out;
         background-color: ${primary[300]};
+        font-family: "Roboto", sans-serif;
         &:hover {
             box-shadow: 0px 2px 6px 0px ${primary[100]};
             background-color: ${primary[400]};
