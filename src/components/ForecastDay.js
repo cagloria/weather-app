@@ -27,7 +27,7 @@ function findDay(date) {
     return date.toLocaleDateString(undefined, dayOptions);
 }
 
-export default function ForecastDay({ name, dayObj }) {
+export default function ForecastDay({ name, dayObj, tempScale }) {
     const icon = findWeatherIcon(dayObj.weather.id);
     return (
         <Container>

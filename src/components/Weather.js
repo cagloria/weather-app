@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Forecast from "./Forecast";
 import styled from "styled-components";
-import { roundNumber, formatTime, capitalize } from "../functions";
+import {
+    roundNumber,
+    formatTime,
+    capitalize,
+    convertToCelsius,
+} from "../functions";
 import { primary, neutral } from "./Themes";
 import { icons, findWeatherIcon } from "../icons";
 
@@ -101,7 +106,7 @@ const WEATHER_API = (() => {
     return { getUrl };
 })();
 
-export default function Weather({ location }) {
+export default function Weather({ location, tempScale }) {
     const [APIData, setAPIData] = useState(undefined);
     const [weatherObj, setWeatherObj] = useState(undefined);
     const [message, setMessage] = useState("Getting today's weather...");
@@ -167,7 +172,12 @@ export default function Weather({ location }) {
                         <City>
                             {weatherObj.city}, {weatherObj.country}
                         </City>
-                        <Temperature>{weatherObj.temperature}&deg;</Temperature>
+                        <Temperature>
+                            {tempScale === "F"
+                                ? weatherObj.temperature
+                                : convertToCelsius(weatherObj.temperature)}
+                            &deg;
+                        </Temperature>
                         <WeatherIcon alt="" src={weatherObj.weatherIcon} />
                         <WeatherDisplay>{weatherObj.weather}</WeatherDisplay>
 
@@ -216,7 +226,7 @@ export default function Weather({ location }) {
                             </DetailsTable>
                         </Section>
 
-                        <Forecast location={location} />
+                        <Forecast tempScale={tempScale} location={location} />
 
                         <Section>
                             <Credit>Data provided by OpenWeather.</Credit>

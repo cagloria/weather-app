@@ -78,7 +78,7 @@ export const dateFactory = (date) => {
     };
 };
 
-export default function Forecast({ location }) {
+export default function Forecast({ location, tempScale }) {
     const [APIData, setAPIData] = useState(undefined);
     const [forecastObj, setForecastObj] = useState(undefined);
     const [message, setMessage] = useState("Getting the forecast...");
@@ -187,9 +187,16 @@ export default function Forecast({ location }) {
                         <ForecastDay
                             name="Tomorrow"
                             dayObj={forecastObj.day1}
+                            tempScale={tempScale}
                         />
-                        <ForecastDay dayObj={forecastObj.day2} />
-                        <ForecastDay dayObj={forecastObj.day3} />
+                        <ForecastDay
+                            dayObj={forecastObj.day2}
+                            tempScale={tempScale}
+                        />
+                        <ForecastDay
+                            dayObj={forecastObj.day3}
+                            tempScale={tempScale}
+                        />
                     </ForecastContainer>
                 </>
             )}
