@@ -21,13 +21,15 @@ export const lightTheme = {
     bottomGradient: "#060950",
 };
 
+const fontFamily = `"Roboto", sans-serif`;
+
 export const GlobalStyles = createGlobalStyle`
     html {
         height: 100%;
     }
 
     body {
-        font-family: "Roboto", sans-serif;
+        font-family: ${fontFamily};
         color: ${neutral[500]};
         background-color: ${({ theme }) => theme.topGradient};
         background-image: linear-gradient(180deg, ${({ theme }) =>
@@ -58,6 +60,7 @@ export const GlobalStyles = createGlobalStyle`
         border-radius: 8px;
         height: 32px;
         padding: 0 10px;
+        font-family: ${fontFamily};
         &:focus {
             outline: ${primary[400]} solid 3px;
         }
@@ -74,7 +77,7 @@ export const GlobalStyles = createGlobalStyle`
             background-color 0.3s ease-out, 
             color 0.3s ease-out;
         background-color: ${primary[300]};
-        font-family: "Roboto", sans-serif;
+        font-family: ${fontFamily};
         &:hover {
             box-shadow: 0px 2px 6px 0px ${primary[100]};
             background-color: ${primary[400]};

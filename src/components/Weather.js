@@ -57,7 +57,7 @@ const SunTime = styled.div`
 
 const BGImage = styled.div`
     background-color: ${primary[100]};
-    height: 50px;
+    height: 70px;
     width: 100%;
     border-top-left-radius: 50%;
     border-top-right-radius: 50%;
