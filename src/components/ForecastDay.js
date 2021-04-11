@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { findWeatherIcon } from "../icons";
+import { convertToCelsius } from "../functions";
 
 const Container = styled.div`
     font-size: 0.9em;
@@ -34,7 +35,9 @@ export default function ForecastDay({ name, dayObj, tempScale }) {
             <h3>{name === undefined ? findDay(dayObj.date) : name}</h3>
             <WeatherIcon src={icon} alt={dayObj.weather.name} />
             <p>
-                {dayObj.max}&deg;&uarr; {dayObj.min}
+                {tempScale === "F" ? dayObj.max : convertToCelsius(dayObj.max)}
+                &deg;&uarr;{" "}
+                {tempScale === "F" ? dayObj.min : convertToCelsius(dayObj.min)}
                 &deg;&darr;
             </p>
         </Container>
