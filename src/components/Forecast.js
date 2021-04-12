@@ -9,8 +9,20 @@ const ForecastContainer = styled.div`
     justify-content: space-around;
     flex-wrap: wrap;
 
+    > * {
+        margin: 8px;
+    }
+
     ${mediaQueries.twoCol} {
+        padding-top: 8px;
         flex-direction: column;
+    }
+
+    ${mediaQueries.laptop} {
+        flex-direction: row;
+        > * {
+            margin: 16px;
+        }
     }
 `;
 

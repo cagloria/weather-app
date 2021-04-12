@@ -49,6 +49,13 @@ const WeatherIcon = styled.img`
 const SunContainer = styled.div`
     display: flex;
     justify-content: space-between;
+
+    ${mediaQueries.twoCol} {
+        flex-direction: column;
+        > *:first-child {
+            margin-bottom: 24px;
+        }
+    }
 `;
 
 const SunTime = styled.div`
@@ -76,9 +83,7 @@ const BGImage = styled.div`
 
     ${mediaQueries.twoCol} {
         position: absolute;
-        bottom: 0;
-        width: 100vw;
-        display: none;
+        right: 200vw;
     }
 `;
 

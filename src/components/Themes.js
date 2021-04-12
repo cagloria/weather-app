@@ -24,15 +24,12 @@ export const lightTheme = {
 export const mediaQueries = {
     tablet: "@media screen and (min-width: 426px)",
     twoCol: "@media screen and (min-width: 650px)",
+    laptop: "@media screen and (min-width: 769px)"
 };
 
 const fontFamily = `"Roboto", sans-serif`;
 
 export const GlobalStyles = createGlobalStyle`
-    html {
-        height: 100%;
-    }
-
     body {
         font-family: ${fontFamily};
         color: ${neutral[500]};
@@ -46,7 +43,7 @@ export const GlobalStyles = createGlobalStyle`
         padding-top: 40px;
 
         ${mediaQueries.twoCol} {
-            padding-bottom: 280px;
+            padding-bottom: 80px;
         }
     }
 

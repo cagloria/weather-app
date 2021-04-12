@@ -6,7 +6,6 @@ import { mediaQueries } from "./Themes";
 
 const Container = styled.div`
     text-align: center;
-    margin: 8px;
 
     > * {
         font-size: 0.9em;
