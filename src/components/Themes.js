@@ -79,12 +79,12 @@ export const GlobalStyles = createGlobalStyle`
         background-color: ${primary[300]};
         font-family: ${fontFamily};
         &:hover {
-            box-shadow: 0px 2px 6px 0px ${primary[100]};
+            box-shadow: 0 2px 6px 0 ${primary[100]};
             background-color: ${primary[400]};
             color: ${neutral[100]};
         }
         &:active {
-            box-shadow: inset 0px 2px 4px 0px ${primary[100]};
+            box-shadow: inset 0 2px 4px 0 ${primary[100]};
             background-color: ${primary[200]};
             color: ${neutral[500]}
         }

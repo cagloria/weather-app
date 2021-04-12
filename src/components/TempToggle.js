@@ -37,7 +37,22 @@ const Toggle = styled.button`
         position: absolute;
         top: 2px;
         border-radius: 50%;
-        transition: left 0.3s ease-out;
+        transition: left 0.3s ease-out, box-shadow 0.2s ease-in-out;
+    }
+
+    &:hover {
+        background-color: transparent;
+        color: ${neutral[500]};
+        box-shadow: inset 0 2px 6px 0 ${primary[100]};
+        &::after {
+            box-shadow: 0 2px 8px 2px ${primary[100]};
+        }
+    }
+
+    &:active {
+        &::after {
+            box-shadow: inset 0 2px 2px 0px ${primary[100]};
+        }
     }
 `;
 
