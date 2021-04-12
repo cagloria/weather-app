@@ -2,11 +2,16 @@ import React, { useState, useEffect } from "react";
 import ForecastDay from "./ForecastDay";
 import { roundNumber } from "../functions";
 import styled from "styled-components";
+import { mediaQueries } from "./Themes";
 
 const ForecastContainer = styled.div`
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+
+    ${mediaQueries.twoCol} {
+        flex-direction: column;
+    }
 `;
 
 const FORECAST_API = (() => {

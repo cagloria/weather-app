@@ -2,13 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { findWeatherIcon } from "../icons";
 import { convertToCelsius } from "../functions";
+import { mediaQueries } from "./Themes";
 
 const Container = styled.div`
-    font-size: 0.9em;
     text-align: center;
     margin: 8px;
 
     > * {
+        font-size: 0.9em;
         margin: 8px 0;
     }
 
@@ -21,6 +22,11 @@ const WeatherIcon = styled.img`
     width: 40px;
     height: 40px;
     margin: 0;
+
+    ${mediaQueries.twoCol} {
+        width: 32px;
+        height: 32px;
+    }
 `;
 
 function findDay(date) {

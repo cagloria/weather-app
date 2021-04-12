@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { mediaQueries } from "./Themes";
 
 const Section = styled.section`
     text-align: center;
     margin-bottom: 26px;
+
+    ${mediaQueries.twoCol} {
+        grid-row: 1;
+        grid-column: 1 / -1;
+    }
 `;
 
 const Day = styled.p`

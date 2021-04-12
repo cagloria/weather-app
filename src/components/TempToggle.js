@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { primary, neutral } from "./Themes";
+import { primary, neutral, mediaQueries } from "./Themes";
 
 const Toggle = styled.button`
     width: 42px;
@@ -12,8 +12,12 @@ const Toggle = styled.button`
     padding: 0;
     position: absolute;
     top: 12px;
-    right: 25px;
+    right: 7vw;
     transition: padding 0.2s ease-out;
+
+    ${mediaQueries.tablet} {
+        right: 8vw;
+    }
 
     &.left {
         padding: 0 0 0 16px;

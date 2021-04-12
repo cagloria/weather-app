@@ -21,6 +21,11 @@ export const lightTheme = {
     bottomGradient: "#060950",
 };
 
+export const mediaQueries = {
+    tablet: "@media screen and (min-width: 426px)",
+    twoCol: "@media screen and (min-width: 650px)",
+};
+
 const fontFamily = `"Roboto", sans-serif`;
 
 export const GlobalStyles = createGlobalStyle`
@@ -39,10 +44,27 @@ export const GlobalStyles = createGlobalStyle`
         background-attachment: fixed;
         margin: 0;
         padding-top: 40px;
+
+        ${mediaQueries.twoCol} {
+            padding-bottom: 280px;
+        }
+    }
+
+    main {
+        ${mediaQueries.twoCol} {
+            padding: 0 8vw;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 60px;
+        }
     }
 
     section {
-        padding: 0 25px;
+        padding: 0 7vw;
+
+        ${mediaQueries.twoCol} {
+            padding: 0;
+        }
     }
 
     label {

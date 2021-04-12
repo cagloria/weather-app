@@ -7,11 +7,17 @@ import {
     capitalize,
     convertToCelsius,
 } from "../functions";
-import { primary, neutral } from "./Themes";
+import { primary, neutral, mediaQueries } from "./Themes";
 import { icons, findWeatherIcon } from "../icons";
 
 const Section = styled.section`
     margin-bottom: 32px;
+
+    ${mediaQueries.twoCol} {
+        grid-row: 3;
+        grid-column: 1;
+        margin-bottom: 0;
+    }
 `;
 
 const City = styled.p`
@@ -67,11 +73,23 @@ const BGImage = styled.div`
     border-top-left-radius: 50%;
     border-top-right-radius: 50%;
     border-top: 4px solid ${neutral[500]};
+
+    ${mediaQueries.twoCol} {
+        position: absolute;
+        bottom: 0;
+        width: 100vw;
+        display: none;
+    }
 `;
 
 const InfoContainer = styled.div`
     background-color: ${primary[100]};
     padding: 0 0 25px;
+
+    ${mediaQueries.twoCol} {
+        padding: 32px 24px;
+        border-radius: 8px;
+    }
 `;
 
 const DetailsTable = styled.table`
@@ -84,6 +102,10 @@ const DetailsTable = styled.table`
     th {
         font-weight: 400;
         text-align: left;
+    }
+
+    ${mediaQueries.twoCol} {
+        padding: 15px 8px;
     }
 `;
 
