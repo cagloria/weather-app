@@ -114,6 +114,17 @@ const SunContainer = styled.div`
         flex-direction: column;
         align-items: flex-end;
     }
+
+    ${mediaQueries.largePC} {
+        flex-direction: row;
+        margin: auto 0 auto auto;
+        width: 100%;
+        max-width: 270px;
+
+        > *:first-child {
+            margin-bottom: 0;
+        }
+    }
 `;
 
 const SunTime = styled.div`

@@ -27,6 +27,7 @@ export const mediaQueries = {
     laptop: "@media screen and (min-width: 769px)",
     laptopLarge: "@media screen and (min-width: 1025px)",
     largePC: "@media screen and (min-width: 1441px)",
+    PC2000: "@media screen and (min-width: 2000px)",
 };
 
 const fontFamily = `"Roboto", sans-serif`;
@@ -42,14 +43,10 @@ export const GlobalStyles = createGlobalStyle`
         background-position: center;
         background-attachment: fixed;
         margin: 0;
-        padding-top: 40px;
+        padding-top: 60px;
 
         ${mediaQueries.twoCol} {
             padding-bottom: 40px;
-        }
-
-        ${mediaQueries.laptopLarge} {
-            padding-top: 60px;
         }
     }
 
@@ -64,6 +61,14 @@ export const GlobalStyles = createGlobalStyle`
 
         ${mediaQueries.laptop} {
             padding: 0 14vw;
+        }
+
+        ${mediaQueries.largePC} {
+            padding: 0 18vw;
+        }
+
+        ${mediaQueries.PC2000} {
+            padding: 0 28vw;
         }
     }
 

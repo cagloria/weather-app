@@ -11,7 +11,7 @@ const Toggle = styled.button`
     color: ${neutral[500]};
     padding: 0;
     position: absolute;
-    top: 12px;
+    top: 20px;
     right: 7vw;
     transition: padding 0.2s ease-out;
 
@@ -21,6 +21,14 @@ const Toggle = styled.button`
 
     ${mediaQueries.laptop} {
         right: 14vw;
+    }
+
+    ${mediaQueries.largePC} {
+        right: 18vw;
+    }
+
+    ${mediaQueries.PC2000} {
+        right: 28vw;
     }
 
     &.left {
