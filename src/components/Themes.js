@@ -19,6 +19,13 @@ export const neutral = {
 export const lightTheme = {
     topGradient: "#2A30AB",
     bottomGradient: "#060950",
+    fieldBorder: "transparent",
+};
+
+export const darkTheme = {
+    topGradient: primary[100],
+    bottomGradient: primary[200],
+    fieldBorder: primary[300],
 };
 
 export const mediaQueries = {
@@ -91,8 +98,9 @@ export const GlobalStyles = createGlobalStyle`
     input[type="text"] {
         background-color: ${primary[100]};
         color: ${neutral[500]};
-        border: 0;
+        border: 2px solid ${({ theme }) => theme.fieldBorder};
         border-radius: 8px;
+        box-sizing: border-box;
         height: 32px;
         padding: 0 10px;
         font-family: ${fontFamily};

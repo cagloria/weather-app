@@ -82,7 +82,7 @@ const WeatherIcon = styled.img`
 `;
 
 const WeatherText = styled.p`
-    font-size: 2em;
+    font-size: 1.75em;
     text-align: center;
     margin: 10px 0 40px;
 

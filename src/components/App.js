@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
-import { GlobalStyles, lightTheme } from "./Themes";
+import { GlobalStyles, lightTheme, darkTheme } from "./Themes";
 import TempToggle from "./TempToggle";
 import Clock from "./Clock";
 import Weather from "./Weather";
@@ -25,7 +25,7 @@ export default function App() {
     }
 
     return (
-        <ThemeProvider theme={lightTheme}>
+        <ThemeProvider theme={darkTheme}>
             <GlobalStyles />
             <main>
                 <h1 className="hidden">Weather App</h1>
