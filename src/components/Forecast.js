@@ -13,19 +13,19 @@ const ForecastContainer = styled.div`
         margin: 8px;
     }
 
-    ${mediaQueries.twoCol} {
+    ${mediaQueries.tablet_650_2col} {
         padding-top: 8px;
         flex-direction: column;
     }
 
-    ${mediaQueries.laptop} {
+    ${mediaQueries.desktop_769} {
         flex-direction: row;
         > * {
             margin: 16px;
         }
     }
 
-    ${mediaQueries.laptopLarge} {
+    ${mediaQueries.desktop_1025_3col} {
         grid-row: 1;
         grid-column: 2;
         padding: 0;

@@ -15,19 +15,19 @@ const Toggle = styled.button`
     right: 7vw;
     transition: padding 0.2s ease-out;
 
-    ${mediaQueries.tablet} {
+    ${mediaQueries.tablet_426} {
         right: 8vw;
     }
 
-    ${mediaQueries.laptop} {
+    ${mediaQueries.desktop_769} {
         right: 14vw;
     }
 
-    ${mediaQueries.largePC} {
+    ${mediaQueries.desktop_1441} {
         right: 18vw;
     }
 
-    ${mediaQueries.PC2000} {
+    ${mediaQueries.desktop_2000} {
         right: 28vw;
     }
 

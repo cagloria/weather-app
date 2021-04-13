@@ -6,12 +6,12 @@ const Section = styled.section`
     text-align: center;
     margin-bottom: 26px;
 
-    ${mediaQueries.twoCol} {
+    ${mediaQueries.tablet_650_2col} {
         grid-row: 1;
         grid-column: 1 / -1;
     }
 
-    ${mediaQueries.laptopLarge} {
+    ${mediaQueries.desktop_1025_3col} {
         text-align: left;
         display: flex;
         justify-content: space-between;
@@ -25,7 +25,7 @@ const Day = styled.p`
     font-size: 2em;
     font-weight: 300;
 
-    ${mediaQueries.laptopLarge} {
+    ${mediaQueries.desktop_1025_3col} {
         margin: 0;
     }
 `;
@@ -34,7 +34,7 @@ const Time = styled.p`
     font-size: 1.5em;
     margin: 0;
 
-    ${mediaQueries.laptopLarge} {
+    ${mediaQueries.desktop_1025_3col} {
         font-size: 2em;
     }
 `;

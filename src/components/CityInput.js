@@ -5,7 +5,7 @@ import { mediaQueries } from "./Themes";
 const Section = styled.section`
     margin-bottom: 32px;
 
-    ${mediaQueries.twoCol} {
+    ${mediaQueries.tablet_650_2col} {
         grid-row: 2;
         grid-column: 1 / -1;
         margin-bottom: 60px;
@@ -18,7 +18,7 @@ const Form = styled.form`
     max-width: 500px;
     margin: 0 auto;
 
-    ${mediaQueries.tablet} {
+    ${mediaQueries.tablet_426} {
         display: grid;
         grid-template-columns: 2fr 1fr;
         grid-template-rows: auto auto;
@@ -26,7 +26,7 @@ const Form = styled.form`
         column-gap: 12px;
     }
 
-    ${mediaQueries.laptopLarge} {
+    ${mediaQueries.desktop_1025_3col} {
         margin: 0;
     }
 `;
@@ -34,7 +34,7 @@ const Form = styled.form`
 const Label = styled.label`
     margin: 0 0 8px 10px;
 
-    ${mediaQueries.tablet} {
+    ${mediaQueries.tablet_426} {
         grid-row: 1;
         grid-column: 1 / -1;
         margin-bottom: 0;
@@ -44,7 +44,7 @@ const Label = styled.label`
 const Textfield = styled.input`
     margin-bottom: 8px;
 
-    ${mediaQueries.tablet} {
+    ${mediaQueries.tablet_426} {
         grid-row: 2;
         grid-column: 1;
         margin-bottom: 0;
@@ -52,7 +52,7 @@ const Textfield = styled.input`
 `;
 
 const SubmitButton = styled.button`
-    ${mediaQueries.tablet} {
+    ${mediaQueries.tablet_426} {
         grid-row: 2;
         grid-column: 2;
     }

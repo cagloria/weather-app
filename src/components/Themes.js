@@ -22,12 +22,12 @@ export const lightTheme = {
 };
 
 export const mediaQueries = {
-    tablet: "@media screen and (min-width: 426px)",
-    twoCol: "@media screen and (min-width: 650px)",
-    laptop: "@media screen and (min-width: 769px)",
-    laptopLarge: "@media screen and (min-width: 1025px)",
-    largePC: "@media screen and (min-width: 1441px)",
-    PC2000: "@media screen and (min-width: 2000px)",
+    tablet_426: "@media screen and (min-width: 426px)",
+    tablet_650_2col: "@media screen and (min-width: 650px)",
+    desktop_769: "@media screen and (min-width: 769px)",
+    desktop_1025_3col: "@media screen and (min-width: 1025px)",
+    desktop_1441: "@media screen and (min-width: 1441px)",
+    desktop_2000: "@media screen and (min-width: 2000px)",
 };
 
 const fontFamily = `"Roboto", sans-serif`;
@@ -45,13 +45,13 @@ export const GlobalStyles = createGlobalStyle`
         margin: 0;
         padding-top: 60px;
 
-        ${mediaQueries.twoCol} {
+        ${mediaQueries.tablet_650_2col} {
             padding-bottom: 40px;
         }
     }
 
     main {
-        ${mediaQueries.twoCol} {
+        ${mediaQueries.tablet_650_2col} {
             padding: 0 8vw;
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -59,15 +59,15 @@ export const GlobalStyles = createGlobalStyle`
             column-gap: 60px;
         }
 
-        ${mediaQueries.laptop} {
+        ${mediaQueries.desktop_769} {
             padding: 0 14vw;
         }
 
-        ${mediaQueries.largePC} {
+        ${mediaQueries.desktop_1441} {
             padding: 0 18vw;
         }
 
-        ${mediaQueries.PC2000} {
+        ${mediaQueries.desktop_2000} {
             padding: 0 28vw;
         }
     }
@@ -75,7 +75,7 @@ export const GlobalStyles = createGlobalStyle`
     section {
         padding: 0 7vw;
 
-        ${mediaQueries.twoCol} {
+        ${mediaQueries.tablet_650_2col} {
             padding: 0;
         }
     }

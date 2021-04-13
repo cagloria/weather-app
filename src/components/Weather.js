@@ -13,13 +13,13 @@ import { icons, findWeatherIcon } from "../icons";
 const MessageSection = styled.section`
     margin-bottom: 32px;
 
-    ${mediaQueries.twoCol} {
+    ${mediaQueries.tablet_650_2col} {
         grid-row: 3;
         grid-column: 1;
         margin-bottom: 0;
     }
 
-    ${mediaQueries.laptopLarge} {
+    ${mediaQueries.desktop_1025_3col} {
         grid-column: 1 / -1;
     }
 `;
@@ -27,13 +27,13 @@ const MessageSection = styled.section`
 const WeatherSection = styled.section`
     margin-bottom: 32px;
 
-    ${mediaQueries.twoCol} {
+    ${mediaQueries.tablet_650_2col} {
         grid-row: 3;
         grid-column: 1;
         margin-bottom: 0;
     }
 
-    ${mediaQueries.laptopLarge} {
+    ${mediaQueries.desktop_1025_3col} {
         grid-column: 1 / -1;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -48,7 +48,7 @@ const City = styled.p`
     text-align: center;
     margin: 0;
 
-    ${mediaQueries.laptopLarge} {
+    ${mediaQueries.desktop_1025_3col} {
         grid-row: 1;
         grid-column: 1 / -1;
         text-align: left;
@@ -61,7 +61,7 @@ const Temperature = styled.p`
     text-align: center;
     margin: 6px 0;
 
-    ${mediaQueries.laptopLarge} {
+    ${mediaQueries.desktop_1025_3col} {
         grid-row: 2;
         grid-column: 1;
         margin: 0;
@@ -75,7 +75,7 @@ const WeatherIcon = styled.img`
     margin: 0 auto;
     display: flex;
 
-    ${mediaQueries.laptopLarge} {
+    ${mediaQueries.desktop_1025_3col} {
         grid-row: 2;
         grid-column: 2;
     }
@@ -86,7 +86,7 @@ const WeatherText = styled.p`
     text-align: center;
     margin: 10px 0 40px;
 
-    ${mediaQueries.laptopLarge} {
+    ${mediaQueries.desktop_1025_3col} {
         grid-row: 3;
         grid-column: 2;
         margin: 0;
@@ -97,25 +97,25 @@ const SunContainer = styled.div`
     display: flex;
     justify-content: space-between;
 
-    ${mediaQueries.twoCol} {
+    ${mediaQueries.tablet_650_2col} {
         flex-direction: column;
         > *:first-child {
             margin-bottom: 24px;
         }
     }
 
-    ${mediaQueries.laptop} {
+    ${mediaQueries.desktop_769} {
         flex-direction: row;
     }
 
-    ${mediaQueries.laptopLarge} {
+    ${mediaQueries.desktop_1025_3col} {
         grid-row: 2 / 4;
         grid-column: 3;
         flex-direction: column;
         align-items: flex-end;
     }
 
-    ${mediaQueries.largePC} {
+    ${mediaQueries.desktop_1441} {
         flex-direction: row;
         margin: auto 0 auto auto;
         width: 100%;
@@ -150,7 +150,7 @@ const BGImage = styled.div`
     border-top-right-radius: 50%;
     border-top: 4px solid ${neutral[500]};
 
-    ${mediaQueries.twoCol} {
+    ${mediaQueries.tablet_650_2col} {
         position: absolute;
         right: 200vw;
     }
@@ -160,14 +160,14 @@ const InfoContainer = styled.div`
     background-color: ${primary[100]};
     padding: 0 0 25px;
 
-    ${mediaQueries.twoCol} {
+    ${mediaQueries.tablet_650_2col} {
         padding: 32px 24px;
         border-radius: 8px;
         grid-row: 3;
         grid-column: 2;
     }
 
-    ${mediaQueries.laptopLarge} {
+    ${mediaQueries.desktop_1025_3col} {
         grid-row: 4;
         grid-column: 1 / -1;
         display: grid;
@@ -180,13 +180,13 @@ const InfoContainer = styled.div`
 const DetailsSection = styled.section`
     margin-bottom: 32px;
 
-    ${mediaQueries.twoCol} {
+    ${mediaQueries.tablet_650_2col} {
         grid-row: 3;
         grid-column: 1;
         margin-bottom: 0;
     }
 
-    ${mediaQueries.laptopLarge} {
+    ${mediaQueries.desktop_1025_3col} {
         grid-row: 1;
         grid-column: 1;
         height: 100%;
@@ -205,11 +205,11 @@ const DetailsTable = styled.table`
         text-align: left;
     }
 
-    ${mediaQueries.twoCol} {
+    ${mediaQueries.tablet_650_2col} {
         padding: 15px 8px;
     }
 
-    ${mediaQueries.laptopLarge} {
+    ${mediaQueries.desktop_1025_3col} {
         padding: 16px;
     }
 `;
@@ -223,7 +223,7 @@ const CreditsSection = styled.section`
         text-align: center;
     }
 
-    ${mediaQueries.laptopLarge} {
+    ${mediaQueries.desktop_1025_3col} {
         grid-row: 2;
         grid-column: 1 / -1;
 
