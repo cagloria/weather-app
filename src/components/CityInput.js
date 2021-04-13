@@ -25,6 +25,10 @@ const Form = styled.form`
         row-gap: 12px;
         column-gap: 12px;
     }
+
+    ${mediaQueries.laptopLarge} {
+        margin: 0;
+    }
 `;
 
 const Label = styled.label`

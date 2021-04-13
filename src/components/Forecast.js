@@ -24,6 +24,16 @@ const ForecastContainer = styled.div`
             margin: 16px;
         }
     }
+
+    ${mediaQueries.laptopLarge} {
+        grid-row: 1;
+        grid-column: 2;
+        padding: 0;
+
+        > * {
+            margin: 0;
+        }
+    }
 `;
 
 const FORECAST_API = (() => {

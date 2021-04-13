@@ -10,6 +10,13 @@ const Section = styled.section`
         grid-row: 1;
         grid-column: 1 / -1;
     }
+
+    ${mediaQueries.laptopLarge} {
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 `;
 
 const Day = styled.p`
@@ -17,11 +24,19 @@ const Day = styled.p`
     line-height: 150%;
     font-size: 2em;
     font-weight: 300;
+
+    ${mediaQueries.laptopLarge} {
+        margin: 0;
+    }
 `;
 
 const Time = styled.p`
     font-size: 1.5em;
     margin: 0;
+
+    ${mediaQueries.laptopLarge} {
+        font-size: 2em;
+    }
 `;
 
 export default function Clock() {

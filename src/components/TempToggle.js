@@ -19,6 +19,10 @@ const Toggle = styled.button`
         right: 8vw;
     }
 
+    ${mediaQueries.laptop} {
+        right: 14vw;
+    }
+
     &.left {
         padding: 0 0 0 16px;
         &::after {

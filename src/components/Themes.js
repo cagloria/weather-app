@@ -24,7 +24,9 @@ export const lightTheme = {
 export const mediaQueries = {
     tablet: "@media screen and (min-width: 426px)",
     twoCol: "@media screen and (min-width: 650px)",
-    laptop: "@media screen and (min-width: 769px)"
+    laptop: "@media screen and (min-width: 769px)",
+    laptopLarge: "@media screen and (min-width: 1025px)",
+    largePC: "@media screen and (min-width: 1441px)",
 };
 
 const fontFamily = `"Roboto", sans-serif`;
@@ -43,7 +45,11 @@ export const GlobalStyles = createGlobalStyle`
         padding-top: 40px;
 
         ${mediaQueries.twoCol} {
-            padding-bottom: 80px;
+            padding-bottom: 40px;
+        }
+
+        ${mediaQueries.laptopLarge} {
+            padding-top: 60px;
         }
     }
 
@@ -52,7 +58,12 @@ export const GlobalStyles = createGlobalStyle`
             padding: 0 8vw;
             display: grid;
             grid-template-columns: 1fr 1fr;
+            grid-auto-rows: auto;
             column-gap: 60px;
+        }
+
+        ${mediaQueries.laptop} {
+            padding: 0 14vw;
         }
     }
 

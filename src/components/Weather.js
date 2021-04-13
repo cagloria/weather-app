@@ -10,7 +10,7 @@ import {
 import { primary, neutral, mediaQueries } from "./Themes";
 import { icons, findWeatherIcon } from "../icons";
 
-const Section = styled.section`
+const MessageSection = styled.section`
     margin-bottom: 32px;
 
     ${mediaQueries.twoCol} {
@@ -18,12 +18,41 @@ const Section = styled.section`
         grid-column: 1;
         margin-bottom: 0;
     }
+
+    ${mediaQueries.laptopLarge} {
+        grid-column: 1 / -1;
+    }
+`;
+
+const WeatherSection = styled.section`
+    margin-bottom: 32px;
+
+    ${mediaQueries.twoCol} {
+        grid-row: 3;
+        grid-column: 1;
+        margin-bottom: 0;
+    }
+
+    ${mediaQueries.laptopLarge} {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: auto;
+        justify-items: stretch;
+        margin-bottom: 48px;
+    }
 `;
 
 const City = styled.p`
     font-size: 1.5em;
     text-align: center;
     margin: 0;
+
+    ${mediaQueries.laptopLarge} {
+        grid-row: 1;
+        grid-column: 1 / -1;
+        text-align: left;
+    }
 `;
 
 const Temperature = styled.p`
@@ -31,12 +60,13 @@ const Temperature = styled.p`
     font-weight: 400;
     text-align: center;
     margin: 6px 0;
-`;
 
-const WeatherDisplay = styled.p`
-    font-size: 2em;
-    text-align: center;
-    margin: 10px 0 40px;
+    ${mediaQueries.laptopLarge} {
+        grid-row: 2;
+        grid-column: 1;
+        margin: 0;
+        text-align: left;
+    }
 `;
 
 const WeatherIcon = styled.img`
@@ -44,6 +74,23 @@ const WeatherIcon = styled.img`
     height: 128px;
     margin: 0 auto;
     display: flex;
+
+    ${mediaQueries.laptopLarge} {
+        grid-row: 2;
+        grid-column: 2;
+    }
+`;
+
+const WeatherText = styled.p`
+    font-size: 2em;
+    text-align: center;
+    margin: 10px 0 40px;
+
+    ${mediaQueries.laptopLarge} {
+        grid-row: 3;
+        grid-column: 2;
+        margin: 0;
+    }
 `;
 
 const SunContainer = styled.div`
@@ -55,6 +102,17 @@ const SunContainer = styled.div`
         > *:first-child {
             margin-bottom: 24px;
         }
+    }
+
+    ${mediaQueries.laptop} {
+        flex-direction: row;
+    }
+
+    ${mediaQueries.laptopLarge} {
+        grid-row: 2 / 4;
+        grid-column: 3;
+        flex-direction: column;
+        align-items: flex-end;
     }
 `;
 
@@ -94,6 +152,33 @@ const InfoContainer = styled.div`
     ${mediaQueries.twoCol} {
         padding: 32px 24px;
         border-radius: 8px;
+        grid-row: 3;
+        grid-column: 2;
+    }
+
+    ${mediaQueries.laptopLarge} {
+        grid-row: 4;
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: auto auto;
+        row-gap: 16px;
+    }
+`;
+
+const DetailsSection = styled.section`
+    margin-bottom: 32px;
+
+    ${mediaQueries.twoCol} {
+        grid-row: 3;
+        grid-column: 1;
+        margin-bottom: 0;
+    }
+
+    ${mediaQueries.laptopLarge} {
+        grid-row: 1;
+        grid-column: 1;
+        height: 100%;
     }
 `;
 
@@ -112,12 +197,29 @@ const DetailsTable = styled.table`
     ${mediaQueries.twoCol} {
         padding: 15px 8px;
     }
+
+    ${mediaQueries.laptopLarge} {
+        padding: 16px;
+    }
 `;
 
-const Credit = styled.p`
-    margin-top: 20px;
-    font-size: 0.85em;
-    text-align: center;
+const CreditsSection = styled.section`
+    margin-bottom: 32px;
+
+    p {
+        margin-top: 20px;
+        font-size: 0.85em;
+        text-align: center;
+    }
+
+    ${mediaQueries.laptopLarge} {
+        grid-row: 2;
+        grid-column: 1 / -1;
+
+        p {
+            margin: 0;
+        }
+    }
 `;
 
 const WEATHER_API = (() => {
@@ -189,12 +291,12 @@ export default function Weather({ location, tempScale }) {
     return (
         <>
             {APIData === undefined || weatherObj === undefined ? (
-                <Section>
+                <MessageSection>
                     <p>{message}</p>
-                </Section>
+                </MessageSection>
             ) : (
                 <>
-                    <Section>
+                    <WeatherSection>
                         <h2 className="hidden">Weather</h2>
                         <City>
                             {weatherObj.city}, {weatherObj.country}
@@ -206,7 +308,7 @@ export default function Weather({ location, tempScale }) {
                             &deg;
                         </Temperature>
                         <WeatherIcon alt="" src={weatherObj.weatherIcon} />
-                        <WeatherDisplay>{weatherObj.weather}</WeatherDisplay>
+                        <WeatherText>{weatherObj.weather}</WeatherText>
 
                         <SunContainer>
                             <SunTime>
@@ -228,12 +330,12 @@ export default function Weather({ location, tempScale }) {
                                 />
                             </SunTime>
                         </SunContainer>
-                    </Section>
+                    </WeatherSection>
 
                     <BGImage />
 
                     <InfoContainer>
-                        <Section>
+                        <DetailsSection>
                             <h2 className="hidden">Weather Details</h2>
                             <DetailsTable>
                                 <tbody>
@@ -251,13 +353,13 @@ export default function Weather({ location, tempScale }) {
                                     </tr>
                                 </tbody>
                             </DetailsTable>
-                        </Section>
+                        </DetailsSection>
 
                         <Forecast tempScale={tempScale} location={location} />
 
-                        <Section>
-                            <Credit>Data provided by OpenWeather.</Credit>
-                        </Section>
+                        <CreditsSection>
+                            <p>Data provided by OpenWeather.</p>
+                        </CreditsSection>
                     </InfoContainer>
                 </>
             )}
