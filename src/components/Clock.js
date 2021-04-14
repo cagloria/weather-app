@@ -39,7 +39,7 @@ const Time = styled.p`
     }
 `;
 
-export default function Clock() {
+export default function Clock({ onTimeChange }) {
     const [date, setDate] = useState(new Date());
     const dateOptions = {
         weekday: "long",
@@ -55,9 +55,10 @@ export default function Clock() {
     useEffect(() => {
         const interval = setInterval(() => {
             setDate(new Date());
+            onTimeChange(date);
         }, 1000);
         return () => clearInterval(interval);
-    }, [date]);
+    }, [date, onTimeChange]);
 
     return (
         <Section>

@@ -9,7 +9,7 @@ export function convertTimeFromUnix(unixTimestamp) {
     return convertedDate;
 }
 
-export function formatTime(time) {
+export function formatTimeToString(time) {
     return convertTimeFromUnix(time).toLocaleTimeString([], {
         hour: "numeric",
         minute: "2-digit",

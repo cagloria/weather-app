@@ -3,9 +3,10 @@ import Forecast from "./Forecast";
 import styled from "styled-components";
 import {
     roundNumber,
-    formatTime,
+    formatTimeToString,
     capitalize,
     convertToCelsius,
+    convertTimeFromUnix,
 } from "../functions";
 import { primary, neutral, mediaQueries } from "./Themes";
 import { icons, findWeatherIcon } from "../icons";
@@ -246,10 +247,14 @@ const WEATHER_API = (() => {
     return { getUrl };
 })();
 
-export default function Weather({ location, tempScale }) {
+export default function Weather({ location, tempScale, onSunFetch }) {
     const [APIData, setAPIData] = useState(undefined);
     const [weatherObj, setWeatherObj] = useState(undefined);
     const [message, setMessage] = useState("Getting today's weather...");
+    const [sunTimes, setSunTimes] = useState({
+        sunrise: undefined,
+        sunset: undefined,
+    });
 
     useEffect(() => {
         async function getWeatherAPI() {
@@ -280,11 +285,15 @@ export default function Weather({ location, tempScale }) {
                     temperature: roundNumber(data.main.temp, 0),
                     weather: capitalize(data.weather[0].description),
                     weatherIcon: findWeatherIcon(data.weather[0].id),
-                    sunrise: formatTime(data.sys.sunrise),
-                    sunset: formatTime(data.sys.sunset),
+                    sunrise: formatTimeToString(data.sys.sunrise),
+                    sunset: formatTimeToString(data.sys.sunset),
                     wind: data.wind.speed,
                     humidity: data.main.humidity,
                     pressure: data.main.pressure,
+                });
+                setSunTimes({
+                    sunrise: data.sys.sunrise,
+                    sunset: data.sys.sunset,
                 });
             } catch (error) {
                 console.log(error);
@@ -298,6 +307,14 @@ export default function Weather({ location, tempScale }) {
 
         getWeatherAPI();
     }, [location]);
+
+    useEffect(() => {
+        if (sunTimes.sunrise !== undefined && sunTimes.sunset !== undefined) {
+            const sunrise = convertTimeFromUnix(sunTimes.sunrise);
+            const sunset = convertTimeFromUnix(sunTimes.sunset);
+            onSunFetch(sunrise, sunset);
+        }
+    }, [sunTimes, onSunFetch]);
 
     return (
         <>

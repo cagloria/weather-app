@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { primary, neutral, mediaQueries } from "./Themes";
 
@@ -72,19 +72,17 @@ const Toggle = styled.button`
     }
 `;
 
-export default function TempToggle({ onScaleChange }) {
-    const [scale, setScale] = useState("F");
+export default function TempToggle({ onScaleChange, defaultScale }) {
+    const [scale, setScale] = useState(defaultScale);
     const [alt, setAlt] = useState("celsius");
     const [toggle, setToggle] = useState("left");
 
-    useEffect(() => {
-        onScaleChange(scale);
-    }, [scale, onScaleChange]);
-
     function changeScale() {
-        scale === "F" ? setScale("C") : setScale("F");
+        let newScale = scale === "F" ? "C" : "F";
+        setScale(newScale);
         toggle === "left" ? setToggle("right") : setToggle("left");
         alt === "celsius" ? setAlt("fahrenheit") : setAlt("celsius");
+        onScaleChange(newScale);
     }
 
     return (
