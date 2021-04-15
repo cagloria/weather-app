@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import Forecast from "./Forecast";
 import Sun from "./Sun";
 import Details from "./Details";
+import Temperature from "./Temperature";
 import styled from "styled-components";
 import {
     roundNumber,
     formatTimeToString,
     capitalize,
-    convertToCelsius,
     convertTimeFromUnix,
 } from "../functions";
 import { primary, neutral, mediaQueries } from "./Themes";
@@ -54,20 +54,6 @@ const City = styled.p`
     ${mediaQueries.desktop_1025_3col} {
         grid-row: 1;
         grid-column: 1 / -1;
-        text-align: left;
-    }
-`;
-
-const Temperature = styled.p`
-    font-size: 8em;
-    font-weight: 400;
-    text-align: center;
-    margin: 6px 0;
-
-    ${mediaQueries.desktop_1025_3col} {
-        grid-row: 2;
-        grid-column: 1;
-        margin: 0;
         text-align: left;
     }
 `;
@@ -246,12 +232,11 @@ export default function Weather({ location, tempScale, onSunFetch }) {
                         <City>
                             {weatherObj.city}, {weatherObj.country}
                         </City>
-                        <Temperature>
-                            {tempScale === "F"
-                                ? weatherObj.temperature
-                                : convertToCelsius(weatherObj.temperature)}
-                            &deg;
-                        </Temperature>
+
+                        <Temperature
+                            scale={tempScale}
+                            temp={weatherObj.temperature}
+                        />
                         <WeatherIcon alt="" src={weatherObj.weatherIcon} />
                         <WeatherText>{weatherObj.weather}</WeatherText>
 
