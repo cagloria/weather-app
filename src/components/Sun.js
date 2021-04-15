@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { mediaQueries } from "./Themes";
-import { icons } from "../icons";
+import { icons } from "../utilities/icons";
 
 const Container = styled.div`
     display: flex;

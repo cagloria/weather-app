@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { findWeatherIcon } from "../icons";
-import { convertToCelsius } from "../functions";
+import { findWeatherIcon } from "../utilities/icons";
+import { convertToCelsius } from "../utilities/functions";
 import { mediaQueries } from "./Themes";
 
 const Container = styled.div`

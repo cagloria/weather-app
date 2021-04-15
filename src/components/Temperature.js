@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { mediaQueries } from "./Themes";
-import { convertToCelsius } from "../functions";
+import { convertToCelsius } from "../utilities/functions";
 
 const P = styled.p`
     font-size: 8em;

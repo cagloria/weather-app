@@ -9,9 +9,9 @@ import {
     formatTimeToString,
     capitalize,
     convertTimeFromUnix,
-} from "../functions";
+} from "../utilities/functions";
 import { primary, neutral, mediaQueries } from "./Themes";
-import { findWeatherIcon } from "../icons";
+import { findWeatherIcon } from "../utilities/icons";
 
 const MessageSection = styled.section`
     margin-bottom: 32px;

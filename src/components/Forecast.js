@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ForecastDay from "./ForecastDay";
-import { roundNumber } from "../functions";
+import { roundNumber } from "../utilities/functions";
 import styled from "styled-components";
 import { mediaQueries } from "./Themes";
 
