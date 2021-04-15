@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Forecast from "./Forecast";
 import Sun from "./Sun";
+import Details from "./Details";
 import styled from "styled-components";
 import {
     roundNumber,
@@ -127,43 +128,6 @@ const InfoContainer = styled.div`
         grid-template-columns: 1fr 2fr;
         grid-template-rows: auto auto;
         row-gap: 16px;
-    }
-`;
-
-const DetailsSection = styled.section`
-    margin-bottom: 32px;
-
-    ${mediaQueries.tablet_650_2col} {
-        grid-row: 3;
-        grid-column: 1;
-        margin-bottom: 0;
-    }
-
-    ${mediaQueries.desktop_1025_3col} {
-        grid-row: 1;
-        grid-column: 1;
-        height: 100%;
-    }
-`;
-
-const DetailsTable = styled.table`
-    padding: 15px 20px;
-    border: 2px solid ${neutral[500]};
-    border-radius: 6px;
-    width: 100%;
-    font-size: 0.9em;
-
-    th {
-        font-weight: 400;
-        text-align: left;
-    }
-
-    ${mediaQueries.tablet_650_2col} {
-        padding: 15px 8px;
-    }
-
-    ${mediaQueries.desktop_1025_3col} {
-        padding: 16px;
     }
 `;
 
@@ -300,25 +264,11 @@ export default function Weather({ location, tempScale, onSunFetch }) {
                     <BGImage />
 
                     <InfoContainer>
-                        <DetailsSection>
-                            <h2 className="hidden">Weather Details</h2>
-                            <DetailsTable>
-                                <tbody>
-                                    <tr>
-                                        <th>Wind</th>
-                                        <td>{weatherObj.wind} mph</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Humidity</th>
-                                        <td>{weatherObj.humidity}%</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Pressure</th>
-                                        <td>{weatherObj.pressure} hPa</td>
-                                    </tr>
-                                </tbody>
-                            </DetailsTable>
-                        </DetailsSection>
+                        <Details
+                            wind={weatherObj.wind}
+                            humidity={weatherObj.humidity}
+                            pressure={weatherObj.pressure}
+                        />
 
                         <Forecast tempScale={tempScale} location={location} />
 
