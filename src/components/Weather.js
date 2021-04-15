@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Forecast from "./Forecast";
+import Sun from "./Sun";
 import styled from "styled-components";
 import {
     roundNumber,
@@ -9,7 +10,7 @@ import {
     convertTimeFromUnix,
 } from "../functions";
 import { primary, neutral, mediaQueries } from "./Themes";
-import { icons, findWeatherIcon } from "../icons";
+import { findWeatherIcon } from "../icons";
 
 const MessageSection = styled.section`
     margin-bottom: 32px;
@@ -91,55 +92,6 @@ const WeatherText = styled.p`
         grid-row: 3;
         grid-column: 2;
         margin: 0;
-    }
-`;
-
-const SunContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
-
-    ${mediaQueries.tablet_650_2col} {
-        flex-direction: column;
-        > *:first-child {
-            margin-bottom: 24px;
-        }
-    }
-
-    ${mediaQueries.desktop_769} {
-        flex-direction: row;
-    }
-
-    ${mediaQueries.desktop_1025_3col} {
-        grid-row: 2 / 4;
-        grid-column: 3;
-        flex-direction: column;
-        align-items: flex-end;
-    }
-
-    ${mediaQueries.desktop_1441} {
-        flex-direction: row;
-        margin: auto 0 auto auto;
-        width: 100%;
-        max-width: 270px;
-
-        > *:first-child {
-            margin-bottom: 0;
-        }
-    }
-`;
-
-const SunTime = styled.div`
-    text-align: center;
-    p {
-        margin: 0;
-
-        &:first-child {
-            margin-bottom: 2px;
-        }
-    }
-
-    img {
-        margin-top: 8px;
     }
 `;
 
@@ -314,7 +266,7 @@ export default function Weather({ location, tempScale, onSunFetch }) {
             const sunset = convertTimeFromUnix(sunTimes.sunset);
             onSunFetch(sunrise, sunset);
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [sunTimes]);
 
     return (
@@ -339,26 +291,10 @@ export default function Weather({ location, tempScale, onSunFetch }) {
                         <WeatherIcon alt="" src={weatherObj.weatherIcon} />
                         <WeatherText>{weatherObj.weather}</WeatherText>
 
-                        <SunContainer>
-                            <SunTime>
-                                <p>Sunrise</p>
-                                <p>{weatherObj.sunrise}</p>
-                                <img
-                                    src={icons.sunrise}
-                                    alt=""
-                                    className="size-24"
-                                />
-                            </SunTime>
-                            <SunTime>
-                                <p>Sunset</p>
-                                <p>{weatherObj.sunset}</p>
-                                <img
-                                    src={icons.sunset}
-                                    alt=""
-                                    className="size-24"
-                                />
-                            </SunTime>
-                        </SunContainer>
+                        <Sun
+                            sunrise={weatherObj.sunrise}
+                            sunset={weatherObj.sunset}
+                        />
                     </WeatherSection>
 
                     <BGImage />
