@@ -14,8 +14,6 @@ export default function App() {
         sunrise: undefined,
         sunset: undefined,
     });
-    // const [sunrise, setSunrise] = useState(undefined);
-    // const [sunset, setSunset] = useState(undefined);
     const [onLightMode, setOnLightMode] = useState(true);
 
     useEffect(() => {
@@ -24,17 +22,17 @@ export default function App() {
         }
     }, [tempScale]);
 
-    // useEffect(() => {
-    //     if (sunrise !== undefined && sunset !== undefined) {
-    //         // const afterSunrise = date.getTime() > sunrise.getTime();
-    //         // const beforeSunset = date.getTime() < sunset.getTime();
-    //         // afterSunrise && beforeSunset
-    //         //     ? setOnLightMode(true)
-    //         //     : setOnLightMode(false);
-    //     } else {
-    //         setOnLightMode(true);
-    //     }
-    // }, [date, sunrise, sunset]);
+    useEffect(() => {
+        if (sunTimes.sunrise !== undefined && sunTimes.sunset !== undefined) {
+            const afterSunrise = date.getTime() > sunTimes.sunrise.getTime();
+            const beforeSunset = date.getTime() < sunTimes.sunset.getTime();
+            afterSunrise && beforeSunset
+                ? setOnLightMode(true)
+                : setOnLightMode(false);
+        } else {
+            setOnLightMode(true);
+        }
+    }, [date, sunTimes]);
 
     function handleTempScaleChange(scale) {
         setTempScale(scale);
@@ -49,14 +47,7 @@ export default function App() {
     }
 
     function handleSunFetch(sunrise, sunset) {
-        // FIXME: setState called too many times
-        // setSunrise(sunrise);
-        // setSunset(sunset);
-        // try {
-        //     setSunTimes({ sunrise: sunrise, sunset: sunset });
-        // } catch (error) {
-        //     console.error(error);
-        // }
+        setSunTimes({ sunrise: sunrise, sunset: sunset });
     }
 
     return (

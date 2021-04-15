@@ -314,7 +314,8 @@ export default function Weather({ location, tempScale, onSunFetch }) {
             const sunset = convertTimeFromUnix(sunTimes.sunset);
             onSunFetch(sunrise, sunset);
         }
-    }, [sunTimes, onSunFetch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [sunTimes]);
 
     return (
         <>
