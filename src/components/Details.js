@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { neutral, mediaQueries } from "./Themes";
+import windDirectionIcon from "../assets/icon-wind-direction.svg";
 
 const Container = styled.section`
     margin-bottom: 32px;
@@ -39,7 +40,14 @@ const Table = styled.table`
     }
 `;
 
-export default function Details({ wind, humidity, pressure }) {
+const WindIcon = styled.img`
+    width: 10px;
+    height: 10px;
+    margin: auto 0 auto 8px;
+    transform: rotate(${(props) => props.deg}deg);
+`;
+
+export default function Details({ wind, windDirection, humidity, pressure }) {
     return (
         <Container>
             <h2 className="hidden">Weather Details</h2>
@@ -47,7 +55,14 @@ export default function Details({ wind, humidity, pressure }) {
                 <tbody>
                     <tr>
                         <th>Wind</th>
-                        <td>{wind} mph</td>
+                        <td>
+                            {wind} mph
+                            <WindIcon
+                                deg={windDirection}
+                                src={windDirectionIcon}
+                                alt=""
+                            />
+                        </td>
                     </tr>
                     <tr>
                         <th>Humidity</th>
