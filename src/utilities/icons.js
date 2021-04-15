@@ -1,20 +1,20 @@
-import iconThunderstorm from "./assets/icon-thunderstorm.svg";
-import iconDrizzle from "./assets/icon-drizzle.svg";
-import iconRainLight from "./assets/icon-rain-light.svg";
-import iconRainHeavy from "./assets/icon-rain-heavy.svg";
-import iconSleet from "./assets/icon-snow-sleet.svg";
-import iconSnow from "./assets/icon-snow.svg";
-import iconMist from "./assets/icon-mist-haze-fog.svg";
-import iconSmoke from "./assets/icon-smoke.svg";
-import iconDust from "./assets/icon-dust-sand.svg";
-import iconAsh from "./assets/icon-ash.svg";
-import iconWind from "./assets/icon-wind.svg";
-import iconTornado from "./assets/icon-tornado.svg";
-import iconClear from "./assets/icon-clear.svg";
-import iconCloudsLight from "./assets/icon-cloud-light.svg";
-import iconCloudsHeavy from "./assets/icon-cloud-heavy.svg";
-import iconSunrise from "./assets/icon-sunrise.svg";
-import iconSunset from "./assets/icon-sunset.svg";
+import iconThunderstorm from "../assets/icon-thunderstorm.svg";
+import iconDrizzle from "../assets/icon-drizzle.svg";
+import iconRainLight from "../assets/icon-rain-light.svg";
+import iconRainHeavy from "../assets/icon-rain-heavy.svg";
+import iconSleet from "../assets/icon-snow-sleet.svg";
+import iconSnow from "../assets/icon-snow.svg";
+import iconMist from "../assets/icon-mist-haze-fog.svg";
+import iconSmoke from "../assets/icon-smoke.svg";
+import iconDust from "../assets/icon-dust-sand.svg";
+import iconAsh from "../assets/icon-ash.svg";
+import iconWind from "../assets/icon-wind.svg";
+import iconTornado from "../assets/icon-tornado.svg";
+import iconClear from "../assets/icon-clear.svg";
+import iconCloudsLight from "../assets/icon-cloud-light.svg";
+import iconCloudsHeavy from "../assets/icon-cloud-heavy.svg";
+import iconSunrise from "../assets/icon-sunrise.svg";
+import iconSunset from "../assets/icon-sunset.svg";
 
 export const icons = {
     thunderstorm: iconThunderstorm,

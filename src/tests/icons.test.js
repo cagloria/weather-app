@@ -1,4 +1,4 @@
-import { icons, findWeatherIcon } from "../icons";
+import { icons, findWeatherIcon } from "../utilities/icons";
 
 describe("findWeatherIcon", () => {
     test("returns thunderstorm", () => {

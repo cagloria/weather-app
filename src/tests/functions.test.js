@@ -4,7 +4,7 @@ import {
     capitalize,
     convertToCelsius,
     convertToFahrenheit,
-} from "../functions";
+} from "../utilities/functions";
 
 describe("roundNumber", () => {
     test("rounds down with digits after the decimal point", () => {
