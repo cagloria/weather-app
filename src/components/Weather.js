@@ -190,7 +190,7 @@ export default function Weather({ location, tempScale, onSunFetch }) {
                     sunrise: formatTimeToString(data.sys.sunrise),
                     sunset: formatTimeToString(data.sys.sunset),
                     wind: data.wind.speed,
-                    windDirection: data.wind.deg,
+                    windDegrees: data.wind.deg,
                     humidity: data.main.humidity,
                     pressure: data.main.pressure,
                 });
@@ -252,7 +252,7 @@ export default function Weather({ location, tempScale, onSunFetch }) {
                     <InfoContainer>
                         <Details
                             wind={weatherObj.wind}
-                            windDirection={weatherObj.windDirection}
+                            windDegrees={weatherObj.windDegrees}
                             humidity={weatherObj.humidity}
                             pressure={weatherObj.pressure}
                         />

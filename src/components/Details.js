@@ -89,11 +89,15 @@ const Table = styled.table`
 const WindIcon = styled.img`
     width: 10px;
     height: 10px;
-    margin: auto 0 auto 8px;
+    margin: auto 8px;
     transform: rotate(${(props) => props.deg}deg);
 `;
 
-export default function Details({ wind, windDirection, humidity, pressure }) {
+export default function Details({ wind, windDegrees, humidity, pressure }) {
+    const cardinalDirection = CARDINAL_DIRECTION.findCardinalDirection(
+        windDegrees
+    );
+
     return (
         <Container>
             <h2 className="hidden">Weather Details</h2>
@@ -104,10 +108,11 @@ export default function Details({ wind, windDirection, humidity, pressure }) {
                         <td>
                             {wind} mph
                             <WindIcon
-                                deg={windDirection}
+                                deg={windDegrees}
                                 src={windDirectionIcon}
                                 alt=""
                             />
+                            {cardinalDirection.name}
                         </td>
                     </tr>
                     <tr>
