@@ -3,6 +3,52 @@ import styled from "styled-components";
 import { neutral, mediaQueries } from "./Themes";
 import windDirectionIcon from "../assets/icon-wind-direction.svg";
 
+export const CARDINAL_DIRECTION = (() => {
+    const _interval = 22.5;
+    const _directions = [
+        { abbreviation: "N", name: "North", min: 348.75, max: 11.25 },
+        { abbreviation: "NNE", name: "North-northeast" },
+        { abbreviation: "NE", name: "Northeast" },
+        { abbreviation: "ENE", name: "East-northeast" },
+        { abbreviation: "E", name: "East" },
+        { abbreviation: "ESE", name: "East-southeast" },
+        { abbreviation: "SE", name: "Southeast" },
+        { abbreviation: "SSE", name: "South-southeast" },
+        { abbreviation: "S", name: "South" },
+        { abbreviation: "SSW", name: "South-southwest" },
+        { abbreviation: "SW", name: "Southwest" },
+        { abbreviation: "WSW", name: "West-southwest" },
+        { abbreviation: "W", name: "West" },
+        { abbreviation: "WNW", name: "West-northwest" },
+        { abbreviation: "NW", name: "Northwest" },
+        { abbreviation: "NNW", name: "North-northwest" },
+    ];
+
+    // Set the minimum and maximum degrees for each direction
+    for (let i = 1; i < _directions.length; i++) {
+        _directions[i].min = _directions[i - 1].max;
+        _directions[i].max = _directions[i].min + _interval;
+    }
+
+    function findCardinalDirection(deg) {
+        const N = _directions[0];
+        let result;
+        if (deg >= N.min || deg <= N.max) {
+            result = N;
+        } else {
+            _directions.forEach((direction) => {
+                if (deg >= direction.min && deg <= direction.max) {
+                    result = direction;
+                }
+            });
+        }
+
+        return { abbreviation: result.abbreviation, name: result.name };
+    }
+
+    return { findCardinalDirection };
+})();
+
 const Container = styled.section`
     margin-bottom: 32px;
 
