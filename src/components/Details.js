@@ -112,7 +112,9 @@ export default function Details({ wind, windDegrees, humidity, pressure }) {
                                 src={windDirectionIcon}
                                 alt=""
                             />
-                            {cardinalDirection.name}
+                            <span aria-label={cardinalDirection.name}>
+                                {cardinalDirection.abbreviation}
+                            </span>
                         </td>
                     </tr>
                     <tr>
