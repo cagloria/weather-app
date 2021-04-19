@@ -28,7 +28,10 @@ const MessageSection = styled.section`
 `;
 
 const WeatherSection = styled.section`
+    display: flex;
     margin-bottom: 32px;
+    flex-direction: column;
+    align-items: center;
 
     ${mediaQueries.tablet_650_2col} {
         grid-row: 3;
@@ -39,7 +42,7 @@ const WeatherSection = styled.section`
     ${mediaQueries.desktop_1025_3col} {
         grid-column: 1 / -1;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         grid-auto-rows: auto;
         justify-items: stretch;
         margin-bottom: 48px;
@@ -58,10 +61,19 @@ const City = styled.p`
     }
 `;
 
+const WeatherDisplay = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    ${mediaQueries.desktop_1025_3col} {
+        margin-left: auto;
+    }
+`;
+
 const WeatherIcon = styled.img`
     width: 128px;
     height: 128px;
-    margin: 0 auto;
     display: flex;
 
     ${mediaQueries.desktop_1025_3col} {
@@ -92,7 +104,8 @@ const BGImage = styled.div`
 
     ${mediaQueries.tablet_650_2col} {
         position: absolute;
-        right: 200vw;
+        bottom: 0;
+        left: 0;
     }
 `;
 
@@ -113,7 +126,7 @@ const InfoContainer = styled.div`
         display: grid;
         grid-template-columns: 1fr 2fr;
         grid-template-rows: auto auto;
-        row-gap: 16px;
+        row-gap: 32px;
     }
 `;
 
@@ -129,6 +142,7 @@ const CreditsSection = styled.section`
     ${mediaQueries.desktop_1025_3col} {
         grid-row: 2;
         grid-column: 1 / -1;
+        margin-bottom: 0;
 
         p {
             margin: 0;
@@ -238,8 +252,10 @@ export default function Weather({ location, tempScale, onSunFetch }) {
                             scale={tempScale}
                             temp={weatherObj.temperature}
                         />
-                        <WeatherIcon alt="" src={weatherObj.weatherIcon} />
-                        <WeatherText>{weatherObj.weather}</WeatherText>
+                        <WeatherDisplay>
+                            <WeatherIcon alt="" src={weatherObj.weatherIcon} />
+                            <WeatherText>{weatherObj.weather}</WeatherText>
+                        </WeatherDisplay>
 
                         <Sun
                             sunrise={weatherObj.sunrise}

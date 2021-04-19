@@ -51,11 +51,6 @@ export const GlobalStyles = createGlobalStyle`
         background-position: center;
         background-attachment: fixed;
         margin: 0;
-        padding-top: 60px;
-
-        ${mediaQueries.tablet_650_2col} {
-            padding-bottom: 40px;
-        }
 
         &::after {
             content: "";
@@ -85,8 +80,10 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     main {
+        padding-top: 60px;
+        
         ${mediaQueries.tablet_650_2col} {
-            padding: 0 8vw;
+            padding: 60px 8vw 40px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-auto-rows: auto;
@@ -94,15 +91,19 @@ export const GlobalStyles = createGlobalStyle`
         }
 
         ${mediaQueries.desktop_769} {
-            padding: 0 14vw;
+            padding-left: 14vw;
+            padding-right: 14vw;
+            align-content: baseline;
         }
 
         ${mediaQueries.desktop_1441} {
-            padding: 0 18vw;
+            padding-left: 18vw;
+            padding-right: 18vw;
         }
 
         ${mediaQueries.desktop_2000} {
-            padding: 0 28vw;
+            padding-left: 28vw;
+            padding-right: 28vw;
         }
     }
 

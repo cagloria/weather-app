@@ -77,6 +77,10 @@ const Table = styled.table`
         text-align: left;
     }
 
+    td {
+        font-weight: 300;
+    }
+
     ${mediaQueries.tablet_650_2col} {
         padding: 15px 8px;
     }

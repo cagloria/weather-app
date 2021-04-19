@@ -6,34 +6,15 @@ import { icons } from "../utilities/icons";
 const Container = styled.div`
     display: flex;
     justify-content: space-between;
+    width: 100%;
 
     ${mediaQueries.tablet_650_2col} {
-        flex-direction: column;
-        > *:first-child {
-            margin-bottom: 24px;
-        }
-    }
-
-    ${mediaQueries.desktop_769} {
-        flex-direction: row;
-    }
-
-    ${mediaQueries.desktop_1025_3col} {
-        grid-row: 2 / 4;
-        grid-column: 3;
-        flex-direction: column;
-        align-items: flex-end;
-    }
-
-    ${mediaQueries.desktop_1441} {
-        flex-direction: row;
-        margin: auto 0 auto auto;
+        position: absolute;
+        bottom: 80px;
+        padding: 0 8vw;
+        left: 0;
         width: 100%;
-        max-width: 270px;
-
-        > *:first-child {
-            margin-bottom: 0;
-        }
+        box-sizing: border-box;
     }
 `;
 
@@ -41,6 +22,7 @@ const SunTime = styled.div`
     text-align: center;
     p {
         margin: 0;
+        font-size: 1.2em;
 
         &:first-child {
             margin-bottom: 2px;

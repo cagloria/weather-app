@@ -8,7 +8,7 @@ const Section = styled.section`
     ${mediaQueries.tablet_650_2col} {
         grid-row: 2;
         grid-column: 1 / -1;
-        margin-bottom: 60px;
+        margin-bottom: 40px;
     }
 `;
 

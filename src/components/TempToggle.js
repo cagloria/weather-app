@@ -16,8 +16,8 @@ const Toggle = styled.button`
     transition: padding 0.2s ease-out;
 
     @media (prefers-reduced-motion) {
-            transition: none;
-        }
+        transition: none;
+    }
 
     ${mediaQueries.tablet_426} {
         right: 8vw;
