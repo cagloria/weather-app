@@ -40,10 +40,13 @@ export default function ForecastDay({ name, dayObj, tempScale }) {
             <h3>{name === undefined ? findDay(dayObj.date) : name}</h3>
             <WeatherIcon src={icon} alt={dayObj.weather.name} />
             <p>
+                <span className="hidden">High of </span>
                 {tempScale === "F" ? dayObj.max : convertToCelsius(dayObj.max)}
-                &deg;&uarr;{" "}
+                <span aria-hidden="true">&deg;&uarr;</span>
+
+                <span className="hidden">Low of </span>
                 {tempScale === "F" ? dayObj.min : convertToCelsius(dayObj.min)}
-                &deg;&darr;
+                <span aria-hidden="true">&deg;&darr;</span>
             </p>
         </Container>
     );
