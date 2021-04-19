@@ -10,11 +10,15 @@ const Container = styled.div`
 
     ${mediaQueries.tablet_650_2col} {
         position: absolute;
-        bottom: 80px;
+        bottom: 55px;
         padding: 0 8vw;
         left: 0;
         width: 100%;
         box-sizing: border-box;
+    }
+
+    ${mediaQueries.desktop_769} {
+        bottom: 80px;
     }
 `;
 

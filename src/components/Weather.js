@@ -106,6 +106,11 @@ const BGImage = styled.div`
         position: absolute;
         bottom: 0;
         left: 0;
+        height: 50px;
+    }
+
+    ${mediaQueries.desktop_769} {
+        height: 70px;
     }
 `;
 
@@ -139,10 +144,13 @@ const CreditsSection = styled.section`
         text-align: center;
     }
 
+    ${mediaQueries.tablet_650_2col} {
+        margin-bottom: 0;
+    }
+
     ${mediaQueries.desktop_1025_3col} {
         grid-row: 2;
         grid-column: 1 / -1;
-        margin-bottom: 0;
 
         p {
             margin: 0;
