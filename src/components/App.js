@@ -22,16 +22,19 @@ export default function App() {
         }
     }, [tempScale]);
 
+    // Change the background gradient to match if it's daytime or nighttime in
+    // the entered city
     useEffect(() => {
-        if (sunTimes.sunrise !== undefined && sunTimes.sunset !== undefined) {
-            const afterSunrise = date.getTime() > sunTimes.sunrise.getTime();
-            const beforeSunset = date.getTime() < sunTimes.sunset.getTime();
-            afterSunrise && beforeSunset
-                ? setOnLightMode(true)
-                : setOnLightMode(false);
-        } else {
-            setOnLightMode(true);
-        }
+        const body = document.getElementsByTagName("body")[0];
+        const sunTimesDefined =
+            sunTimes.sunrise !== undefined && sunTimes.sunset !== undefined;
+        const isDayTime = sunTimesDefined
+            ? date.getTime() > sunTimes.sunrise.getTime() &&
+              date.getTime() < sunTimes.sunset.getTime()
+            : true;
+
+        setOnLightMode(isDayTime);
+        isDayTime ? body.classList.remove("dark") : body.classList.add("dark");
     }, [date, sunTimes]);
 
     function handleTempScaleChange(scale) {

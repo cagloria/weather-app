@@ -15,6 +15,10 @@ const Toggle = styled.button`
     right: 7vw;
     transition: padding 0.2s ease-out;
 
+    @media (prefers-reduced-motion) {
+            transition: none;
+        }
+
     ${mediaQueries.tablet_426} {
         right: 8vw;
     }
@@ -54,6 +58,10 @@ const Toggle = styled.button`
         top: 2px;
         border-radius: 50%;
         transition: left 0.3s ease-out, box-shadow 0.2s ease-in-out;
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
     }
 
     &:hover {
@@ -74,14 +82,14 @@ const Toggle = styled.button`
 
 export default function TempToggle({ onScaleChange, defaultScale }) {
     const [scale, setScale] = useState(defaultScale);
-    const [alt, setAlt] = useState("celsius");
+    const [ariaLabel, setAlt] = useState("celsius");
     const [toggle, setToggle] = useState("left");
 
     function changeScale() {
         let newScale = scale === "F" ? "C" : "F";
         setScale(newScale);
         toggle === "left" ? setToggle("right") : setToggle("left");
-        alt === "celsius" ? setAlt("fahrenheit") : setAlt("celsius");
+        ariaLabel === "celsius" ? setAlt("fahrenheit") : setAlt("celsius");
         onScaleChange(newScale);
     }
 
@@ -89,7 +97,7 @@ export default function TempToggle({ onScaleChange, defaultScale }) {
         <Toggle
             className={toggle}
             onClick={changeScale}
-            aria-label={`Change to ${alt}`}
+            aria-label={`Change to ${ariaLabel}`}
         >
             {scale}
         </Toggle>

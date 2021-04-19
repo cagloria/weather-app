@@ -43,9 +43,10 @@ export const GlobalStyles = createGlobalStyle`
     body {
         font-family: ${fontFamily};
         color: ${neutral[500]};
-        background-color: ${({ theme }) => theme.topGradient};
-        background-image: linear-gradient(180deg, ${({ theme }) =>
-            theme.topGradient} 0%, ${({ theme }) => theme.bottomGradient} 100%);
+        background-color: ${lightTheme.topGradient};
+        background-image: linear-gradient(180deg, ${
+            lightTheme.topGradient
+        } 0%, ${lightTheme.bottomGradient} 100%);
         background-repeat: no-repeat;
         background-position: center;
         background-attachment: fixed;
@@ -54,6 +55,32 @@ export const GlobalStyles = createGlobalStyle`
 
         ${mediaQueries.tablet_650_2col} {
             padding-bottom: 40px;
+        }
+
+        &::after {
+            content: "";
+            width: 100vw;
+            height: 100vh;
+            background-color: ${darkTheme.topGradient};
+            background-image: linear-gradient(180deg, ${
+                darkTheme.topGradient
+            } 0%, ${darkTheme.bottomGradient} 100%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -9;
+            opacity: 0;
+            transition: opacity 0.3s linear;
+
+            @media (prefers-reduced-motion) {
+                transition: none;
+            }
+        }
+
+        &.dark {
+            &::after {
+                opacity: 1;
+            }
         }
     }
 
@@ -104,6 +131,12 @@ export const GlobalStyles = createGlobalStyle`
         height: 32px;
         padding: 0 10px;
         font-family: ${fontFamily};
+        transition: border 0.3s linear;
+        
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+
         &:focus {
             outline: ${primary[400]} solid 3px;
         }
