@@ -45,6 +45,7 @@ const WeatherSection = styled.section`
         grid-template-columns: repeat(2, 1fr);
         grid-auto-rows: auto;
         justify-items: stretch;
+        align-items: center;
         margin-bottom: 32px;
     }
 
@@ -69,6 +70,10 @@ const WeatherDisplay = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    > *:first-child {
+        margin-bottom: 8px;
+    }
 
     ${mediaQueries.desktop_1025_3col} {
         margin-left: auto;
@@ -110,7 +115,15 @@ const BGImage = styled.div`
         position: absolute;
         bottom: 0;
         left: 0;
-        height: 7vh;
+        height: 6vh;
+    }
+
+    ${mediaQueries.height_960} {
+        height: 13vh;
+    }
+
+    ${mediaQueries.height_1200} {
+        height: 21vh;
     }
 `;
 

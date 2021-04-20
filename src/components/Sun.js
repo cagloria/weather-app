@@ -10,7 +10,7 @@ const Container = styled.div`
 
     ${mediaQueries.tablet_850_2col} {
         position: absolute;
-        bottom: 7vh;
+        bottom: 6vh;
         padding: 0 8vw;
         left: 0;
         width: 100%;
@@ -21,10 +21,18 @@ const Container = styled.div`
         padding-left: 10vw;
         padding-right: 10vw;
     }
-    
+
     ${mediaQueries.desktop_2000} {
         padding-left: 16vw;
         padding-right: 16vw;
+    }
+
+    ${mediaQueries.height_960} {
+        bottom: 13vh;
+    }
+
+    ${mediaQueries.height_1200} {
+        bottom: 21vh;
     }
 `;
 
