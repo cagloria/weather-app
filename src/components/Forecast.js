@@ -13,13 +13,8 @@ const ForecastContainer = styled.div`
         margin: 8px;
     }
 
-    ${mediaQueries.tablet_650_2col} {
+    ${mediaQueries.tablet_850_2col} {
         padding-top: 8px;
-        flex-direction: column;
-    }
-
-    ${mediaQueries.desktop_769} {
-        flex-direction: row;
         > * {
             margin: 16px;
         }

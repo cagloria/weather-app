@@ -5,7 +5,7 @@ import { mediaQueries } from "./Themes";
 const Section = styled.section`
     margin-bottom: 32px;
 
-    ${mediaQueries.tablet_650_2col} {
+    ${mediaQueries.tablet_850_2col} {
         grid-row: 2;
         grid-column: 1 / -1;
     }

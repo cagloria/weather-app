@@ -30,8 +30,7 @@ export const darkTheme = {
 
 export const mediaQueries = {
     tablet_426: "@media screen and (min-width: 426px)",
-    tablet_650_2col: "@media screen and (min-width: 650px)",
-    desktop_769: "@media screen and (min-width: 769px)",
+    tablet_850_2col: "@media screen and (min-width: 850px)",
     desktop_1025_3col: "@media screen and (min-width: 1025px)",
     desktop_1281: "@media screen and (min-width: 1281px)",
     desktop_1441: "@media screen and (min-width: 1441px)",
@@ -83,17 +82,12 @@ export const GlobalStyles = createGlobalStyle`
     main {
         padding-top: 60px;
         
-        ${mediaQueries.tablet_650_2col} {
-            padding: 60px 8vw 40px;
+        ${mediaQueries.tablet_850_2col} {
+            padding: 60px 11vw 40px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-auto-rows: auto;
             column-gap: 60px;
-        }
-
-        ${mediaQueries.desktop_769} {
-            padding-left: 14vw;
-            padding-right: 14vw;
             align-content: baseline;
         }
 
@@ -111,7 +105,7 @@ export const GlobalStyles = createGlobalStyle`
     section {
         padding: 0 7vw;
 
-        ${mediaQueries.tablet_650_2col} {
+        ${mediaQueries.tablet_850_2col} {
             padding: 0;
         }
     }

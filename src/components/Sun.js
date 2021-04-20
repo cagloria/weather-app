@@ -8,10 +8,10 @@ const Container = styled.div`
     justify-content: space-between;
     width: 100%;
 
-    ${mediaQueries.tablet_650_2col} {
+    ${mediaQueries.tablet_850_2col} {
         position: absolute;
         bottom: 55px;
-        padding: 0 8vw;
+        padding: 0 11vw;
         left: 0;
         width: 100%;
         box-sizing: border-box;

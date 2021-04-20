@@ -20,10 +20,10 @@ const Toggle = styled.button`
     }
 
     ${mediaQueries.tablet_426} {
-        right: 8vw;
+        right: 11vw;
     }
 
-    ${mediaQueries.desktop_769} {
+    ${mediaQueries.tablet_850_2col} {
         right: 14vw;
     }
 

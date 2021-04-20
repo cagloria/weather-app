@@ -6,7 +6,7 @@ const Section = styled.section`
     text-align: center;
     margin-bottom: 26px;
 
-    ${mediaQueries.tablet_650_2col} {
+    ${mediaQueries.tablet_850_2col} {
         grid-row: 1;
         grid-column: 1 / -1;
     }
