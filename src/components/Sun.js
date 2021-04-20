@@ -17,8 +17,18 @@ const Container = styled.div`
         box-sizing: border-box;
     }
 
-    ${mediaQueries.desktop_769} {
+    ${mediaQueries.desktop_1281} {
         bottom: 80px;
+    }
+
+    ${mediaQueries.desktop_1441} {
+        padding-left: 10vw;
+        padding-right: 10vw;
+    }
+    
+    ${mediaQueries.desktop_2000} {
+        padding-left: 16vw;
+        padding-right: 16vw;
     }
 `;
 

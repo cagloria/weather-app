@@ -33,6 +33,7 @@ export const mediaQueries = {
     tablet_650_2col: "@media screen and (min-width: 650px)",
     desktop_769: "@media screen and (min-width: 769px)",
     desktop_1025_3col: "@media screen and (min-width: 1025px)",
+    desktop_1281: "@media screen and (min-width: 1281px)",
     desktop_1441: "@media screen and (min-width: 1441px)",
     desktop_2000: "@media screen and (min-width: 2000px)",
 };

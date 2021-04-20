@@ -8,6 +8,13 @@ const Section = styled.section`
     ${mediaQueries.tablet_650_2col} {
         grid-row: 2;
         grid-column: 1 / -1;
+    }
+
+    ${mediaQueries.desktop_1025_3col} {
+        margin-bottom: 28px;
+    }
+
+    ${mediaQueries.desktop_1441} {
         margin-bottom: 40px;
     }
 `;

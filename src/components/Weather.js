@@ -45,6 +45,10 @@ const WeatherSection = styled.section`
         grid-template-columns: repeat(2, 1fr);
         grid-auto-rows: auto;
         justify-items: stretch;
+        margin-bottom: 32px;
+    }
+
+    ${mediaQueries.desktop_1441} {
         margin-bottom: 48px;
     }
 `;
@@ -109,7 +113,7 @@ const BGImage = styled.div`
         height: 50px;
     }
 
-    ${mediaQueries.desktop_769} {
+    ${mediaQueries.desktop_1281} {
         height: 70px;
     }
 `;
@@ -126,11 +130,17 @@ const InfoContainer = styled.div`
     }
 
     ${mediaQueries.desktop_1025_3col} {
+        padding: 24px 24px;
         grid-row: 4;
         grid-column: 1 / -1;
         display: grid;
         grid-template-columns: 1fr 2fr;
         grid-template-rows: auto auto;
+        row-gap: 28px;
+    }
+
+    ${mediaQueries.desktop_1441} {
+        padding: 32px 24px;
         row-gap: 32px;
     }
 `;
