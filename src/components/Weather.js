@@ -110,11 +110,7 @@ const BGImage = styled.div`
         position: absolute;
         bottom: 0;
         left: 0;
-        height: 50px;
-    }
-
-    ${mediaQueries.desktop_1281} {
-        height: 70px;
+        height: 7vh;
     }
 `;
 

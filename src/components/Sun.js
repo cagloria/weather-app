@@ -10,15 +10,11 @@ const Container = styled.div`
 
     ${mediaQueries.tablet_850_2col} {
         position: absolute;
-        bottom: 55px;
-        padding: 0 11vw;
+        bottom: 7vh;
+        padding: 0 8vw;
         left: 0;
         width: 100%;
         box-sizing: border-box;
-    }
-
-    ${mediaQueries.desktop_1281} {
-        bottom: 80px;
     }
 
     ${mediaQueries.desktop_1441} {

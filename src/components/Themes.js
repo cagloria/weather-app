@@ -5,14 +5,14 @@ export const primary = {
     200: "#151A7F",
     300: "#454BC6",
     400: "#8B90E2",
-    500: "#C5C7E9",
+    // 500: "#C5C7E9",
 };
 
 export const neutral = {
     100: "#0C0C0C",
-    200: "#464646",
-    300: "#808080",
-    400: "#BABABA",
+    // 200: "#464646",
+    // 300: "#808080",
+    // 400: "#BABABA",
     500: "#F4F4F4",
 };
 
@@ -40,9 +40,12 @@ export const mediaQueries = {
 const fontFamily = `"Roboto", sans-serif`;
 
 export const GlobalStyles = createGlobalStyle`
-    body {
-        font-family: ${fontFamily};
+    html {
         color: ${neutral[500]};
+        font-family: ${fontFamily};
+    }
+
+    body {
         background-color: ${lightTheme.topGradient};
         background-image: linear-gradient(180deg, ${
             lightTheme.topGradient
