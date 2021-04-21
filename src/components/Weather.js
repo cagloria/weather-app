@@ -33,6 +33,17 @@ const WeatherSection = styled.section`
     flex-direction: column;
     align-items: center;
 
+    ${mediaQueries.phone_landscape} {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: auto;
+        grid-template-areas:
+            "c c"
+            "t w"
+            "s s";
+        align-items: stretch;
+    }
+
     ${mediaQueries.tablet_850_2col} {
         grid-row: 3;
         grid-column: 1;
@@ -58,6 +69,7 @@ const City = styled.p`
     font-size: 1.5em;
     text-align: center;
     margin: 0;
+    grid-area: c;
 
     ${mediaQueries.desktop_1025_3col} {
         grid-row: 1;
@@ -70,6 +82,7 @@ const WeatherDisplay = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    grid-area: w;
 
     > *:first-child {
         margin-bottom: 8px;

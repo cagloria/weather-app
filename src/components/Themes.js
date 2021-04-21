@@ -29,6 +29,7 @@ export const darkTheme = {
 };
 
 export const mediaQueries = {
+    phone_landscape: "@media screen and (max-height: 411px) and (orientation: landscape)",
     tablet_426: "@media screen and (min-width: 426px)",
     tablet_850_2col: "@media screen and (min-width: 850px)",
     desktop_1025_3col: "@media screen and (min-width: 1025px)",

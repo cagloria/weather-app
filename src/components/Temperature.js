@@ -8,6 +8,7 @@ const P = styled.p`
     font-weight: 400;
     text-align: center;
     margin: 6px 0;
+    grid-area: t;
 
     ${mediaQueries.desktop_1025_3col} {
         grid-row: 2;
