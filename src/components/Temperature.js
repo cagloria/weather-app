@@ -11,8 +11,6 @@ const P = styled.p`
     grid-area: t;
 
     ${mediaQueries.desktop_1025_3col} {
-        grid-row: 2;
-        grid-column: 1;
         margin: 0;
         text-align: left;
     }

@@ -94,8 +94,19 @@ export const GlobalStyles = createGlobalStyle`
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-auto-rows: auto;
-            column-gap: 60px;
-            align-content: baseline;
+            grid-template-areas: 
+                "c c"
+                "i i"
+                "w d"
+        }
+
+        ${mediaQueries.desktop_1025_3col} {
+            grid-template-columns: 1fr;
+            grid-template-areas: 
+                "c"
+                "i"
+                "w"
+                "d"
         }
 
         ${mediaQueries.desktop_1441} {

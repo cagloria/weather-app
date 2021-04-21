@@ -17,8 +17,7 @@ const MessageSection = styled.section`
     margin-bottom: 32px;
 
     ${mediaQueries.tablet_850_2col} {
-        grid-row: 3;
-        grid-column: 1;
+        grid-area: w;
         margin-bottom: 0;
     }
 
@@ -45,18 +44,19 @@ const WeatherSection = styled.section`
     }
 
     ${mediaQueries.tablet_850_2col} {
-        grid-row: 3;
-        grid-column: 1;
-        margin-bottom: 0;
+        grid-area: w;
     }
 
     ${mediaQueries.desktop_1025_3col} {
-        grid-column: 1 / -1;
+        margin-bottom: 0;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-auto-rows: auto;
+        grid-template-areas:
+            "c c"
+            "t w";
         justify-items: stretch;
-        align-items: center;
+        align-items: unset;
         margin-bottom: 32px;
     }
 
@@ -97,11 +97,6 @@ const WeatherIcon = styled.img`
     width: 128px;
     height: 128px;
     display: flex;
-
-    ${mediaQueries.desktop_1025_3col} {
-        grid-row: 2;
-        grid-column: 2;
-    }
 `;
 
 const WeatherText = styled.p`
@@ -147,14 +142,11 @@ const InfoContainer = styled.div`
     ${mediaQueries.tablet_850_2col} {
         padding: 32px 24px;
         border-radius: 8px;
-        grid-row: 3;
-        grid-column: 2;
+        grid-area: d;
     }
 
     ${mediaQueries.desktop_1025_3col} {
         padding: 24px 24px;
-        grid-row: 4;
-        grid-column: 1 / -1;
         display: grid;
         grid-template-columns: 1fr 2fr;
         grid-template-rows: auto auto;

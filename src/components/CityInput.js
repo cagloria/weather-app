@@ -6,8 +6,7 @@ const Section = styled.section`
     margin-bottom: 32px;
 
     ${mediaQueries.tablet_850_2col} {
-        grid-row: 2;
-        grid-column: 1 / -1;
+        grid-area: i;
     }
 
     ${mediaQueries.desktop_1025_3col} {
