@@ -35,8 +35,9 @@ export const mediaQueries = {
     desktop_1281: "@media screen and (min-width: 1281px)",
     desktop_1441: "@media screen and (min-width: 1441px)",
     desktop_2000: "@media screen and (min-width: 2000px)",
-    height_960: "@media screen and (min-height: 960px)",
-    height_1200: "@media screen and (min-height: 1200px)",
+    desktop_960height: "@media screen and (min-height: 960px) and (min-width: 1800px)",
+    desktop_1200height:
+        "@media screen and (min-height: 1200px) and (min-width: 1800px)",
 };
 
 const fontFamily = `"Roboto", sans-serif`;

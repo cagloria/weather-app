@@ -27,11 +27,11 @@ const Container = styled.div`
         padding-right: 16vw;
     }
 
-    ${mediaQueries.height_960} {
+    ${mediaQueries.desktop_960height} {
         bottom: 13vh;
     }
 
-    ${mediaQueries.height_1200} {
+    ${mediaQueries.desktop_1200height} {
         bottom: 21vh;
     }
 `;

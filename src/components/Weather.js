@@ -118,11 +118,11 @@ const BGImage = styled.div`
         height: 6vh;
     }
 
-    ${mediaQueries.height_960} {
+    ${mediaQueries.desktop_960height} {
         height: 13vh;
     }
 
-    ${mediaQueries.height_1200} {
+    ${mediaQueries.desktop_1200height} {
         height: 21vh;
     }
 `;
