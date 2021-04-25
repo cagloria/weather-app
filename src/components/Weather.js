@@ -27,36 +27,13 @@ const MessageSection = styled.section`
 `;
 
 const WeatherSection = styled.section`
-    display: flex;
-    margin-bottom: 32px;
-    flex-direction: column;
-    align-items: center;
-
-    ${mediaQueries.phone_landscape} {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: auto;
-        grid-template-areas:
-            "c c"
-            "t w"
-            "s s";
-        align-items: stretch;
-    }
+    margin-bottom: 8px;
 
     ${mediaQueries.tablet_850_2col} {
         grid-area: w;
     }
 
     ${mediaQueries.desktop_1025_3col} {
-        margin-bottom: 0;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: auto;
-        grid-template-areas:
-            "c c"
-            "t w";
-        justify-items: stretch;
-        align-items: unset;
         margin-bottom: 32px;
     }
 
@@ -80,6 +57,19 @@ const City = styled.p`
 
 const WeatherDisplay = styled.div`
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 10px;
+    column-gap: 80px;
+    margin: 6px 0 40px;
+
+    ${mediaQueries.desktop_1025_3col} {
+        justify-content: space-between;
+    }
+`;
+
+const WeatherCondition = styled.div`
+    display: flex;
     flex-direction: column;
     align-items: center;
     grid-area: w;
@@ -87,22 +77,18 @@ const WeatherDisplay = styled.div`
     > *:first-child {
         margin-bottom: 8px;
     }
-
-    ${mediaQueries.desktop_1025_3col} {
-        margin-left: auto;
-    }
 `;
 
-const WeatherIcon = styled.img`
-    width: 128px;
-    height: 128px;
-    display: flex;
+const WeatherConditionIcon = styled.img`
+    --size: 18vw;
+    width: clamp(100px, var(--size), 128px);
+    height: clamp(100px, var(--size), 128px);
 `;
 
-const WeatherText = styled.p`
-    font-size: 1.75em;
+const WeatherConditionText = styled.p`
+    font-size: clamp(1.3em, 8vw, 1.7em);
     text-align: center;
-    margin: 10px 0 40px;
+    margin: 10px 0 0;
 
     ${mediaQueries.desktop_1025_3col} {
         grid-row: 3;
@@ -280,13 +266,20 @@ export default function Weather({ location, tempScale, onSunFetch }) {
                             {weatherObj.city}, {weatherObj.country}
                         </City>
 
-                        <Temperature
-                            scale={tempScale}
-                            temp={weatherObj.temperature}
-                        />
                         <WeatherDisplay>
-                            <WeatherIcon alt="" src={weatherObj.weatherIcon} />
-                            <WeatherText>{weatherObj.weather}</WeatherText>
+                            <Temperature
+                                scale={tempScale}
+                                temp={weatherObj.temperature}
+                            />
+                            <WeatherCondition>
+                                <WeatherConditionIcon
+                                    alt=""
+                                    src={weatherObj.weatherIcon}
+                                />
+                                <WeatherConditionText>
+                                    {weatherObj.weather}
+                                </WeatherConditionText>
+                            </WeatherCondition>
                         </WeatherDisplay>
 
                         <Sun

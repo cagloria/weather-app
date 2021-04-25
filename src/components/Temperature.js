@@ -4,10 +4,10 @@ import { mediaQueries } from "./Themes";
 import { convertToCelsius } from "../utilities/functions";
 
 const P = styled.p`
-    font-size: 8em;
+    font-size: clamp(6em, 18vw, 8em);
     font-weight: 400;
     text-align: center;
-    margin: 6px 0;
+    margin: 0;
     grid-area: t;
 
     ${mediaQueries.desktop_1025_3col} {

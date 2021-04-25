@@ -29,14 +29,18 @@ export const darkTheme = {
 };
 
 export const mediaQueries = {
-    phone_landscape: "@media screen and (max-height: 411px) and (orientation: landscape)",
+    phone_landscape:
+        "@media screen and (max-height: 411px) and (orientation: landscape)",
     tablet_426: "@media screen and (min-width: 426px)",
-    tablet_850_2col: "@media screen and (min-width: 850px)",
+    tablet_850_2col: "@media screen and (min-width: 769px)",
+    tablet_850_2col_landscape:
+        "@media screen and (min-width: 769px) and (orientation: landscape)",
     desktop_1025_3col: "@media screen and (min-width: 1025px)",
     desktop_1281: "@media screen and (min-width: 1281px)",
     desktop_1441: "@media screen and (min-width: 1441px)",
     desktop_2000: "@media screen and (min-width: 2000px)",
-    desktop_960height: "@media screen and (min-height: 960px) and (min-width: 1800px)",
+    desktop_960height:
+        "@media screen and (min-height: 960px) and (min-width: 1800px)",
     desktop_1200height:
         "@media screen and (min-height: 1200px) and (min-width: 1800px)",
 };
@@ -98,6 +102,11 @@ export const GlobalStyles = createGlobalStyle`
                 "c c"
                 "i i"
                 "w d"
+        }
+
+        ${mediaQueries.tablet_850_2col_landscape} {
+            position: relative;
+            padding-bottom: 150px;
         }
 
         ${mediaQueries.desktop_1025_3col} {
