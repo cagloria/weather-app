@@ -8,26 +8,20 @@ const ForecastContainer = styled.div`
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-
-    > * {
-        margin: 8px;
-    }
+    row-gap: 16px;
+    column-gap: 24px;
+    justify-content: space-around;
+    max-width: 340px;
+    margin: 0 auto;
 
     ${mediaQueries.tablet_769_2col} {
         padding-top: 8px;
-        > * {
-            margin: 16px;
-        }
     }
 
     ${mediaQueries.desktop_1025_3col} {
         grid-row: 1;
         grid-column: 2;
         padding: 0;
-
-        > * {
-            margin: 0;
-        }
     }
 `;
 
