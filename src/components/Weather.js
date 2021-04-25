@@ -32,14 +32,6 @@ const WeatherSection = styled.section`
     ${mediaQueries.tablet_769_2col} {
         grid-area: w;
     }
-
-    ${mediaQueries.desktop_1025_3col} {
-        margin-bottom: 32px;
-    }
-
-    ${mediaQueries.desktop_1441} {
-        margin-bottom: 48px;
-    }
 `;
 
 const City = styled.p`

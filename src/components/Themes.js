@@ -17,7 +17,7 @@ export const neutral = {
 };
 
 export const lightTheme = {
-    topGradient: "#2A30AB",
+    topGradient: primary[300],
     bottomGradient: "#060950",
     fieldBorder: "transparent",
 };
