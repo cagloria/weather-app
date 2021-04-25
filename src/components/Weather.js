@@ -16,7 +16,7 @@ import { findWeatherIcon } from "../utilities/icons";
 const MessageSection = styled.section`
     margin-bottom: 32px;
 
-    ${mediaQueries.tablet_850_2col} {
+    ${mediaQueries.tablet_769_2col} {
         grid-area: w;
         margin-bottom: 0;
     }
@@ -29,7 +29,7 @@ const MessageSection = styled.section`
 const WeatherSection = styled.section`
     margin-bottom: 8px;
 
-    ${mediaQueries.tablet_850_2col} {
+    ${mediaQueries.tablet_769_2col} {
         grid-area: w;
     }
 
@@ -105,7 +105,7 @@ const BGImage = styled.div`
     border-top-right-radius: 50%;
     border-top: 4px solid ${neutral[500]};
 
-    ${mediaQueries.tablet_850_2col} {
+    ${mediaQueries.tablet_769_2col} {
         position: absolute;
         bottom: 0;
         left: 0;
@@ -125,7 +125,7 @@ const InfoContainer = styled.div`
     background-color: ${primary[100]};
     padding: 0 0 25px;
 
-    ${mediaQueries.tablet_850_2col} {
+    ${mediaQueries.tablet_769_2col} {
         padding: 32px 24px;
         border-radius: 8px;
         grid-area: d;
@@ -154,7 +154,7 @@ const CreditsSection = styled.section`
         text-align: center;
     }
 
-    ${mediaQueries.tablet_850_2col} {
+    ${mediaQueries.tablet_769_2col} {
         margin-bottom: 0;
     }
 

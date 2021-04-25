@@ -52,7 +52,7 @@ export const CARDINAL_DIRECTION = (() => {
 const Container = styled.section`
     margin-bottom: 32px;
 
-    ${mediaQueries.tablet_850_2col} {
+    ${mediaQueries.tablet_769_2col} {
         grid-row: 3;
         grid-column: 1;
         margin-bottom: 0;
@@ -81,7 +81,7 @@ const Table = styled.table`
         font-weight: 300;
     }
 
-    ${mediaQueries.tablet_850_2col} {
+    ${mediaQueries.tablet_769_2col} {
         padding: 15px 8px;
     }
 

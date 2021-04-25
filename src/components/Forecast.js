@@ -13,7 +13,7 @@ const ForecastContainer = styled.div`
         margin: 8px;
     }
 
-    ${mediaQueries.tablet_850_2col} {
+    ${mediaQueries.tablet_769_2col} {
         padding-top: 8px;
         > * {
             margin: 16px;

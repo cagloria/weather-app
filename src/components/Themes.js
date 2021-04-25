@@ -32,9 +32,9 @@ export const mediaQueries = {
     phone_landscape:
         "@media screen and (max-height: 411px) and (orientation: landscape)",
     tablet_426: "@media screen and (min-width: 426px)",
-    tablet_850_2col: "@media screen and (min-width: 769px)",
-    tablet_850_2col_landscape:
-        "@media screen and (min-width: 769px) and (orientation: landscape)",
+    tablet_769_2col: "@media screen and (min-width: 769px)",
+    tablet_769_landscape:
+        "@media screen and (min-width: 769px) and (orientation: landscape) and (max-height: 830px)", // Ensures Sun component is placed at bottom of screen on tablet and large phones
     desktop_1025_3col: "@media screen and (min-width: 1025px)",
     desktop_1281: "@media screen and (min-width: 1281px)",
     desktop_1441: "@media screen and (min-width: 1441px)",
@@ -93,7 +93,7 @@ export const GlobalStyles = createGlobalStyle`
     main {
         padding-top: 60px;
         
-        ${mediaQueries.tablet_850_2col} {
+        ${mediaQueries.tablet_769_2col} {
             padding: 60px 11vw 40px;
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -104,7 +104,7 @@ export const GlobalStyles = createGlobalStyle`
                 "w d"
         }
 
-        ${mediaQueries.tablet_850_2col_landscape} {
+        ${mediaQueries.tablet_769_landscape} {
             position: relative;
             padding-bottom: 150px;
         }
@@ -132,7 +132,7 @@ export const GlobalStyles = createGlobalStyle`
     section {
         padding: 0 7vw;
 
-        ${mediaQueries.tablet_850_2col} {
+        ${mediaQueries.tablet_769_2col} {
             padding: 0;
         }
     }

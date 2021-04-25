@@ -23,7 +23,7 @@ const Toggle = styled.button`
         right: 11vw;
     }
 
-    ${mediaQueries.tablet_850_2col} {
+    ${mediaQueries.tablet_769_2col} {
         right: 14vw;
     }
 

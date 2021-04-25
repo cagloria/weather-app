@@ -9,7 +9,7 @@ const Container = styled.div`
     width: 100%;
     grid-area: s;
 
-    ${mediaQueries.tablet_850_2col} {
+    ${mediaQueries.tablet_769_2col} {
         position: absolute;
         bottom: 6vh;
         padding: 0 8vw;

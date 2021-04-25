@@ -6,7 +6,7 @@ const Section = styled.section`
     text-align: center;
     margin-bottom: 26px;
 
-    ${mediaQueries.tablet_850_2col} {
+    ${mediaQueries.tablet_769_2col} {
         grid-area: c;
     }
 
