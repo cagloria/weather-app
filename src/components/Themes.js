@@ -97,6 +97,7 @@ export const GlobalStyles = createGlobalStyle`
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-auto-rows: auto;
+            column-gap: 20px;
             grid-template-areas: 
                 "c c"
                 "i i"

@@ -42,8 +42,7 @@ export default function ForecastDay({ name, dayObj, tempScale }) {
             <p>
                 <span className="hidden">High of </span>
                 {tempScale === "F" ? dayObj.max : convertToCelsius(dayObj.max)}
-                <span aria-hidden="true">&deg;&uarr;</span>
-
+                <span aria-hidden="true">&deg;&uarr;</span>{" "}
                 <span className="hidden">Low of </span>
                 {tempScale === "F" ? dayObj.min : convertToCelsius(dayObj.min)}
                 <span aria-hidden="true">&deg;&darr;</span>
