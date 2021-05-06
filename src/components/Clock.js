@@ -6,11 +6,11 @@ const Section = styled.section`
     text-align: center;
     margin-bottom: 26px;
 
-    ${mediaQueries.tablet_769_2col} {
+    ${mediaQueries.tablet_768_2col} {
         grid-area: c;
     }
 
-    ${mediaQueries.desktop_1025_3col} {
+    ${mediaQueries.desktop_1024_3col} {
         text-align: left;
         display: flex;
         justify-content: space-between;
@@ -24,7 +24,7 @@ const Day = styled.p`
     font-size: 2em;
     font-weight: 300;
 
-    ${mediaQueries.desktop_1025_3col} {
+    ${mediaQueries.desktop_1024_3col} {
         margin: 0;
     }
 `;
@@ -33,7 +33,7 @@ const Time = styled.p`
     font-size: 1.5em;
     margin: 0;
 
-    ${mediaQueries.desktop_1025_3col} {
+    ${mediaQueries.desktop_1024_3col} {
         font-size: 2em;
     }
 `;

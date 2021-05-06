@@ -5,15 +5,15 @@ import { mediaQueries } from "./Themes";
 const Section = styled.section`
     margin-bottom: 32px;
 
-    ${mediaQueries.tablet_769_2col} {
+    ${mediaQueries.tablet_768_2col} {
         grid-area: i;
     }
 
-    ${mediaQueries.desktop_1025_3col} {
+    ${mediaQueries.desktop_1024_3col} {
         margin-bottom: 28px;
     }
 
-    ${mediaQueries.desktop_1441} {
+    ${mediaQueries.desktop_1440} {
         margin-bottom: 40px;
     }
 `;
@@ -24,7 +24,7 @@ const Form = styled.form`
     max-width: 500px;
     margin: 0 auto;
 
-    ${mediaQueries.tablet_426} {
+    ${mediaQueries.phone_425} {
         display: grid;
         grid-template-columns: 2fr 1fr;
         grid-template-rows: auto auto;
@@ -32,7 +32,7 @@ const Form = styled.form`
         column-gap: 12px;
     }
 
-    ${mediaQueries.desktop_1025_3col} {
+    ${mediaQueries.desktop_1024_3col} {
         margin: 0;
     }
 `;
@@ -40,7 +40,7 @@ const Form = styled.form`
 const Label = styled.label`
     margin: 0 0 8px 10px;
 
-    ${mediaQueries.tablet_426} {
+    ${mediaQueries.phone_425} {
         grid-row: 1;
         grid-column: 1 / -1;
         margin-bottom: 0;
@@ -50,7 +50,7 @@ const Label = styled.label`
 const Textfield = styled.input`
     margin-bottom: 8px;
 
-    ${mediaQueries.tablet_426} {
+    ${mediaQueries.phone_425} {
         grid-row: 2;
         grid-column: 1;
         margin-bottom: 0;
@@ -58,7 +58,7 @@ const Textfield = styled.input`
 `;
 
 const SubmitButton = styled.button`
-    ${mediaQueries.tablet_426} {
+    ${mediaQueries.phone_425} {
         grid-row: 2;
         grid-column: 2;
     }

@@ -31,13 +31,12 @@ export const darkTheme = {
 export const mediaQueries = {
     phone_landscape:
         "@media screen and (max-height: 411px) and (orientation: landscape)",
-    tablet_426: "@media screen and (min-width: 426px)",
-    tablet_769_2col: "@media screen and (min-width: 769px)",
-    tablet_769_landscape:
-        "@media screen and (min-width: 769px) and (orientation: landscape) and (max-height: 830px)", // Ensures Sun component is placed at bottom of screen on tablet and large phones
-    desktop_1025_3col: "@media screen and (min-width: 1025px)",
-    desktop_1281: "@media screen and (min-width: 1281px)",
-    desktop_1441: "@media screen and (min-width: 1441px)",
+    phone_425: "@media screen and (min-width: 425px)",
+    tablet_768_2col: "@media screen and (min-width: 768px)",
+    tablet_768_landscape:
+        "@media screen and (min-width: 768px) and (orientation: landscape) and (max-height: 830px)", // Ensures Sun component is placed at bottom of screen on tablet and large phones
+    desktop_1024_3col: "@media screen and (min-width: 1024px)",
+    desktop_1440: "@media screen and (min-width: 1440px)",
     desktop_2000: "@media screen and (min-width: 2000px)",
     desktop_960height:
         "@media screen and (min-height: 960px) and (min-width: 1800px)",
@@ -93,7 +92,7 @@ export const GlobalStyles = createGlobalStyle`
     main {
         padding-top: 60px;
         
-        ${mediaQueries.tablet_769_2col} {
+        ${mediaQueries.tablet_768_2col} {
             padding: 60px 11vw 40px;
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -104,12 +103,12 @@ export const GlobalStyles = createGlobalStyle`
                 "w d"
         }
 
-        ${mediaQueries.tablet_769_landscape} {
+        ${mediaQueries.tablet_768_landscape} {
             position: relative;
             padding-bottom: 150px;
         }
 
-        ${mediaQueries.desktop_1025_3col} {
+        ${mediaQueries.desktop_1024_3col} {
             grid-template-columns: 1fr;
             grid-template-areas: 
                 "c"
@@ -118,7 +117,7 @@ export const GlobalStyles = createGlobalStyle`
                 "d"
         }
 
-        ${mediaQueries.desktop_1441} {
+        ${mediaQueries.desktop_1440} {
             padding-left: 18vw;
             padding-right: 18vw;
         }
@@ -132,7 +131,7 @@ export const GlobalStyles = createGlobalStyle`
     section {
         padding: 0 7vw;
 
-        ${mediaQueries.tablet_769_2col} {
+        ${mediaQueries.tablet_768_2col} {
             padding: 0;
         }
     }

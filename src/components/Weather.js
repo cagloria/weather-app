@@ -16,12 +16,12 @@ import { findWeatherIcon } from "../utilities/icons";
 const MessageSection = styled.section`
     margin-bottom: 32px;
 
-    ${mediaQueries.tablet_769_2col} {
+    ${mediaQueries.tablet_768_2col} {
         grid-area: w;
         margin-bottom: 0;
     }
 
-    ${mediaQueries.desktop_1025_3col} {
+    ${mediaQueries.desktop_1024_3col} {
         grid-column: 1 / -1;
     }
 `;
@@ -29,7 +29,7 @@ const MessageSection = styled.section`
 const WeatherSection = styled.section`
     margin-bottom: 8px;
 
-    ${mediaQueries.tablet_769_2col} {
+    ${mediaQueries.tablet_768_2col} {
         grid-area: w;
     }
 `;
@@ -40,7 +40,7 @@ const City = styled.p`
     margin: 0;
     grid-area: c;
 
-    ${mediaQueries.desktop_1025_3col} {
+    ${mediaQueries.desktop_1024_3col} {
         grid-row: 1;
         grid-column: 1 / -1;
         text-align: left;
@@ -55,7 +55,7 @@ const WeatherDisplay = styled.div`
     column-gap: 80px;
     margin: 6px 0 40px;
 
-    ${mediaQueries.desktop_1025_3col} {
+    ${mediaQueries.desktop_1024_3col} {
         justify-content: space-between;
     }
 `;
@@ -82,7 +82,7 @@ const WeatherConditionText = styled.p`
     text-align: center;
     margin: 10px 0 0;
 
-    ${mediaQueries.desktop_1025_3col} {
+    ${mediaQueries.desktop_1024_3col} {
         grid-row: 3;
         grid-column: 2;
         margin: 0;
@@ -97,7 +97,7 @@ const BGImage = styled.div`
     border-top-right-radius: 50%;
     border-top: 4px solid ${neutral[500]};
 
-    ${mediaQueries.tablet_769_2col} {
+    ${mediaQueries.tablet_768_2col} {
         position: absolute;
         bottom: 0;
         left: 0;
@@ -116,14 +116,15 @@ const BGImage = styled.div`
 const InfoContainer = styled.div`
     background-color: ${primary[100]};
     padding: 0 0 25px;
+    height: fit-content;
 
-    ${mediaQueries.tablet_769_2col} {
+    ${mediaQueries.tablet_768_2col} {
         padding: 32px 24px;
         border-radius: 8px;
         grid-area: d;
     }
 
-    ${mediaQueries.desktop_1025_3col} {
+    ${mediaQueries.desktop_1024_3col} {
         padding: 24px 24px;
         display: grid;
         grid-template-columns: 1fr 2fr;
@@ -131,7 +132,7 @@ const InfoContainer = styled.div`
         row-gap: 28px;
     }
 
-    ${mediaQueries.desktop_1441} {
+    ${mediaQueries.desktop_1440} {
         padding: 32px 24px;
         row-gap: 32px;
     }
@@ -146,11 +147,11 @@ const CreditsSection = styled.section`
         text-align: center;
     }
 
-    ${mediaQueries.tablet_769_2col} {
+    ${mediaQueries.tablet_768_2col} {
         margin-bottom: 0;
     }
 
-    ${mediaQueries.desktop_1025_3col} {
+    ${mediaQueries.desktop_1024_3col} {
         grid-row: 2;
         grid-column: 1 / -1;
 

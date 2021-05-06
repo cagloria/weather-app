@@ -52,13 +52,13 @@ export const CARDINAL_DIRECTION = (() => {
 const Container = styled.section`
     margin-bottom: 32px;
 
-    ${mediaQueries.tablet_769_2col} {
+    ${mediaQueries.tablet_768_2col} {
         grid-row: 3;
         grid-column: 1;
         margin-bottom: 0;
     }
 
-    ${mediaQueries.desktop_1025_3col} {
+    ${mediaQueries.desktop_1024_3col} {
         grid-row: 1;
         grid-column: 1;
         height: 100%;
@@ -81,11 +81,11 @@ const Table = styled.table`
         font-weight: 300;
     }
 
-    ${mediaQueries.tablet_769_2col} {
+    ${mediaQueries.tablet_768_2col} {
         padding: 15px 8px;
     }
 
-    ${mediaQueries.desktop_1025_3col} {
+    ${mediaQueries.desktop_1024_3col} {
         padding: 16px;
     }
 `;

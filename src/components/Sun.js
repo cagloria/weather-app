@@ -9,7 +9,7 @@ const Container = styled.div`
     width: 100%;
     grid-area: s;
 
-    ${mediaQueries.tablet_769_2col} {
+    ${mediaQueries.tablet_768_2col} {
         position: absolute;
         bottom: 6vh;
         padding: 0 8vw;
@@ -18,7 +18,7 @@ const Container = styled.div`
         box-sizing: border-box;
     }
 
-    ${mediaQueries.desktop_1441} {
+    ${mediaQueries.desktop_1440} {
         padding-left: 10vw;
         padding-right: 10vw;
     }

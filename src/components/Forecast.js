@@ -14,11 +14,11 @@ const ForecastContainer = styled.div`
     max-width: 340px;
     margin: 0 auto;
 
-    ${mediaQueries.tablet_769_2col} {
+    ${mediaQueries.tablet_768_2col} {
         padding-top: 8px;
     }
 
-    ${mediaQueries.desktop_1025_3col} {
+    ${mediaQueries.desktop_1024_3col} {
         grid-row: 1;
         grid-column: 2;
         padding: 0;

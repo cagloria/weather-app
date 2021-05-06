@@ -10,7 +10,7 @@ const P = styled.p`
     margin: 0;
     grid-area: t;
 
-    ${mediaQueries.desktop_1025_3col} {
+    ${mediaQueries.desktop_1024_3col} {
         margin: 0;
         text-align: left;
     }

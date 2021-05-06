@@ -19,11 +19,11 @@ const Toggle = styled.button`
         transition: none;
     }
 
-    ${mediaQueries.tablet_769_2col} {
+    ${mediaQueries.tablet_768_2col} {
         right: 11vw;
     }
 
-    ${mediaQueries.desktop_1441} {
+    ${mediaQueries.desktop_1440} {
         right: 18vw;
     }
 

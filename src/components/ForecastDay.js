@@ -22,7 +22,7 @@ const WeatherIcon = styled.img`
     height: 40px;
     margin: 0;
 
-    ${mediaQueries.tablet_769_2col} {
+    ${mediaQueries.tablet_768_2col} {
         width: 32px;
         height: 32px;
     }
