@@ -70,6 +70,7 @@ const Toggle = styled.button`
     }
 
     &:active {
+        background-color: transparent;
         &::after {
             box-shadow: inset 0 2px 2px 0px ${primary[100]};
         }
