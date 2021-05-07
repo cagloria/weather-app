@@ -4,6 +4,14 @@
     <img src="./src/assets/readme-devices.png" alt="The weather app on a laptop, tablet, and phone">
 </p>
 
+<p align="center">
+    <img alt="Build status" src="https://img.shields.io/github/workflow/status/cagloria/weather-app/Test?style=for-the-badge" />
+    <a href="https://www.behance.net/gallery/119018551/Weather-App">
+        <img alt="Link to the weather app on Behance" src="https://shields.io/badge/Behance-1769FF?logo=Behance&logoColor=white&style=for-the-badge" />
+    </a>
+
+</p>
+
 Displays the current weather and 3-day forecast of any city entered, in addition to the city's sunrise and sunset, displayed in local time.
 
 The data is fetched from [OpenWeather](https://openweathermap.org/), using the [Current Weather Data API](https://openweathermap.org/current) and [5 Day / 3 Hour Forecast API](https://openweathermap.org/forecast5).
