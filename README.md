@@ -37,7 +37,7 @@ The data is fetched from [OpenWeather](https://openweathermap.org/), using the [
 
 ## Installation
 
-You will need [Node and npm](https://nodejs.org/en/) installed to run this project.
+You will need [Node and npm](https://nodejs.org/en/) installed to run this project. You will also need your own API key from OpenWeather.
 
 Clone the project and run `npm install` in the root directory.
 

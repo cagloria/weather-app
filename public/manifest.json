@@ -20,6 +20,7 @@
     ],
     "start_url": ".",
     "display": "standalone",
-    "theme_color": "#2A30AB",
-    "background_color": "#2A30AB"
+    "theme_color": "#454BC6",
+    "background_color": "#070A43",
+    "description": "Check the current weather and three-day forecast of any city."
 }
