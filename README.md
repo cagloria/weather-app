@@ -5,9 +5,9 @@
 </p>
 
 <p align="center">
-    <img alt="Build status" src="https://img.shields.io/github/workflow/status/cagloria/weather-app/Test?style=for-the-badge" />
+    <img alt="Build status" src="https://img.shields.io/github/workflow/status/cagloria/weather-app/Test" />
     <a href="https://www.behance.net/gallery/119018551/Weather-App">
-        <img alt="Link to the weather app on Behance" src="https://shields.io/badge/Behance-1769FF?logo=Behance&logoColor=white&style=for-the-badge" />
+        <img alt="Link to the weather app on Behance" src="https://shields.io/badge/Behance-1769FF?logo=Behance&logoColor=white" />
     </a>
 
 </p>
@@ -16,18 +16,19 @@ Displays the current weather and 3-day forecast of any city entered, in addition
 
 The data is fetched from [OpenWeather](https://openweathermap.org/), using the [Current Weather Data API](https://openweathermap.org/current) and [5 Day / 3 Hour Forecast API](https://openweathermap.org/forecast5).
 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 ## Features
 
--   Ability to enter any city
--   Displays current temperature
--   A toggle to switch between Fahrenheit and Celsius
--   Displays current weather
+-   Ability to enter any city by name
+-   Displays current weather in the chosen city
 -   Displays sunrise and sunset in the user's local time
 -   Displays a 3-day forecast
--   Theme changes if it's daytime or nighttime in the current city
+-   A toggle to switch between Fahrenheit and Celsius
+-   Theme changes if it's daytime or nighttime in the chosen city
 
 <p align="center">
-    <img src="./src/assets/readme-theme.png" alt="Mobile screenshots showing how the app theme changes between light and dark based on the current time">
+    <img src="./src/assets/readme-theme.png" alt="Two mobile screenshots of the app showing the weather in Phoenix, AZ and London. The screenshot of Phoenix has the light theme, while the screenshot of London has the dark theme.">
 </p>
 
 ## Technologies Used
